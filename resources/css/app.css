@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@font-face {
+    font-family: 'Century Gothic';
+    src: url('/fonts/century_gothic/CenturyGothic.eot');
+    src: local('/fonts/century_gothic/Century Gothic'), local('/fonts/century_gothic/CenturyGothic'),
+    url('/fonts/century_gothic/CenturyGothic.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/century_gothic/CenturyGothic.woff2') format('woff2'),
+    url('/fonts/century_gothic/CenturyGothic.woff') format('woff'),
+    url('/fonts/century_gothic/CenturyGothic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Century Gothic';
+    src: url('/fonts/century_gothic/CenturyGothic-Bold.eot');
+    src: local('/fonts/century_gothic/Century Gothic Bold'), local('/fonts/century_gothic/CenturyGothic-Bold'),
+    url('/fonts/century_gothic/CenturyGothic-Bold.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/century_gothic/CenturyGothic-Bold.woff2') format('woff2'),
+    url('/fonts/century_gothic/CenturyGothic-Bold.woff') format('woff'),
+    url('/fonts/century_gothic/CenturyGothic-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Century Gothic';
+    src: url('/fonts/century_gothic/CenturyGothic-BoldItalic.eot');
+    src: local('/fonts/century_gothic/Century Gothic Bold Italic'), local('/fonts/century_gothic/CenturyGothic-BoldItalic'),
+    url('/fonts/century_gothic/CenturyGothic-BoldItalic.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/century_gothic/CenturyGothic-BoldItalic.woff2') format('woff2'),
+    url('/fonts/century_gothic/CenturyGothic-BoldItalic.woff') format('woff'),
+    url('/fonts/century_gothic/CenturyGothic-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Century Gothic';
+    src: url('/fonts/century_gothic/CenturyGothic-Italic.eot');
+    src: local('/fonts/century_gothic/Century Gothic Italic'), local('/fonts/century_gothic/CenturyGothic-Italic'),
+    url('/fonts/century_gothic/CenturyGothic-Italic.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/century_gothic/CenturyGothic-Italic.woff2') format('woff2'),
+    url('/fonts/century_gothic/CenturyGothic-Italic.woff') format('woff'),
+    url('/fonts/century_gothic/CenturyGothic-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
