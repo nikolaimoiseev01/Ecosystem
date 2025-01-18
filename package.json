@@ -19,6 +19,8 @@
         "flowbite": "^2.5.2",
         "form-saver": "github:cferdinandi/form-saver",
         "jquery": "^3.7.1",
+        "jquery-mask": "^0.0.1-security",
+        "jquery-mask-plugin": "^1.14.16",
         "swiper": "^11.2.1",
         "tailwind-hamburgers": "^1.3.5"
     }
