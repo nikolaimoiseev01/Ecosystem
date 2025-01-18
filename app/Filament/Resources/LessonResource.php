@@ -52,8 +52,7 @@ class LessonResource extends Resource
                             ->columnSpan(1)
                     ])->columns(2),
                     SpatieMediaLibraryFileUpload::make('video')
-                        ->collection('video'),
-                    Forms\Components\FileUpload::make('video')
+                        ->collection('video')
                 ])
 
             ]);
