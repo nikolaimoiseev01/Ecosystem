@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Lesson;
 use App\Models\Module;
+use App\Models\Test;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -33,6 +34,13 @@ class DatabaseSeeder extends Seeder
         [
             'name' => 'Модуль 4',
             'title' => 'Законодательные аспекты экологического движения в России',
+        ]
+    ];
+
+    public $tests = [
+        [
+            'lesson_id' => 1,
+            'questions' => "[{\"answers\": [{\"text\": \"Первый (верный)\", \"correct_flg\": true}, {\"text\": \"Второй (верный)\", \"correct_flg\": true}, {\"text\": \"Третий\", \"correct_flg\": false}], \"question\": \"Вопрос 1\"}, {\"answers\": [{\"text\": \"Неверный\", \"correct_flg\": false}, {\"text\": \"Второй (верный)\", \"correct_flg\": true}], \"question\": \"Второй вопрос\"}]"
         ]
     ];
 
@@ -119,9 +127,19 @@ class DatabaseSeeder extends Seeder
         }
     }
 
+    public function makeTests()
+    {
+        foreach ($this->tests as $var) {
+            Test::create([
+                'lesson_id' => $var['lesson_id'],
+                'questions' => json_decode($var['questions']),
+            ]);
+        }
+    }
+
     public function makeLessons()
     {
-        $video =  url('/') . "/fixed/test/test_video.mp4";
+        $video = url('/') . "/fixed/test/test_video.mp4";
 
         foreach ($this->lessons as $var) {
             $lesson = Lesson::create([
@@ -133,6 +151,7 @@ class DatabaseSeeder extends Seeder
 //            $lesson->addMediaFromUrl($video)->preservingOriginal()->toMediaCollection('video');
         }
     }
+
     public function run(): void
     {
 
@@ -148,8 +167,20 @@ class DatabaseSeeder extends Seeder
         ]);
         $user->assignRole('admin');
 
+        $user = User::create([
+            'name' => 'test_user',
+            'email' => 'test@mail.ru',
+            'email_verified_at' => now(),
+            'password' => Hash::make('12345678'),
+            'remember_token' => Str::random(10),
+        ]);
+
+        $user->assignRole('user');
+
+
         $this->makeModules();
         $this->makeLessons();
+        $this->makeTests();
 
 
     }

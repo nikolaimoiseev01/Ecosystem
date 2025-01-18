@@ -13,6 +13,8 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/scss/portal.scss', 'resources/js/app.js'])
+        <script src="/plugins/sweetalert2/swal.min.js"></script>
+        <link rel="stylesheet" href="/plugins/sweetalert2/swal.min.css">
     </head>
     <body class="flex flex-col min-h-screen">
     <livewire:components.header/>
@@ -21,7 +23,7 @@
         <a href="{{route('account.settings')}}" wire:navigate>Настройки</a>
     </div>
     <main class="content">
-        <h1 class="text-green-500 mb-16">{{$page_title}}</h1>
+        <h1 class="text-green-500 mb-16 font-bold">{{$page_title}}</h1>
         {{ $slot }}
     </main>
     <livewire:components.footer/>

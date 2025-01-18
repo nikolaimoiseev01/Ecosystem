@@ -13,6 +13,7 @@ class TestResult extends Model
     protected $fillable = [
         'user_id',
         'test_id',
+        'lesson_id',
         'total_correct_answers',
         'applicant_correct_answers',
         'result',
@@ -27,5 +28,10 @@ class TestResult extends Model
     public function test(): BelongsTo
     {
         return $this->belongsTo(Test::class);
+    }
+
+    public function lesson(): BelongsTo
+    {
+        return $this->belongsTo(Lesson::class);
     }
 }

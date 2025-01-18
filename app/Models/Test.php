@@ -30,4 +30,11 @@ class Test extends Model
     {
         return $this->hasMany(TestResult::class);
     }
+
+    public function testResultForUser($userId)
+    {
+        $testResultForUser =  $this->testResult()->where('user_id', $userId)->first();
+        return $testResultForUser;
+//        return TestResult::where('user_id', $userId)->where('test_id', $test['id'])->first();
+    }
 }

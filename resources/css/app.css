@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+h2 {
+   @apply text-green-500 text-2xl
+}
+
 input[type="radio"], input[type="checkbox"] {
     @apply border-gray-500 text-green-500 shadow-sm outline-none ring-0 focus:ring-0 cursor-pointer;
 }

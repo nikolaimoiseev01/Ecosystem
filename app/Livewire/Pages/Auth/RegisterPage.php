@@ -115,6 +115,8 @@ class RegisterPage extends Component
 
         Auth::login($user);
 
+        $user->assignRole('user');
+
         $this->redirect(route('account.courses'), navigate: true);
     }
 

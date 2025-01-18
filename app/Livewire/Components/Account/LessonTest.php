@@ -11,10 +11,14 @@ class LessonTest extends Component
 {
     public $test;
     public $questions;
+    public $testResults;
+    public $user;
 
     public function render()
     {
+        $user = Auth::user();
 
+        $this->testResults = $this->test->testResultForUser(Auth::id());
         // Делаем флаг, если верных ответов несколько
         $this->questions = $this->test['questions'];
         $newQuestions = []; // Новый массив для обновленных вопросов
@@ -86,12 +90,21 @@ class LessonTest extends Component
             $testResult = TestResult::create([
                 'user_id' => Auth::user()->id,
                 'test_id' => $this->test['id'],
+                'lesson_id' => $this->test->lesson['id'],
                 'total_correct_answers' => $total_correct_answers,
                 'applicant_correct_answers' => $applicant_correct_answers,
                 'result' => json_encode($result),
             ]);
         });
-        dd('OK');
+
+
+        $this->dispatch('refreshLessonsPage');
+
+        $this->dispatch('swal:modal',
+            title: 'Успешно',
+            type: 'success',
+            text: "Тест завершен. Вы набрали $applicant_correct_answers из $total_correct_answers балов"
+        );
 
 
     }

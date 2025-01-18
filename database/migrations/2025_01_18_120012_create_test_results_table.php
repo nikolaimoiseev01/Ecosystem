@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('test_id');
+            $table->foreignId('lesson_id');
             $table->integer('total_correct_answers');
             $table->integer('applicant_correct_answers');
             $table->json('result');
