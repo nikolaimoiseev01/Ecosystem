@@ -33,7 +33,7 @@ new class extends Component
 <section class="space-y-6">
     <header>
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-            {{ __('Delete Account') }}
+            {{ __('Удалить аккаунт') }}
         </h2>
 
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
@@ -41,12 +41,15 @@ new class extends Component
         </p>
     </header>
 
-    <x-link wire:click.prevent="logout" class="w-full text-start">Выйти</x-link>
+    <div class="flex gap-4">
+        <x-link wire:click.prevent="logout" class="w-full text-start">Выйти</x-link>
 
-    <x-danger-button
-        x-data=""
-        x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
-    >{{ __('Delete Account') }}</x-danger-button>
+        <x-danger-button
+            x-data=""
+            x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
+        >{{ __('Delete Account') }}</x-danger-button>
+    </div>
+
 
     <x-modal name="confirm-user-deletion" :show="$errors->isNotEmpty()" focusable>
         <form wire:submit="deleteUser" class="p-6">

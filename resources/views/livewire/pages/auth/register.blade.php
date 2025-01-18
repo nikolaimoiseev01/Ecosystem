@@ -89,7 +89,7 @@ new #[Layout('layouts.portal')] class extends Component {
 
         Auth::login($user);
 
-        $this->redirect(RouteServiceProvider::HOME, navigate: true);
+        $this->redirect(route('account.courses'), navigate: true);
     }
 }; ?>
 

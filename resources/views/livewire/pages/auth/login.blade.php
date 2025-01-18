@@ -31,7 +31,7 @@ new #[Layout('layouts.portal')] class extends Component {
     <form wire:submit="login" class="flex flex-col w-full max-w-lg gap-4 mx-auto items-center">
         <!-- Email Address -->
         <div class="w-full">
-            <x-text-input placeholder="Логин" wire:model="form.email" id="email" class="block mt-1 w-full" type="email"
+            <x-text-input placeholder="Email" wire:model="form.email" id="email" class="block mt-1 w-full" type="email"
                           name="email"
                           required autofocus autocomplete="username"/>
             <x-input-error :messages="$errors->get('form.email')" class="mt-2"/>
