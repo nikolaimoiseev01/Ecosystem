@@ -130,7 +130,7 @@ class DatabaseSeeder extends Seeder
                 'title' => $var['title'],
                 'desc' => $var['desc'],
             ]);
-            $lesson->addMediaFromUrl($video)->preservingOriginal()->toMediaCollection('video');
+            $lesson->addMedia($video)->preservingOriginal()->toMediaCollection('video');
         }
     }
     public function run(): void
