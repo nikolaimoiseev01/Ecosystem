@@ -53,6 +53,7 @@ class LessonResource extends Resource
                     ])->columns(2),
                     SpatieMediaLibraryFileUpload::make('video')
                         ->collection('video')
+                        ->previewable(false)
                 ])
 
             ]);
