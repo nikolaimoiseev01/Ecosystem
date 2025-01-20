@@ -16,7 +16,7 @@
     <h1 class="mx-auto mb-8"><span class="text-green-500">РЕГИСТРАЦИЯ</span> УЧАСТНИКА</h1>
     <div class="content mb-32">
         <form id="form-id" wire:submit="register" class="max-w-3xl mx-auto flex flex-col gap-4">
-            <div class="flex gap-8">
+            <div class="flex gap-8 md:flex-col">
 
                 <div class="flex-1">
                     <x-input-label for="login" :value="__('Логин')"/>
@@ -35,7 +35,7 @@
                 </div>
             </div>
 
-            <div class="flex gap-8">
+            <div class="flex gap-8 md:flex-col">
                 <div class="flex-1">
                     <x-input-label for="password" :value="__('Пароль')"/>
 
@@ -60,7 +60,7 @@
                 </div>
             </div>
 
-            <div class="flex gap-8">
+            <div class="flex gap-8 md:flex-col">
 
                 <div class="flex-1">
                     <x-input-label for="name" :value="__('Имя')"/>
@@ -78,7 +78,7 @@
 
             </div>
 
-            <div class="flex gap-8">
+            <div class="flex gap-8 md:flex-col">
                 <div class="flex-1">
                     <x-input-label for="thirdname" :value="__('Отчество')"/>
                     <x-text-input wire:model="thirdname" id="thirdname" class="block mt-1 w-full" type="text"
@@ -96,7 +96,7 @@
                 </div>
             </div>
 
-            <div class="flex gap-8">
+            <div class="flex gap-8 md:flex-col">
                 <div class="flex-1">
                     <x-input-label for="telegram" :value="__('Ник в телеграм')"/>
                     <x-text-input wire:model="telegram" id="telegram" class="block mt-1 w-full" type="text"
@@ -113,14 +113,14 @@
                 </div>
             </div>
 
-            <div class="flex gap-8">
+            <div class="flex gap-8 md:flex-col">
                 <div class="flex flex-col flex-1 gap-4">
                     <div class="flex-1">
                         <x-input-label for="telegram" :value="__('Ник в телеграм')"/>
                         <x-dropdown-select
-                            class="w-full"
-                            model="type_of_activity"
-                            :options="$types_of_activity"
+                                class="w-full"
+                                model="type_of_activity"
+                                :options="$types_of_activity"
                         />
                         <x-input-error :messages="$errors->get('type_of_activity')" class="mt-2"/>
                     </div>
@@ -128,18 +128,18 @@
                         <x-input-label for="telegram"
                                        :value="__('Состоите ли вы в экологической общественной организации?')"/>
                         <x-dropdown-select
-                            class="w-full"
-                            model="volunteer_experience"
-                            :options="$volunteer_exps"
+                                class="w-full"
+                                model="volunteer_experience"
+                                :options="$volunteer_exps"
                         />
                         <x-input-error :messages="$errors->get('volunteer_experience')" class="mt-2"/>
                     </div>
                 </div>
                 <div class="flex-1">
                     <textarea
-                        wire:model="eco_part"
-                        placeholder="Расскажите о своём опыте в волонтерской или просветительской деятельности в сфере экологии"
-                        class="rounded w-full h-full"></textarea>
+                            wire:model="eco_part"
+                            placeholder="Расскажите о своём опыте в волонтерской или просветительской деятельности в сфере экологии"
+                            class="rounded w-full h-full"></textarea>
                 </div>
 
             </div>
@@ -149,7 +149,7 @@
                     <x-input-label for="telephone" :value="__('Телефон')"/>
                     <x-text-input wire:model="telephone" id="telephone"
                                   class="block mt-1 w-full mobile_input"
-                                  placeholder="8 (909) 571 3756"
+                                  placeholder="8 (123) 456 7890"
                                   type="text"
                                   name="telephone" required autocomplete="telephone"/>
                 </div>
@@ -164,7 +164,6 @@
                                       type="text"
                                       name="sms_code_input" required autocomplete="sms_code_input"/>
                     </div>
-                    <x-link wire:click="checkSmsCode">Проверить код</x-link>
                 @endif
             </div>
             <x-input-error :messages="$errors->get('telephone')" class="mt-2"/>

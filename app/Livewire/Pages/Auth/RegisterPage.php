@@ -103,7 +103,7 @@ class RegisterPage extends Component
         }
 
         /* Если правильного еще нет, или правильный есть, но не подходит */
-        if (!($this->sms_code_correct ?? null) || (($this->sms_code_correct ?? null) && intval($this->sms_code_input) !== $this->sms_code_correct)) {
+        if (!($this->sms_code_correct ?? null) || (($this->sms_code_correct ?? null) && strval($this->sms_code_input) !== $this->sms_code_correct)) {
             $validator = Validator::make([], []); // Создаем экземпляр валидатора
             $validator->errors()->add('telephone', 'Код неверный'); // Добавляем ошибку
             throw new \Illuminate\Validation\ValidationException($validator); // Бросаем исключение
@@ -121,30 +121,28 @@ class RegisterPage extends Component
     }
 
     public function getSms() {
-//        // Create SmsAero instance.
-//        $oSMSAero = new SmsAero(ENV('SMSAERO_LOGIN'),ENV('SMSAERO_API_KEY'));
-////        dd($oSMSAero);
-//        // We can use it with config file f.e.
-//        // config('smsaero.login') and config('smsaero.api_key')
-//
-//        // Set receiver's phone number.
-//        $phone_number = $this->telephone;
-//
-//        // Set message content.
-//        $message = 'SMS Aero';
-//
-//        // Sending channels.
-//        $type = 'DIRECT'; // In docuimentation describe other types.
-//        // To send message to another countries need use 'INTERNATIONAL' type.
-//
-//        // Send message.
-//        $response = $oSMSAero->send($phone_number, $message, $type);
-//
-//        // Default response data -> json. However we can get response in XML format.
-        $this->sms_code_correct = 9999;
+
+        $digits = 4;
+        $this->sms_code_correct = str_pad(rand(0, pow(10, $digits)-1), $digits, '0', STR_PAD_LEFT);
+
+        // Create SmsAero instance.
+        $oSMSAero = new SmsAero(ENV('SMSAERO_LOGIN'),ENV('SMSAERO_API_KEY'));
+
+        // Set receiver's phone number.
+        $phone_number = $this->telephone;
+
+        // Set message content.
+        $message = 'Экосистема. Код подтверждения: ' . $this->sms_code_correct;
+
+        // Sending channels.
+        $type = 'DIRECT'; // In docuimentation describe other types.
+        // To send message to another countries need use 'INTERNATIONAL' type.
+
+        // Send message.
+        $response = $oSMSAero->send($phone_number, $message, $type);
+
+        // Default response data -> json. However we can get response in XML format.
         $this->sms_code_sent = True;
     }
 
-    public function checkSmsCode(){
-    }
 }
