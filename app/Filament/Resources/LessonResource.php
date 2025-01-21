@@ -29,6 +29,11 @@ class LessonResource extends Resource
             ->schema([
                 Forms\Components\Card::make()->schema([
                     Forms\Components\Grid::make()->schema([
+                        SpatieMediaLibraryFileUpload::make('icon')
+                            ->collection('icon')
+                            ->label('Иконка')
+                            ->required()
+                            ->columnSpan(1),
                         Forms\Components\Grid::make()->schema([
                             Forms\Components\Select::make('module_id')
                                 ->relationship('module', 'name')
@@ -38,21 +43,25 @@ class LessonResource extends Resource
                                 ->required()
                                 ->label('Название')
                                 ->maxLength(255),
-                            Forms\Components\TextInput::make('title')
-                                ->required()
-                                ->label('Заголовок')
-                                ->maxLength(255),
-                        ])->columns(1)->columnSpan(1),
+                        ])->columns(1)->columnSpan(1)
+                    ])->columns(2),
+
+
+
+                        Forms\Components\TextInput::make('title')
+                            ->required()
+                            ->label('Заголовок')
+                            ->maxLength(255),
                         Forms\Components\Textarea::make('desc')
                             ->required()
                             ->autosize()
                             ->label('Описание')
                             ->maxLength(65535)
                             ->columnSpanFull()
-                            ->columnSpan(1)
-                    ])->columns(2),
+                            ->columnSpan(1),
                     SpatieMediaLibraryFileUpload::make('video')
                         ->collection('video')
+                        ->label('Видео')
                         ->previewable(false)
                 ])
 

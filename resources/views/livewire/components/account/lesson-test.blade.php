@@ -1,8 +1,8 @@
 <div wire:key="{{$test['id']}}">
     <h2 class="mb-2">Тест</h2>
     @if($testResults)
-        <p>Вы успешно прошли тест! Набрали балов: {{$testResults['applicant_correct_answers']}}
-            из {{$testResults['total_correct_answers']}} </p>
+        <p>Вы успешно прошли тест! Набрали балов: {{$testResults['applicant_points']}}
+            из {{$testResults['questions_number']}} </p>
     @else
         <div x-data="{
         currentQuestionIndex: 0,

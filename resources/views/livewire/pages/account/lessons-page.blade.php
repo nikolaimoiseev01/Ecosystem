@@ -2,8 +2,8 @@
     <div class="mb-16">
         <h2 class="mb-4">Результаты тестов</h2>
         <p>Пройдено тестов: {{$user->testResult->count()}}; Всего
-            балов: {{$user->testResult->sum('applicant_correct_answers')}}
-            из {{$user->testResult->sum('total_correct_answers')}}</p>
+            балов: {{$user->testResult->sum('applicant_points')}}
+            из {{$user->testResult->sum('questions_number')}}</p>
     </div>
     <div class="flex flex-col gap-8 mb-32">
         @foreach($lessons as $lesson)

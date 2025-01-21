@@ -15,6 +15,8 @@ class RegisterPage extends Component
 {
     public string $name = '';
     public string $surname = '';
+
+    public string $region;
     public string $thirdname = '';
     public string $birth_dt = '';
     public string $login = '';
@@ -39,34 +41,50 @@ class RegisterPage extends Component
 
     public array $types_of_activity = [
         [
-            'id' => 1,
+            'id' => 'Студент',
             'name' => 'Студент',
         ],
         [
-            'id' => 2,
+            'id' => 'Наемный сотрудник',
             'name' => 'Наемный сотрудник',
         ],
         [
-            'id' => 3,
+            'id' => 'Пенсионер',
             'name' => 'Пенсионер',
+        ],
+        [
+            'id' => 'Самозанятый',
+            'name' => 'Самозанятый',
+        ],
+        [
+            'id' => 'Индивидуальный предприниматель',
+            'name' => 'Индивидуальный предприниматель',
+        ],
+        [
+            'id' => 'Не работающий',
+            'name' => 'Не работающий',
+        ],
+        [
+            'id' => 'Другое',
+            'name' => 'Другое',
         ]
     ];
 
     public array $volunteer_exps = [
         [
-            'id' => 1,
+            'id' => 'Да, в НКО',
             'name' => 'Да, в НКО',
         ],
         [
-            'id' => 2,
+            'id' => 'Да, в Движении "Экосистема',
             'name' => 'Да, в Движении "Экосистема',
         ],
         [
-            'id' => 3,
+            'id' => 'Да, в студенческом экологическом клубе',
             'name' => 'Да, в студенческом экологическом клубе',
         ],
         [
-            'id' => 4,
+            'id' => 'Нет, не состою',
             'name' => 'Нет, не состою',
         ]
     ];
@@ -84,6 +102,7 @@ class RegisterPage extends Component
             'login' => ['required', 'string', 'lowercase', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'region' =>  ['required', 'string', 'max:255'],
             'name' => ['required', 'string', 'max:255'],
             'surname' => ['required', 'string', 'max:255'],
             'thirdname' => ['required', 'string', 'max:255'],
@@ -122,24 +141,28 @@ class RegisterPage extends Component
 
     public function getSms() {
 
-        $digits = 4;
-        $this->sms_code_correct = str_pad(rand(0, pow(10, $digits)-1), $digits, '0', STR_PAD_LEFT);
+        if (ENV('APP_DEBUG')) {
+            $this->sms_code_correct = strval(9999);
+        } else {
+            $digits = 4;
+            $this->sms_code_correct = str_pad(rand(0, pow(10, $digits)-1), $digits, '0', STR_PAD_LEFT);
 
-        // Create SmsAero instance.
-        $oSMSAero = new SmsAero(ENV('SMSAERO_LOGIN'),ENV('SMSAERO_API_KEY'));
+            // Create SmsAero instance.
+            $oSMSAero = new SmsAero(ENV('SMSAERO_LOGIN'),ENV('SMSAERO_API_KEY'));
 
-        // Set receiver's phone number.
-        $phone_number = $this->telephone;
+            // Set receiver's phone number.
+            $phone_number = $this->telephone;
 
-        // Set message content.
-        $message = 'Экосистема. Код подтверждения: ' . $this->sms_code_correct;
+            // Set message content.
+            $message = 'Экосистема. Код подтверждения: ' . $this->sms_code_correct;
 
-        // Sending channels.
-        $type = 'DIRECT'; // In docuimentation describe other types.
-        // To send message to another countries need use 'INTERNATIONAL' type.
+            // Sending channels.
+            $type = 'DIRECT'; // In docuimentation describe other types.
+            // To send message to another countries need use 'INTERNATIONAL' type.
 
-        // Send message.
-        $response = $oSMSAero->send($phone_number, $message, $type);
+            // Send message.
+            $response = $oSMSAero->send($phone_number, $message, $type);
+        }
 
         // Default response data -> json. However we can get response in XML format.
         $this->sms_code_sent = True;

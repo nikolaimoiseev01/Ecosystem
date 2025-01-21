@@ -43,7 +43,11 @@
             </div>
             <div>
                 @auth
-                    <a href="{{route('account.courses')}}" class="block px-4 py-2 text-gray-800 " wire:navigate>Личный кабинет</a>
+                    <div class="flex">
+                        <a href="{{route('account.courses')}}" class="block px-4 py-2 text-gray-800 " wire:navigate>Личный кабинет</a>
+                        <x-heroicon-o-arrow-right-on-rectangle wire:click.prevent="logout" class="cursor-pointer w-6"/>
+                    </div>
+
                 @else
                     <a href="/#login" class="block px-4 py-2 text-gray-800 ">Войти</a>
                 @endauth

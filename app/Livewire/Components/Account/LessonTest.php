@@ -79,20 +79,21 @@ class LessonTest extends Component
             $question['applicant_answer'] = $applicantAnswerDetails;
             $question['total_correct_answers'] = $totalCorrectAnswers;
             $question['applicant_correct_answers'] = $applicantCorrectAnswers;
+            $question['flg_question_answered_correct'] = ($question['total_correct_answers'] == $question['applicant_correct_answers']);
 
             $result[] = $question;
         }
 
-        $total_correct_answers = collect($result)->sum('total_correct_answers');
-        $applicant_correct_answers = collect($result)->sum('applicant_correct_answers');
+        $questions_number = collect($result)->count();
+        $applicant_points = collect($result)->where('flg_question_answered_correct', True)->count();
 
-        DB::transaction(function () use ($total_correct_answers, $applicant_correct_answers, $result) {
+        DB::transaction(function () use ($questions_number, $applicant_points, $result) {
             $testResult = TestResult::create([
                 'user_id' => Auth::user()->id,
                 'test_id' => $this->test['id'],
                 'lesson_id' => $this->test->lesson['id'],
-                'total_correct_answers' => $total_correct_answers,
-                'applicant_correct_answers' => $applicant_correct_answers,
+                'questions_number' => $questions_number,
+                'applicant_points' => $applicant_points,
                 'result' => json_encode($result),
             ]);
         });
@@ -103,7 +104,7 @@ class LessonTest extends Component
         $this->dispatch('swal:modal',
             title: 'Успешно',
             type: 'success',
-            text: "Тест завершен. Вы набрали $applicant_correct_answers из $total_correct_answers балов"
+            text: "Тест завершен. Вы набрали $applicant_points из $questions_number балов"
         );
 
 
