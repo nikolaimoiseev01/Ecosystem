@@ -54,6 +54,14 @@
             </div>
         </div>
 
+        @script
+        <script> /* Чтобы выполнялось каждый раз при wire:navigate */
+            setTimeout(function () {
+                mobileInputCreate()
+            }, 1)
+        </script>
+        @endscript
+
 
     </div>
 </header>

@@ -5,8 +5,17 @@ import 'swiper/css';
 import $ from 'jquery'
 import 'jquery-mask-plugin'
 
-$(document).ready(function () {
+function mobileInputCreate() {
     $('.mobile_input').mask('0 (000) 000-00-00');
+}
+$(document).ready(function () {
+    mobileInputCreate()
+})
+
+document.addEventListener('DOMContentLoaded', function () {
+    window.mobileInputCreate = function () {
+        $('.mobile_input').mask('0 (000) 000-00-00');
+    }
 })
 
 
