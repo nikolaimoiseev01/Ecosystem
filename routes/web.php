@@ -4,6 +4,7 @@ use App\Livewire\Pages\Account\LessonsPage;
 use App\Livewire\Pages\Account\SettingsPage as SettingsPageAlias;
 use App\Livewire\Pages\Auth\RegisterPage as RegisterPageAlias;
 use App\Livewire\Pages\Portal\IndexPage as IndexPageAlias;
+use App\Livewire\Pages\Preview\TestPreviewPage as TestPreviewPageAlias;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,8 @@ require __DIR__.'/auth.php';
 Route::get('/', IndexPageAlias::class);
 
 Route::get('/register', RegisterPageAlias::class)->name('register');
+
+Route::get('/preview-test/{token}', TestPreviewPageAlias::class)->name('preview-test');
 
 // ---------  ЛИЧНЫЙ КАБИНЕТ --------- //
 

@@ -36,7 +36,7 @@ new #[Layout('layouts.portal')] class extends Component {
 }; ?>
 
 <div class="content">
-    <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
+    <div class="mb-4 text-sm">
         {{ __('Забыли пароль? Без проблем. Просто сообщите нам свой адрес электронной почты, и мы вышлем вам ссылку для сброса пароля, которая позволит вам выбрать новый.') }}
     </div>
 

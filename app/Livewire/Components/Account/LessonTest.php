@@ -9,6 +9,7 @@ use Livewire\Component;
 
 class LessonTest extends Component
 {
+    public $debug = False;
     public $test;
     public $questions;
     public $testResults;
@@ -39,67 +40,49 @@ class LessonTest extends Component
     public function saveAnswers($applicant_answers)
     {
         $result = [];
-
 //        dd($applicant_answers);
-        // Обработка вопросов
-        foreach ($this->questions as $questionIndex => $question) {
-            $userAnswers = $applicant_answers[$questionIndex] ?? []; // Ответы пользователя для текущего вопроса
 
-            // Подсчет правильных ответов в массиве вопроса
-            $totalCorrectAnswers = count(array_filter($question['answers'], function ($answer) {
-                return $answer['correct_flg'] === true;
-            }));
-
-            // Собираем массив applicant_answer
-            $applicantAnswerDetails = [];
-            $applicantCorrectAnswers = 0;
-
-            foreach ($userAnswers as $userAnswer) {
-                $isCorrect = false;
-
-                // Проверяем, есть ли ответ пользователя среди правильных
-                foreach ($question['answers'] as $answer) {
-                    if ($answer['text'] === $userAnswer) {
-                        $isCorrect = $answer['correct_flg'];
-                        if ($isCorrect) {
-                            $applicantCorrectAnswers++; // Увеличиваем счетчик правильных ответов пользователя
-                        }
-                        break;
-                    }
-                }
-
-                // Добавляем ответ пользователя и правильность в массив
-                $applicantAnswerDetails[] = [
-                    'text' => $userAnswer,
-                    'is_correct' => $isCorrect,
-                ];
+        // Проходим по каждому вопросу
+        foreach ($this->questions as $qIndex => &$question) {
+            foreach ($question['answers'] as &$answer) {
+                // Проверяем, содержит ли ответы пользователя текущий ответ
+                $answer['answered_correct'] = in_array($answer['text'], $applicant_answers[$qIndex]);
             }
+            // Извлекаем правильные ответы из массива answers
+            $correctAnswers = array_map(function ($answer) {
+                return $answer['correct_flg'] ? $answer['text'] : null;
+            }, $question['answers']);
 
-            // Добавляем данные к текущему вопросу
-            $question['applicant_answer'] = $applicantAnswerDetails;
-            $question['total_correct_answers'] = $totalCorrectAnswers;
-            $question['applicant_correct_answers'] = $applicantCorrectAnswers;
-            $question['flg_question_answered_correct'] = ($question['total_correct_answers'] == $question['applicant_correct_answers']);
+            // Удаляем null из массива правильных ответов
+            $correctAnswers = array_filter($correctAnswers);
 
-            $result[] = $question;
+            // Сравниваем правильные ответы с ответами пользователя
+            $userAnswerSet = $applicant_answers[$qIndex];
+
+            // Проверяем на полное совпадение
+            $question['answered_correct'] = empty(array_diff($correctAnswers, $userAnswerSet)) && empty(array_diff($userAnswerSet, $correctAnswers));
+
+            unset($answer); // На всякий случай для избежания ошибок ссылок
         }
+        unset($question);
 
-        $questions_number = collect($result)->count();
-        $applicant_points = collect($result)->where('flg_question_answered_correct', True)->count();
+        $questions_number = collect($this->questions)->count();
+        $applicant_points = collect($this->questions)->where('answered_correct', True)->count();
 
-        DB::transaction(function () use ($questions_number, $applicant_points, $result) {
-            $testResult = TestResult::create([
-                'user_id' => Auth::user()->id,
-                'test_id' => $this->test['id'],
-                'lesson_id' => $this->test->lesson['id'],
-                'questions_number' => $questions_number,
-                'applicant_points' => $applicant_points,
-                'result' => json_encode($result),
-            ]);
-        });
+        if (!$this->debug) {
 
-
-        $this->dispatch('refreshLessonsPage');
+            DB::transaction(function () use ($questions_number, $applicant_points, $result) {
+                $testResult = TestResult::create([
+                    'user_id' => Auth::user()->id,
+                    'test_id' => $this->test['id'],
+                    'lesson_id' => $this->test->lesson['id'],
+                    'questions_number' => $questions_number,
+                    'applicant_points' => $applicant_points,
+                    'result' => json_encode($this->questions),
+                ]);
+            });
+            $this->dispatch('refreshLessonsPage');
+        }
 
         $this->dispatch('swal:modal',
             title: 'Успешно',

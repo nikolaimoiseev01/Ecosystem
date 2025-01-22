@@ -5,13 +5,19 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\TestResultResource\Pages;
 use App\Filament\Resources\TestResultResource\RelationManagers;
 use App\Models\TestResult;
+use Filament\Actions\DeleteAction;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Infolists\Components\Section;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\HtmlString;
 
 class TestResultResource extends Resource
 {
@@ -21,25 +27,45 @@ class TestResultResource extends Resource
     protected static ?string $navigationGroup = "Тестирование";
     protected static ?string $navigationLabel = 'Результаты';
 
-    public static function form(Form $form): Form
+    public static function infolist(Infolist $infolist): infolist
     {
-        return $form
+        return $infolist
             ->schema([
-                Forms\Components\Select::make('user_id')
-                    ->relationship('user', 'name')
-                    ->label('Пользователь')
-                    ->required(),
-                Forms\Components\Select::make('test_id')
-                    ->relationship('test', 'id')
-                    ->required(),
-                Forms\Components\TextInput::make('total_correct_answers')
-                    ->required()
+                TextEntry::make('result')
+                    ->getStateUsing(function (TestResult $testResult): string {
+                        return getUserFullName($testResult->user);
+                    })
+                    ->label('Пользователь'),
+                TextEntry::make('lesson.name')
+                    ->label('Тест для урока')
                     ->numeric(),
-                Forms\Components\TextInput::make('applicant_correct_answers')
-                    ->required()
+                TextEntry::make('applicant_points')
+                    ->label('Пользователь набрал баллов')
                     ->numeric(),
-                Forms\Components\TextInput::make('result')
-                    ->required(),
+                TextEntry::make('questions_number')
+                    ->label('Всего вопросов')
+                    ->numeric(),
+                Section::make('Подробное описание')->schema([
+                    TextEntry::make('result')
+                        ->label('')
+                        ->formatStateUsing(function (TestResult $testResult): HtmlString {
+                            $html = '<i>V - Ответ верный по тесту. · - Пользователь выбрал этот вариант</i> <br><br>';
+                            $questions = json_decode($testResult['result']);
+//                            dd($answers);
+                            foreach ($questions as $question) {
+                                $question_correct_string = 'Отвечен ' . ($question->answered_correct ? 'правильно' : 'неправильно');
+                                $html .= "<b>{$question->question} ($question_correct_string)</b><br>";
+                                foreach ($question->answers as $answer) {
+                                    $correct_string = ($answer->correct_flg ? 'V' : '');
+                                    $answered_correct_string = ($answer->answered_correct ? '·' : '');
+                                    $html .= "$correct_string {$answer->text} $answered_correct_string <br>";
+                                }
+                            }
+                            $html = new HtmlString($html);
+                            return $html;
+                        })
+                        ->columnSpanFull()
+                ]),
             ]);
     }
 
@@ -50,16 +76,18 @@ class TestResultResource extends Resource
                 Tables\Columns\TextColumn::make('user.name')
                     ->label('Имя пользователя')
                     ->numeric()
+                    ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('test.lesson.name')
                     ->label('Тест для урока')
+                    ->searchable()
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('total_correct_answers')
+                Tables\Columns\TextColumn::make('questions_number')
                     ->label('Вопросов в тесте')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('applicant_correct_answers')
+                Tables\Columns\TextColumn::make('applicant_points')
                     ->label('Правильных ответов')
                     ->numeric()
                     ->sortable(),
@@ -67,22 +95,20 @@ class TestResultResource extends Resource
                     ->dateTime()
                     ->label('Создан')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->label('Обновлен')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
             ])
+            ->recordUrl(
+                fn (Model $record): string => '',
+            )
             ->actions([
-                Tables\Actions\EditAction::make(),
                 Tables\Actions\ViewAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+//                    Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }

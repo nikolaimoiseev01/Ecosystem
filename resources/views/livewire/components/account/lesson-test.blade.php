@@ -1,6 +1,6 @@
 <div wire:key="{{$test['id']}}">
     <h2 class="mb-2">Тест</h2>
-    @if($testResults)
+    @if($testResults && !$debug)
         <p>Вы успешно прошли тест! Набрали балов: {{$testResults['applicant_points']}}
             из {{$testResults['questions_number']}} </p>
     @else

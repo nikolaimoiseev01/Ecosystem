@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Exports\UserExporter;
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
@@ -9,6 +10,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\ExportAction;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -21,42 +23,46 @@ class UserResource extends Resource
 
     protected static ?string $navigationLabel = 'Пользователи';
 
+
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('login')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('email')
-                    ->email()
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('name')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('surname')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('thirdname')
-                    ->maxLength(255),
-                Forms\Components\DatePicker::make('birth_dt'),
-                Forms\Components\TextInput::make('telegram')
-                    ->tel()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('type_of_activity')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('eco_part')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('workplace')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('volunteer_experience')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('telephone')
-                    ->tel()
-                    ->maxLength(255),
-                Forms\Components\DateTimePicker::make('email_verified_at'),
-                Forms\Components\TextInput::make('password')
-                    ->password()
-                    ->required()
-                    ->maxLength(255),
+                Forms\Components\Card::make()->schema([
+                    Forms\Components\TextInput::make('login')
+                        ->label('Логин')
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make('email')
+                        ->email()
+                        ->required()
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make('name')
+                        ->label('Имя')
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make('surname')
+                        ->label('Фамилия')
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make('thirdname')
+                        ->label('Отчество')
+                        ->maxLength(255),
+                    Forms\Components\DatePicker::make('birth_dt')->label('Дата рождения'),
+                    Forms\Components\TextInput::make('telegram')
+                        ->tel()
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make('type_of_activity')->label('Род деятельности')
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make('eco_part')->label('Участие в организациях')
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make('workplace')->label('Место работы')
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make('volunteer_experience')->label('Волонтерский опыт')
+                        ->maxLength(255),
+                    Forms\Components\TextInput::make('telephone')->label('Телефон')
+                        ->tel()
+                        ->maxLength(255),
+                    Forms\Components\DatePicker::make('created_at')->label('Создан'),
+                ])->columns(3)
             ]);
     }
 
@@ -113,6 +119,12 @@ class UserResource extends Resource
             ])
             ->filters([
                 //
+            ])
+            ->headerActions([
+                ExportAction::make()
+                    ->label('Экспорт')
+                    ->tooltip('Будут скачаны отфильтрованные пользователи')
+                    ->exporter(UserExporter::class)
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
