@@ -16,13 +16,13 @@ class LessonsPage extends Component
 
     public function render()
     {
-        $this->lessons = Lesson::all();
+        $this->lessons = Lesson::orderBy('sort')->get();
         $this->user = \Illuminate\Support\Facades\Auth::user();
 
 
         /* Логика доступа на основе тестов */
 
-        $this->lessons = Lesson::all()->map(function ($lesson) { // Сначала все недоступны
+        $this->lessons = $this->lessons->map(function ($lesson) { // Сначала все недоступны
             $lesson->setAttribute('is_available', false);
             return $lesson;
         });
