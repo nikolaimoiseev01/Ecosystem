@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fcfad693ff3ab853997991e43b3f6368",
+    "content-hash": "867dc3c3909e4a8090daad08ff6ebfbf",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -221,6 +221,62 @@
                 }
             ],
             "time": "2024-10-17T17:38:00+00:00"
+        },
+        {
+            "name": "bordoni/phpass",
+            "version": "0.3.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bordoni/phpass.git",
+                "reference": "12f8f5cc03ebb7efd69554f104afe9aa1aa46e1a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bordoni/phpass/zipball/12f8f5cc03ebb7efd69554f104afe9aa1aa46e1a",
+                "reference": "12f8f5cc03ebb7efd69554f104afe9aa1aa46e1a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "replace": {
+                "hautelook/phpass": "0.3.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Hautelook": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Public Domain"
+            ],
+            "authors": [
+                {
+                    "name": "Solar Designer",
+                    "email": "solar@openwall.com",
+                    "homepage": "http://openwall.com/phpass/"
+                },
+                {
+                    "name": "Gustavo Bordoni",
+                    "email": "gustavo@bordoni.me",
+                    "homepage": "https://bordoni.me"
+                }
+            ],
+            "description": "Portable PHP password hashing framework",
+            "homepage": "http://github.com/bordoni/phpass/",
+            "keywords": [
+                "blowfish",
+                "crypt",
+                "password",
+                "security"
+            ],
+            "support": {
+                "issues": "https://github.com/bordoni/phpass/issues",
+                "source": "https://github.com/bordoni/phpass/tree/0.3.6"
+            },
+            "time": "2012-08-31T00:00:00+00:00"
         },
         {
             "name": "brick/math",
@@ -450,16 +506,16 @@
         },
         {
             "name": "danharrin/livewire-rate-limiting",
-            "version": "v2.0.0",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/danharrin/livewire-rate-limiting.git",
-                "reference": "0d9c1890174b3d1857dba6ce76de7c178fe20283"
+                "reference": "18680be2b4d3d901d8e453560f77810145492b34"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/danharrin/livewire-rate-limiting/zipball/0d9c1890174b3d1857dba6ce76de7c178fe20283",
-                "reference": "0d9c1890174b3d1857dba6ce76de7c178fe20283",
+                "url": "https://api.github.com/repos/danharrin/livewire-rate-limiting/zipball/18680be2b4d3d901d8e453560f77810145492b34",
+                "reference": "18680be2b4d3d901d8e453560f77810145492b34",
                 "shasum": ""
             },
             "require": {
@@ -500,7 +556,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-11-24T16:57:47+00:00"
+            "time": "2025-01-22T14:01:35+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -1219,16 +1275,16 @@
         },
         {
             "name": "filament/actions",
-            "version": "v3.2.133",
+            "version": "v3.2.134",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/actions.git",
-                "reference": "33464f1583217b5eb12364b617b27abe5315eb88"
+                "reference": "9b82b77efbd4c128a2d9915926832be0d9ed3858"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filamentphp/actions/zipball/33464f1583217b5eb12364b617b27abe5315eb88",
-                "reference": "33464f1583217b5eb12364b617b27abe5315eb88",
+                "url": "https://api.github.com/repos/filamentphp/actions/zipball/9b82b77efbd4c128a2d9915926832be0d9ed3858",
+                "reference": "9b82b77efbd4c128a2d9915926832be0d9ed3858",
                 "shasum": ""
             },
             "require": {
@@ -1268,11 +1324,11 @@
                 "issues": "https://github.com/filamentphp/filament/issues",
                 "source": "https://github.com/filamentphp/filament"
             },
-            "time": "2025-01-10T12:47:49+00:00"
+            "time": "2025-01-22T10:23:16+00:00"
         },
         {
             "name": "filament/filament",
-            "version": "v3.2.133",
+            "version": "v3.2.134",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/panels.git",
@@ -1337,16 +1393,16 @@
         },
         {
             "name": "filament/forms",
-            "version": "v3.2.133",
+            "version": "v3.2.134",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/forms.git",
-                "reference": "20473c9eec7afa3ee618d2f86c7c449b3723d9fb"
+                "reference": "47bc070cb7e919ecc01f42b25b5ad5b6d7c54488"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filamentphp/forms/zipball/20473c9eec7afa3ee618d2f86c7c449b3723d9fb",
-                "reference": "20473c9eec7afa3ee618d2f86c7c449b3723d9fb",
+                "url": "https://api.github.com/repos/filamentphp/forms/zipball/47bc070cb7e919ecc01f42b25b5ad5b6d7c54488",
+                "reference": "47bc070cb7e919ecc01f42b25b5ad5b6d7c54488",
                 "shasum": ""
             },
             "require": {
@@ -1389,20 +1445,20 @@
                 "issues": "https://github.com/filamentphp/filament/issues",
                 "source": "https://github.com/filamentphp/filament"
             },
-            "time": "2025-01-10T12:47:50+00:00"
+            "time": "2025-01-22T10:23:19+00:00"
         },
         {
             "name": "filament/infolists",
-            "version": "v3.2.133",
+            "version": "v3.2.134",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/infolists.git",
-                "reference": "d3ee1eb508561f2b101c69cdb45c309539948d86"
+                "reference": "162d2a9232e22310a7440a1c866b4359437ccae6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filamentphp/infolists/zipball/d3ee1eb508561f2b101c69cdb45c309539948d86",
-                "reference": "d3ee1eb508561f2b101c69cdb45c309539948d86",
+                "url": "https://api.github.com/repos/filamentphp/infolists/zipball/162d2a9232e22310a7440a1c866b4359437ccae6",
+                "reference": "162d2a9232e22310a7440a1c866b4359437ccae6",
                 "shasum": ""
             },
             "require": {
@@ -1440,20 +1496,20 @@
                 "issues": "https://github.com/filamentphp/filament/issues",
                 "source": "https://github.com/filamentphp/filament"
             },
-            "time": "2025-01-10T12:48:11+00:00"
+            "time": "2025-01-22T10:23:11+00:00"
         },
         {
             "name": "filament/notifications",
-            "version": "v3.2.133",
+            "version": "v3.2.134",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/notifications.git",
-                "reference": "16cf5dbcbaf88cd9fff8d06aad866cb314b8bb64"
+                "reference": "7f0f0e721a0cdb49b10f4d1b5b1fc435c35ea5df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filamentphp/notifications/zipball/16cf5dbcbaf88cd9fff8d06aad866cb314b8bb64",
-                "reference": "16cf5dbcbaf88cd9fff8d06aad866cb314b8bb64",
+                "url": "https://api.github.com/repos/filamentphp/notifications/zipball/7f0f0e721a0cdb49b10f4d1b5b1fc435c35ea5df",
+                "reference": "7f0f0e721a0cdb49b10f4d1b5b1fc435c35ea5df",
                 "shasum": ""
             },
             "require": {
@@ -1492,7 +1548,7 @@
                 "issues": "https://github.com/filamentphp/filament/issues",
                 "source": "https://github.com/filamentphp/filament"
             },
-            "time": "2025-01-10T12:48:23+00:00"
+            "time": "2025-01-22T10:23:12+00:00"
         },
         {
             "name": "filament/spatie-laravel-media-library-plugin",
@@ -1533,16 +1589,16 @@
         },
         {
             "name": "filament/support",
-            "version": "v3.2.133",
+            "version": "v3.2.134",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/support.git",
-                "reference": "38fd76ae4f96b53e6f98cbb7bad3f05ad5032cee"
+                "reference": "9a537b6fb5426ef1b1d0bc324e3f6aaeba707533"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filamentphp/support/zipball/38fd76ae4f96b53e6f98cbb7bad3f05ad5032cee",
-                "reference": "38fd76ae4f96b53e6f98cbb7bad3f05ad5032cee",
+                "url": "https://api.github.com/repos/filamentphp/support/zipball/9a537b6fb5426ef1b1d0bc324e3f6aaeba707533",
+                "reference": "9a537b6fb5426ef1b1d0bc324e3f6aaeba707533",
                 "shasum": ""
             },
             "require": {
@@ -1588,20 +1644,20 @@
                 "issues": "https://github.com/filamentphp/filament/issues",
                 "source": "https://github.com/filamentphp/filament"
             },
-            "time": "2025-01-10T12:48:52+00:00"
+            "time": "2025-01-22T10:23:33+00:00"
         },
         {
             "name": "filament/tables",
-            "version": "v3.2.133",
+            "version": "v3.2.134",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/tables.git",
-                "reference": "6cbbea0bfd966ca2f26988c0fac4e02caebddf4a"
+                "reference": "a958263e4abc597aa2aed3f29506a20ab8ae4a2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filamentphp/tables/zipball/6cbbea0bfd966ca2f26988c0fac4e02caebddf4a",
-                "reference": "6cbbea0bfd966ca2f26988c0fac4e02caebddf4a",
+                "url": "https://api.github.com/repos/filamentphp/tables/zipball/a958263e4abc597aa2aed3f29506a20ab8ae4a2d",
+                "reference": "a958263e4abc597aa2aed3f29506a20ab8ae4a2d",
                 "shasum": ""
             },
             "require": {
@@ -1640,11 +1696,11 @@
                 "issues": "https://github.com/filamentphp/filament/issues",
                 "source": "https://github.com/filamentphp/filament"
             },
-            "time": "2025-01-10T12:48:48+00:00"
+            "time": "2025-01-22T10:23:41+00:00"
         },
         {
             "name": "filament/widgets",
-            "version": "v3.2.133",
+            "version": "v3.2.134",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filamentphp/widgets.git",
@@ -2441,16 +2497,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v10.48.25",
+            "version": "v10.48.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "f132b23b13909cc22c615c01b0c5640541c3da0c"
+                "reference": "4c04a91442cad2433cddb1d376e40d0a43ec9571"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/f132b23b13909cc22c615c01b0c5640541c3da0c",
-                "reference": "f132b23b13909cc22c615c01b0c5640541c3da0c",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/4c04a91442cad2433cddb1d376e40d0a43ec9571",
+                "reference": "4c04a91442cad2433cddb1d376e40d0a43ec9571",
                 "shasum": ""
             },
             "require": {
@@ -2644,7 +2700,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2024-11-26T15:32:57+00:00"
+            "time": "2025-01-21T16:07:37+00:00"
         },
         {
             "name": "laravel/prompts",
@@ -3891,6 +3947,71 @@
                 "source": "https://github.com/Masterminds/html5-php/tree/2.9.0"
             },
             "time": "2024-03-31T07:05:07+00:00"
+        },
+        {
+            "name": "mikemclin/laravel-wp-password",
+            "version": "2.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mikemclin/laravel-wp-password.git",
+                "reference": "5225c95f75aa0a5ad4040ec2074d1c8d7f10b5f4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mikemclin/laravel-wp-password/zipball/5225c95f75aa0a5ad4040ec2074d1c8d7f10b5f4",
+                "reference": "5225c95f75aa0a5ad4040ec2074d1c8d7f10b5f4",
+                "shasum": ""
+            },
+            "require": {
+                "bordoni/phpass": "0.3.*",
+                "illuminate/support": ">=4.0.0",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4.0",
+                "satooshi/php-coveralls": "^2.2"
+            },
+            "type": "laravel-package",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "WpPassword": "MikeMcLin\\WpPassword\\Facades\\WpPassword"
+                    },
+                    "providers": [
+                        "MikeMcLin\\WpPassword\\WpPasswordProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MikeMcLin\\WpPassword\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mike McLin",
+                    "email": "mike@mikemclin.com",
+                    "homepage": "http://mikemclin.net"
+                }
+            ],
+            "description": "Laravel package that checks and creates WordPress password hashes",
+            "homepage": "https://github.com/mikemclin/laravel-wp-password",
+            "keywords": [
+                "hashing",
+                "laravel",
+                "password",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/mikemclin/laravel-wp-password/issues",
+                "source": "https://github.com/mikemclin/laravel-wp-password/tree/2.0.3"
+            },
+            "time": "2021-09-30T13:48:57+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -5829,16 +5950,16 @@
         },
         {
             "name": "spatie/laravel-package-tools",
-            "version": "1.18.0",
+            "version": "1.18.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-package-tools.git",
-                "reference": "8332205b90d17164913244f4a8e13ab7e6761d29"
+                "reference": "ba67eee37d86ed775dab7dad58a7cbaf9a6cfe78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/8332205b90d17164913244f4a8e13ab7e6761d29",
-                "reference": "8332205b90d17164913244f4a8e13ab7e6761d29",
+                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/ba67eee37d86ed775dab7dad58a7cbaf9a6cfe78",
+                "reference": "ba67eee37d86ed775dab7dad58a7cbaf9a6cfe78",
                 "shasum": ""
             },
             "require": {
@@ -5877,7 +5998,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-package-tools/issues",
-                "source": "https://github.com/spatie/laravel-package-tools/tree/1.18.0"
+                "source": "https://github.com/spatie/laravel-package-tools/tree/1.18.3"
             },
             "funding": [
                 {
@@ -5885,7 +6006,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-12-30T13:13:39+00:00"
+            "time": "2025-01-22T08:51:18+00:00"
         },
         {
             "name": "spatie/laravel-permission",
