@@ -17,7 +17,8 @@ class Lesson extends Model implements HasMedia
         'module_id',
         'name',
         'title',
-        'desc'
+        'desc',
+        'sort'
     ];
 
     public function module(): BelongsTo
