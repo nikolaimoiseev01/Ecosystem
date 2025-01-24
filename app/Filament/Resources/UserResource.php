@@ -61,7 +61,7 @@ class UserResource extends Resource
                     Forms\Components\TextInput::make('telephone')->label('Телефон')
                         ->tel()
                         ->maxLength(255),
-                    Forms\Components\DatePicker::make('created_at')->label('Создан'),
+                    Forms\Components\DateTimePicker::make('created_at')->label('Создан'),
                 ])->columns(3)
             ]);
     }

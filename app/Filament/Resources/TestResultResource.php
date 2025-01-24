@@ -78,7 +78,7 @@ class TestResultResource extends Resource
                     ->numeric()
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('test.lesson.name')
+                Tables\Columns\TextColumn::make('lesson.name')
                     ->label('Тест для урока')
                     ->searchable()
                     ->numeric()

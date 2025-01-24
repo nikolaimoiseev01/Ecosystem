@@ -23,8 +23,8 @@ class RegisterPage extends Component
     public string $email = '';
     public string $password = '';
     public string $telegram = '';
-    public string $type_of_activity = '';
-    public string $eco_part = '';
+    public string $type_of_activity = 'Студент';
+    public string $eco_part = 'Да, в НКО';
     public string $workplace = '';
     public string $volunteer_experience = '';
     public string $telephone = '';
@@ -70,7 +70,7 @@ class RegisterPage extends Component
         ]
     ];
 
-    public array $volunteer_exps = [
+    public array $eco_parts = [
         [
             'id' => 'Да, в НКО',
             'name' => 'Да, в НКО',
@@ -98,6 +98,8 @@ class RegisterPage extends Component
     public function register(): void
     {
 
+        dd($this->type_of_activity, $this->eco_part);
+
         $validated = $this->validate([
             'login' => ['required', 'string', 'lowercase', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
@@ -111,9 +113,10 @@ class RegisterPage extends Component
             'type_of_activity' => ['required', 'string', 'max:255'],
             'eco_part' => ['required', 'string', 'max:255'],
             'workplace' => ['required', 'string', 'max:255'],
-            'volunteer_experience' => ['required', 'string', 'max:255'],
+            'volunteer_experience' => ['required', 'string'],
             'telephone' => ['required', 'string', 'max:255'],
         ]);
+
 
         if (!($this->sms_code_sent)) {
             $validator = Validator::make([], []); // Создаем экземпляр валидатора
@@ -121,6 +124,7 @@ class RegisterPage extends Component
             throw new \Illuminate\Validation\ValidationException($validator); // Бросаем исключение
         }
 
+        dd(strval($this->sms_code_input), $this->sms_code_correct);
         /* Если правильного еще нет, или правильный есть, но не подходит */
         if (!($this->sms_code_correct ?? null) || (($this->sms_code_correct ?? null) && strval($this->sms_code_input) !== $this->sms_code_correct)) {
             $validator = Validator::make([], []); // Создаем экземпляр валидатора

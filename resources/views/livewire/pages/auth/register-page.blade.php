@@ -20,7 +20,7 @@
 
                 <div class="flex-1">
                     <x-input-label for="login" :value="__('Логин')"/>
-                    <x-text-input required wire:model="login" id="login" class="block mt-1 w-full" type="text" name="login"
+                    <x-text-input  wire:model="login" id="login" class="block mt-1 w-full" type="text" name="login"
 
                                   autofocus autocomplete="login"/>
                     <x-input-error :messages="$errors->get('login')" class="mt-2"/>
@@ -28,7 +28,7 @@
                 <!-- Email Address -->
                 <div class="flex-1">
                     <x-input-label for="email" :value="__('Email')"/>
-                    <x-text-input required wire:model="email" id="email" class="block mt-1 w-full" type="email" name="email"
+                    <x-text-input  wire:model="email" id="email" class="block mt-1 w-full" type="email" name="email"
 
                                   autocomplete="username"/>
                     <x-input-error :messages="$errors->get('email')" class="mt-2"/>
@@ -39,7 +39,7 @@
                 <div class="flex-1">
                     <x-input-label for="password" :value="__('Пароль')"/>
 
-                    <x-text-input required wire:model="password" id="password" class="block mt-1 w-full"
+                    <x-text-input  wire:model="password" id="password" class="block mt-1 w-full"
                                   type="password"
                                   name="password"
                                    autocomplete="new-password"/>
@@ -51,7 +51,7 @@
                 <div class="flex-1">
                     <x-input-label for="password_confirmation" :value="__('Подтвердите пароль')"/>
 
-                    <x-text-input required wire:model="password_confirmation" id="password_confirmation"
+                    <x-text-input  wire:model="password_confirmation" id="password_confirmation"
                                   class="block mt-1 w-full"
                                   type="password"
                                   name="password_confirmation"  autocomplete="new-password"/>
@@ -64,13 +64,13 @@
 
                 <div class="flex-1">
                     <x-input-label for="name" :value="__('Имя')"/>
-                    <x-text-input required wire:model="name" id="name" class="block mt-1 w-full" type="text" name="name"
+                    <x-text-input  wire:model="name" id="name" class="block mt-1 w-full" type="text" name="name"
                                   autofocus autocomplete="name"/>
                     <x-input-error :messages="$errors->get('name')" class="mt-2"/>
                 </div>
                 <div class="flex-1">
                     <x-input-label for="surname" :value="__('Фамилия')"/>
-                    <x-text-input required wire:model="surname" id="surname" class="block mt-1 w-full" type="text" name="surname"
+                    <x-text-input  wire:model="surname" id="surname" class="block mt-1 w-full" type="text" name="surname"
 
                                   autofocus autocomplete="surname"/>
                     <x-input-error :messages="$errors->get('surname')" class="mt-2"/>
@@ -81,7 +81,7 @@
             <div class="flex gap-8 md:flex-col">
                 <div class="flex-1">
                     <x-input-label for="thirdname" :value="__('Отчество')"/>
-                    <x-text-input required wire:model="thirdname" id="thirdname" class="block mt-1 w-full" type="text"
+                    <x-text-input  wire:model="thirdname" id="thirdname" class="block mt-1 w-full" type="text"
                                   name="thirdname"
                                   autocomplete="thirdname"/>
                     <x-input-error :messages="$errors->get('thirdname')" class="mt-2"/>
@@ -89,7 +89,7 @@
 
                 <div class="flex-1">
                     <x-input-label for="telegram" :value="__('Дата рождения')"/>
-                    <x-text-input required wire:model="birth_dt" id="birth_dt" class="block mt-1 w-full" type="date"
+                    <x-text-input  wire:model="birth_dt" id="birth_dt" class="block mt-1 w-full" type="date"
                                   name="birth_dt"
                                   autocomplete="birth_dt"/>
                     <x-input-error :messages="$errors->get('birth_dt')" class="mt-2"/>
@@ -99,14 +99,14 @@
             <div class="flex gap-8 md:flex-col">
                 <div class="flex-1">
                     <x-input-label for="telegram" :value="__('Ник в телеграм')"/>
-                    <x-text-input required wire:model="telegram" id="telegram" class="block mt-1 w-full" type="text"
+                    <x-text-input  wire:model="telegram" id="telegram" class="block mt-1 w-full" type="text"
                                   name="telegram"
                                   autofocus autocomplete="telegram"/>
                     <x-input-error :messages="$errors->get('telegram')" class="mt-2"/>
                 </div>
                 <div class="flex-1">
                     <x-input-label for="workplace" :value="__('Полное название места работы или учебы')"/>
-                    <x-text-input required wire:model="workplace" id="workplace" class="block mt-1 w-full" type="text"
+                    <x-text-input  wire:model="workplace" id="workplace" class="block mt-1 w-full" type="text"
                                   name="workplace"
                                   autocomplete="workplace"/>
                     <x-input-error :messages="$errors->get('workplace')" class="mt-2"/>
@@ -116,7 +116,7 @@
             <div class="flex gap-8 md:flex-col">
                 <div class="flex flex-col flex-1 gap-4">
                     <div class="flex-1">
-                        <x-input-label for="telegram" :value="__('Род деятельности')"/>
+                        <x-input-label for="type_of_activity" :value="__('Род деятельности')"/>
                         <x-dropdown-select
                                 class="w-full"
                                 model="type_of_activity"
@@ -125,21 +125,22 @@
                         <x-input-error :messages="$errors->get('type_of_activity')" class="mt-2"/>
                     </div>
                     <div class="flex-1">
-                        <x-input-label for="telegram"
+                        <x-input-label for="eco_part"
                                        :value="__('Состоите ли вы в экологической общественной организации?')"/>
                         <x-dropdown-select
                                 class="w-full"
-                                model="volunteer_experience"
-                                :options="$volunteer_exps"
+                                model="eco_part"
+                                :options="$eco_parts"
                         />
-                        <x-input-error :messages="$errors->get('volunteer_experience')" class="mt-2"/>
+                        <x-input-error :messages="$errors->get('eco_part')" class="mt-2"/>
                     </div>
                 </div>
                 <div class="flex-1">
-                    <x-textarea wire:model="eco_part"
-                                required
+                    <x-textarea wire:model="volunteer_experience"
+
                                 placeholder="Расскажите о своём опыте в волонтерской или просветительской деятельности в сфере экологии"
                                 class="w-full h-full"/>
+                    <x-input-error :messages="$errors->get('volunteer_experience')" class="mt-2"/>
                 </div>
 
             </div>
@@ -147,7 +148,7 @@
             <div class="flex gap-4 items-end">
                 <div class="flex-1">
                     <x-input-label for="region" :value="__('Регион')"/>
-                    <x-text-input required wire:model="region" id="region"
+                    <x-text-input  wire:model="region" id="region"
                                   class="block mt-1 w-full"
                                   placeholder=""
                                   type="text"
@@ -156,7 +157,7 @@
                 </div>
                 <div class="flex-1">
                     <x-input-label for="telephone" :value="__('Телефон')"/>
-                    <x-text-input required wire:model="telephone" id="telephone"
+                    <x-text-input  wire:model="telephone" id="telephone"
                                   class="block mt-1 w-full mobile_input"
                                   placeholder="8 (123) 456 7890"
                                   type="text"
@@ -169,7 +170,7 @@
                 @if($sms_code_sent)
                     <div class="flex-1">
                         <x-input-label for="sms_code_input" :value="__('СМС Код')"/>
-                        <x-text-input required wire:model="sms_code_input" id="sms_code_input"
+                        <x-text-input  wire:model="sms_code_input" id="sms_code_input"
                                       class="block mt-1 w-full mobile_input"
                                       type="text"
                                       name="sms_code_input"  autocomplete="sms_code_input"/>

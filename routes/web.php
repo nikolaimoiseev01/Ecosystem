@@ -18,11 +18,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-require __DIR__.'/auth.php';
 
 Route::get('/', IndexPageAlias::class);
 
+require __DIR__.'/auth.php';
+
 Route::get('/register', RegisterPageAlias::class)->name('register');
+//Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
+//Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+//Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
+//Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::get('/preview-test/{token}', TestPreviewPageAlias::class)->name('preview-test');
 
@@ -40,6 +45,3 @@ Route::view('dashboard', 'dashboard')
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
-
-
-
