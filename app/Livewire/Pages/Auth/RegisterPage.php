@@ -122,7 +122,6 @@ class RegisterPage extends Component
             throw new \Illuminate\Validation\ValidationException($validator); // Бросаем исключение
         }
 
-        dd(strval($this->sms_code_input), $this->sms_code_correct);
         /* Если правильного еще нет, или правильный есть, но не подходит */
         if (!($this->sms_code_correct ?? null) || (($this->sms_code_correct ?? null) && strval($this->sms_code_input) !== $this->sms_code_correct)) {
             $validator = Validator::make([], []); // Создаем экземпляр валидатора
