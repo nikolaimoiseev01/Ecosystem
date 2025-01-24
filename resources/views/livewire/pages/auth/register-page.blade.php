@@ -135,7 +135,7 @@
                         <x-input-error :messages="$errors->get('eco_part')" class="mt-2"/>
                     </div>
                 </div>
-                <div class="flex-1">
+                <div class="flex-1 flex flex-col">
                     <x-textarea wire:model="volunteer_experience"
 
                                 placeholder="Расскажите о своём опыте в волонтерской или просветительской деятельности в сфере экологии"
@@ -145,7 +145,7 @@
 
             </div>
 
-            <div class="flex gap-4 items-end">
+            <div class="flex gap-4 items-center">
                 <div class="flex-1">
                     <x-input-label for="region" :value="__('Регион')"/>
                     <x-text-input  wire:model="region" id="region"
