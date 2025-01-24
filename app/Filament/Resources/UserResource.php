@@ -48,7 +48,6 @@ class UserResource extends Resource
                         ->maxLength(255),
                     Forms\Components\DatePicker::make('birth_dt')->label('Дата рождения'),
                     Forms\Components\TextInput::make('telegram')
-                        ->tel()
                         ->maxLength(255),
                     Forms\Components\TextInput::make('type_of_activity')->label('Род деятельности')
                         ->maxLength(255),
@@ -59,7 +58,6 @@ class UserResource extends Resource
                     Forms\Components\TextInput::make('volunteer_experience')->label('Волонтерский опыт')
                         ->maxLength(255),
                     Forms\Components\TextInput::make('telephone')->label('Телефон')
-                        ->tel()
                         ->maxLength(255),
                     Forms\Components\DateTimePicker::make('created_at')->label('Создан'),
                 ])->columns(3)
