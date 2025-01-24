@@ -98,8 +98,6 @@ class RegisterPage extends Component
     public function register(): void
     {
 
-        dd($this->type_of_activity, $this->eco_part);
-
         $validated = $this->validate([
             'login' => ['required', 'string', 'lowercase', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
