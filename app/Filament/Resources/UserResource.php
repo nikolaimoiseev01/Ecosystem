@@ -124,7 +124,7 @@ class UserResource extends Resource
                     ->tooltip('Будут скачаны отфильтрованные пользователи')
                     ->exporter(UserExporter::class)
             ])
-            ->defaultSort('created_at')
+            ->defaultSort('created_at', 'desc')
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
