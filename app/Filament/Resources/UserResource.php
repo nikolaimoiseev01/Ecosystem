@@ -103,7 +103,7 @@ class UserResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('volunteer_experience')
                     ->label('Опыт волонтерства')
-                    ->limit(100)
+                    ->limit(30)
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('telephone')
@@ -123,6 +123,7 @@ class UserResource extends Resource
                     ->tooltip('Будут скачаны отфильтрованные пользователи')
                     ->exporter(UserExporter::class)
             ])
+            ->defaultSort('created_at')
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
