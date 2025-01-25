@@ -112,6 +112,7 @@ class UserResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
+                    ->label('Создан')
                     ->sortable(),
             ])
             ->filters([
