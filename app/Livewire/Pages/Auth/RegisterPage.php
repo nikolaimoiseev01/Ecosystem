@@ -4,6 +4,7 @@ namespace App\Livewire\Pages\Auth;
 
 use App\Models\User;
 use CooperAV\SmsAero\SmsAero;
+use DateTime;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -115,10 +116,19 @@ class RegisterPage extends Component
         });
     }
 
+    public function isOlderThan18($birthDate) {
+        $dateOfBirth = new DateTime($birthDate);
+        $currentDate = new DateTime();
+        $age = $dateOfBirth->diff($currentDate)->y;
+
+        return $age >= 18;
+    }
+
     public function register(): void
     {
 
         $this->region = $this->country == 'Россия' ? $this->region : null;
+
 
         $validated = $this->validate([
             'login' => ['required', 'string', 'lowercase', 'max:255', 'unique:' . User::class],
@@ -138,8 +148,15 @@ class RegisterPage extends Component
 //            'telephone' => ['required', 'string', 'max:255'],
         ]);
 
+        $isAdult = $this->isOlderThan18($this->birth_dt);
+
 
         $validator = Validator::make([], []); // Создаем экземпляр валидатора
+
+        if (!$isAdult) {
+            $validator->errors()->add('birth_dt', 'Вы должны быть старше 18-ти лет.'); // Добавляем ошибку
+            throw new \Illuminate\Validation\ValidationException($validator); // Бросаем исключение
+        }
 
         /* Если правильного еще нет, или правильный есть, но не подходит */
         if (!($this->sms_code_correct ?? null) || (($this->sms_code_correct ?? null) && strval($this->sms_code_input) !== $this->sms_code_correct)) {
