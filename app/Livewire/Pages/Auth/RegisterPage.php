@@ -10,13 +10,18 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
 use Illuminate\Validation\Rules;
+use App\Helpers\Geo;
 
 class RegisterPage extends Component
 {
     public string $name = '';
     public string $surname = '';
 
-    public string $region;
+    public $countries;
+    public string $country = 'Россия';
+    public $regions;
+
+    public $region = 'Московская область';
     public string $thirdname = '';
     public string $birth_dt = '';
     public string $login = '';
@@ -89,20 +94,38 @@ class RegisterPage extends Component
         ]
     ];
 
+
     public function render()
     {
         return view('livewire.pages.auth.register-page');
     }
 
+    public function mount()
+    {
+        $this->countries = Geo::countries();
+
+        $this->regions = Geo::regions();
+
+        usort($this->countries, function ($a, $b) {
+            return strcmp($a['name'], $b['name']);
+        });
+
+        usort($this->regions, function ($a, $b) {
+            return strcmp($a['name'], $b['name']);
+        });
+    }
 
     public function register(): void
     {
+
+        $this->region = $this->country == 'Россия' ? $this->region : null;
 
         $validated = $this->validate([
             'login' => ['required', 'string', 'lowercase', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
-            'region' =>  ['required', 'string', 'max:255'],
+            'country' => ['required', 'string', 'max:455'],
+            'region' => ['max:255'],
             'name' => ['required', 'string', 'max:255'],
             'surname' => ['required', 'string', 'max:255'],
             'thirdname' => ['required', 'string', 'max:255'],
@@ -112,20 +135,20 @@ class RegisterPage extends Component
             'eco_part' => ['required', 'string', 'max:255'],
             'workplace' => ['required', 'string', 'max:255'],
             'volunteer_experience' => ['required', 'string'],
-            'telephone' => ['required', 'string', 'max:255'],
+//            'telephone' => ['required', 'string', 'max:255'],
         ]);
 
 
-        if (!($this->sms_code_sent)) {
-            $validator = Validator::make([], []); // Создаем экземпляр валидатора
-            $validator->errors()->add('telephone', 'Пройдите верификацию по смс.'); // Добавляем ошибку
-            throw new \Illuminate\Validation\ValidationException($validator); // Бросаем исключение
-        }
+        $validator = Validator::make([], []); // Создаем экземпляр валидатора
 
         /* Если правильного еще нет, или правильный есть, но не подходит */
         if (!($this->sms_code_correct ?? null) || (($this->sms_code_correct ?? null) && strval($this->sms_code_input) !== $this->sms_code_correct)) {
-            $validator = Validator::make([], []); // Создаем экземпляр валидатора
             $validator->errors()->add('telephone', 'Код неверный'); // Добавляем ошибку
+            throw new \Illuminate\Validation\ValidationException($validator); // Бросаем исключение
+        }
+
+        if (!($this->sms_code_sent)) {
+            $validator->errors()->add('telephone', 'Пройдите верификацию по смс.'); // Добавляем ошибку
             throw new \Illuminate\Validation\ValidationException($validator); // Бросаем исключение
         }
 
@@ -140,16 +163,17 @@ class RegisterPage extends Component
         $this->redirect(route('account.courses'), navigate: true);
     }
 
-    public function getSms() {
+    public function getSms()
+    {
 
         if (ENV('APP_DEBUG')) {
             $this->sms_code_correct = strval(9999);
         } else {
             $digits = 4;
-            $this->sms_code_correct = str_pad(rand(0, pow(10, $digits)-1), $digits, '0', STR_PAD_LEFT);
+            $this->sms_code_correct = str_pad(rand(0, pow(10, $digits) - 1), $digits, '0', STR_PAD_LEFT);
 
             // Create SmsAero instance.
-            $oSMSAero = new SmsAero(ENV('SMSAERO_LOGIN'),ENV('SMSAERO_API_KEY'));
+            $oSMSAero = new SmsAero(ENV('SMSAERO_LOGIN'), ENV('SMSAERO_API_KEY'));
 
             // Set receiver's phone number.
             $phone_number = $this->telephone;
