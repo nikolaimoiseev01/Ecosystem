@@ -145,7 +145,7 @@ class RegisterPage extends Component
             'eco_part' => ['required', 'string', 'max:255'],
             'workplace' => ['required', 'string', 'max:255'],
             'volunteer_experience' => ['required', 'string'],
-//            'telephone' => ['required', 'string', 'max:255'],
+            'telephone' => ['required', 'string', 'max:255'],
         ]);
 
         $isAdult = $this->isOlderThan18($this->birth_dt);
