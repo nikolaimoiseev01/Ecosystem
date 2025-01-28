@@ -8,12 +8,20 @@
         currentQuestionIndex: 0,
         answers: {},
         totalQuestions: {{ count($questions) }},
+        errorMessage: '',
         nextQuestion() {
+            const currentAnswers = this.answers[this.currentQuestionIndex];
+            if (!currentAnswers || currentAnswers.length === 0) {
+                this.errorMessage = 'Выберите ответ';
+                return;
+            }
+            this.errorMessage = '';
             this.currentQuestionIndex++;
         },
         prevQuestion() {
             if (this.currentQuestionIndex > 0) {
                this.currentQuestionIndex--;
+               this.errorMessage = '';
             }
         },
         toggleAnswer(questionIndex, answer) {
@@ -40,12 +48,7 @@
                         @foreach($question['answers'] as $answer)
                             <div class="flex gap-2 items-center">
                                 <input
-                                    @if($question['multiple_correct_answers'])
-                                        type="checkbox"
-                                    @else
-                                        required
-                                    type="radio"
-                                    @endif
+                                    type="checkbox"
                                     @change="toggleAnswer({{ $index }}, '{{ $answer['text'] }}')"
                                     id="answer_{{ $index }}_{{ $loop->index }}"
                                     name="question_{{ $index }}"
@@ -57,11 +60,11 @@
                                 </label>
                             </div>
                         @endforeach
+                        <div class="text-red-500 mt-2" x-show="errorMessage" x-text="errorMessage"></div>
                         <div class="flex gap-4 mt-4 items-center">
                             <x-button>Следующий вопрос</x-button>
                             <x-link-simlpe @click.prevent="prevQuestion()"  x-show="currentQuestionIndex > 0">Назад</x-link-simlpe>
                         </div>
-
                     </form>
                 </div>
             @endforeach
