@@ -26,6 +26,18 @@ class Lesson extends Model implements HasMedia
         return $this->belongsTo(Module::class);
     }
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            // Установим поле sort на максимальное значение + 1
+            $model->sort = static::max('sort') + 1;
+        });
+    }
+
+
+
     public function test(): HasOne
     {
         return $this->hasOne(Test::class);
