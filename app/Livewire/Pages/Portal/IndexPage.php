@@ -11,7 +11,7 @@ class IndexPage extends Component
 
     public function render()
     {
-        $this->lessons = Lesson::orderBy('sort')->get();
+        $this->lessons = Lesson::orderBy('sort2')->get();
         return view('livewire.pages.portal.index-page');
     }
 }
