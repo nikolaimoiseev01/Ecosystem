@@ -31,6 +31,18 @@ class UserExporter extends Exporter
             ExportColumn::make('telephone')->label('Телефон'),
             ExportColumn::make('created_at')->label('Создан'),
             ExportColumn::make('updated_at')->label('Обновлен'),
+            ExportColumn::make('has_points')
+                ->label('Набранно балов')
+                ->state(function (User $record): float {
+                    $has_points = $record->testResult->sum('applicant_points');
+                    return $has_points;
+                }),
+            ExportColumn::make('has_tests')
+                ->label('Пройдено тестов')
+                ->state(function (User $record): float {
+                    $has_tests = $record->testResult->count();
+                    return $has_tests;
+                })
         ];
     }
 

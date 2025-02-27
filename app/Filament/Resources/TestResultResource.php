@@ -13,6 +13,8 @@ use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -73,6 +75,13 @@ class TestResultResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('user.id')
+                    ->label('ID пользователя')
+                    ->toggleable()
+                    ->toggledHiddenByDefault()
+                    ->numeric()
+                    ->searchable()
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('user.name')
                     ->label('Имя пользователя')
                     ->numeric()
@@ -97,7 +106,8 @@ class TestResultResource extends Resource
                     ->sortable(),
             ])
             ->filters([
-                //
+                SelectFilter::make('user')
+                    ->relationship('user', 'id')
             ])
             ->recordUrl(
                 fn (Model $record): string => '',
