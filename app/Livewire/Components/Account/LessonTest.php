@@ -19,6 +19,8 @@ class LessonTest extends Component
     {
         $user = Auth::user();
 
+//        dd($this->test->testResultForUser(Auth::id()));
+
         $this->testResults = $this->test->testResultForUser(Auth::id());
         // Делаем флаг, если верных ответов несколько
         $this->questions = $this->test['questions'];
