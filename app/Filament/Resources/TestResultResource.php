@@ -37,13 +37,14 @@ class TestResultResource extends Resource
                     })
                     ->label('Пользователь'),
                 TextEntry::make('lesson.name')
+                    ->default('Вне уроков')
                     ->label('Тест для урока')
                     ->numeric(),
                 TextEntry::make('applicant_points')
                     ->label('Пользователь набрал баллов')
                     ->numeric(),
-                TextEntry::make('questions_number')
-                    ->label('Всего вопросов')
+                TextEntry::make('test_points')
+                    ->label('Баллов в тесте')
                     ->numeric(),
                 Section::make('Подробное описание')->schema([
                     TextEntry::make('result')
@@ -80,11 +81,12 @@ class TestResultResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('lesson.name')
                     ->label('Тест для урока')
+                    ->default('Вне уроков')
                     ->searchable()
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('questions_number')
-                    ->label('Вопросов в тесте')
+                Tables\Columns\TextColumn::make('test_points')
+                    ->label('Баллов в тесте')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('applicant_points')

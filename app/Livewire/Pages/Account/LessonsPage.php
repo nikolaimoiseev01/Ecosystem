@@ -10,6 +10,7 @@ use Livewire\Component;
 class LessonsPage extends Component
 {
     public $lessons;
+    public $final_test;
     public $user;
 
     protected $listeners = ['refreshLessonsPage' => '$refresh'];
@@ -42,6 +43,8 @@ class LessonsPage extends Component
             }
 
         }
+
+        $this->final_test = Test::where('lesson_id', null)->first() ?? null;
         return view('livewire.pages.account.lessons-page')->layout('layouts.account', ['page_title' => 'Уроки']);
     }
 }

@@ -28,6 +28,8 @@
                 @endif
             </div>
         @endforeach
+
+            <livewire:components.account.lesson-test wire:key="" :test="$final_test"/>
     </div>
 
 </div>

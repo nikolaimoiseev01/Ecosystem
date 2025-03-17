@@ -33,14 +33,13 @@ class LessonTest extends Component
             $question['multiple_correct_answers'] = $correctAnswersCount > 1;
             unset($question); // Удаление ссылки
         }
-
         return view('livewire.components.account.lesson-test');
     }
 
     public function saveAnswers($applicant_answers)
     {
         $result = [];
-//        dd($applicant_answers);
+//        dd($this->questions);
 
         // Проходим по каждому вопросу
         foreach ($this->questions as $qIndex => &$question) {
@@ -66,17 +65,49 @@ class LessonTest extends Component
         }
         unset($question);
 
-        $questions_number = collect($this->questions)->count();
-        $applicant_points = collect($this->questions)->where('answered_correct', True)->count();
+
+        if ($this->test['lesson_id']) {
+            $test_points = collect($this->questions)->count();
+            $applicant_points = collect($this->questions)->where('answered_correct', True)->count();
+        } else {
+
+            $test_points = 0;
+
+            foreach ($this->questions as $qIndex => &$question) {
+                $question_score = 0;
+                if ($question['multiple_correct_answers']) {
+                    // Если вопрос с несколькими правильными ответами,
+                    // то за каждый ответ, где значение chosen_by_user совпадает с correct_flg, даем 2.5 балла.
+                    $add_points = 2.5;
+                } else {
+                    $add_points = 5;
+                }
+                foreach ($question['answers'] as $answer) {
+                    if ($answer['correct_flg']) {
+                        $test_points += $add_points;
+                    }
+                    if ($answer['answered_correct'] === $answer['correct_flg'] && $answer['correct_flg']) {
+                        $question_score += $add_points;
+                    }
+                    if ($answer['answered_correct'] && !$answer['correct_flg']) {
+                        $question_score -= $add_points;
+                    }
+                }
+                $question['question_score'] = max(0, $question_score);
+            }
+            $applicant_points = collect($this->questions)->sum('question_score');
+        };
+
+//        dd($this->questions, $test_points, $applicant_points);
 
         if (!$this->debug) {
 
-            DB::transaction(function () use ($questions_number, $applicant_points, $result) {
+            DB::transaction(function () use ($test_points, $applicant_points, $result) {
                 $testResult = TestResult::create([
                     'user_id' => Auth::user()->id,
                     'test_id' => $this->test['id'],
-                    'lesson_id' => $this->test->lesson['id'],
-                    'questions_number' => $questions_number,
+                    'lesson_id' => $this->test->lesson ? $this->test->lesson['id'] : null,
+                    'test_points' => $test_points,
                     'applicant_points' => $applicant_points,
                     'result' => json_encode($this->questions),
                 ]);
@@ -87,7 +118,7 @@ class LessonTest extends Component
         $this->dispatch('swal:modal',
             title: 'Успешно',
             type: 'success',
-            text: "Тест завершен. Вы набрали $applicant_points из $questions_number балов"
+            text: "Тест завершен. Вы набрали $applicant_points из $test_points балов"
         );
 
 

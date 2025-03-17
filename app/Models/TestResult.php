@@ -14,7 +14,7 @@ class TestResult extends Model
         'user_id',
         'test_id',
         'lesson_id',
-        'questions_number',
+        'test_points',
         'applicant_points',
         'result',
     ];

@@ -28,8 +28,7 @@ class TestResource extends Resource
             ->schema([
                 Forms\Components\Select::make('lesson_id')
                     ->relationship('lesson', 'name')
-                    ->label('Урок')
-                    ->required(),
+                    ->label('Урок'),
                 Forms\Components\Repeater::make('questions')
                     ->label('Вопросы теста')
                     ->addActionLabel('Добавить вопрос')
@@ -84,6 +83,7 @@ class TestResource extends Resource
             ->filters([
                 //
             ])
+            ->paginated(['all'])
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])

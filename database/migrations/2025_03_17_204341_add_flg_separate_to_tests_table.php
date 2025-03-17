@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('country')->nullable();
+        Schema::table('tests', function (Blueprint $table) {
+            $table->boolean('flg_separate')->default(false);
         });
     }
 
@@ -21,7 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('tests', function (Blueprint $table) {
             //
         });
     }
