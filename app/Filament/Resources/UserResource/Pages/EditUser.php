@@ -3,7 +3,9 @@
 namespace App\Filament\Resources\UserResource\Pages;
 
 use App\Filament\Resources\UserResource;
+use App\Models\User;
 use Filament\Actions;
+use Filament\Actions\Action;
 use Filament\Resources\Pages\EditRecord;
 
 class EditUser extends EditRecord
@@ -13,7 +15,11 @@ class EditUser extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            Action::make('edit')
+                ->url(fn(User $record): string => "/admin/test-results?tableFilters[user][value]={$record['id']}")
+                ->label('Все ответы пользователя'),
+            Actions\DeleteAction::make()
+                ->label('Удалить пользователя'),
         ];
     }
 

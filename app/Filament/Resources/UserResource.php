@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Exports\UserExporter;
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
+use App\Models\Test;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -22,7 +23,6 @@ class UserResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
 
     protected static ?string $navigationLabel = 'Пользователи';
-
 
 
     public static function form(Form $form): Form
@@ -60,6 +60,22 @@ class UserResource extends Resource
                     Forms\Components\TextInput::make('telephone')->label('Телефон')
                         ->maxLength(255),
                     Forms\Components\DateTimePicker::make('created_at')->label('Создан'),
+                    Forms\Components\Placeholder::make('has_points')
+                        ->label('Набранно балов:')
+                        ->content(function (User $record) {
+                            $has_points = $record->testResult->sum('applicant_points');
+                            $total_points = $record->testResult->sum('questions_number');
+                            $text = "{$has_points}/$total_points";
+                            return $text;
+                        }),
+                    Forms\Components\Placeholder::make('has_tests')
+                        ->label('Пройдено тестов:')
+                        ->content(function (User $record) {
+                            $has_tests = $record->testResult->count();
+                            $total_tests = Test::count();
+                            $text = "{$has_tests}/$total_tests";
+                            return $text;
+                        })
                 ])->columns(3)
             ]);
     }
@@ -113,7 +129,7 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->label('Создан')
-                    ->sortable(),
+                    ->sortable()
             ])
             ->filters([
                 //
@@ -138,7 +154,6 @@ class UserResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
         ];
     }
 
