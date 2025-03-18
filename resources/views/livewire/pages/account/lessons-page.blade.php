@@ -29,8 +29,11 @@
             </div>
         @endforeach
 
-        @if($final_test)
+        @if($final_test && $final_test_flg_check)
             <livewire:components.account.lesson-test wire:key="" :test="$final_test"/>
+        @endif
+        @if(!$final_test_flg_check)
+            <p>Чтобы получить доступ к финальному тесту, необходимо пройти все тесты уроков. </p>
         @endif
     </div>
 

@@ -5,6 +5,7 @@ namespace App\Livewire\Pages\Account;
 use App\Models\Lesson;
 use App\Models\Test;
 use App\Models\TestResult;
+use Illuminate\Support\Facades\Auth as AuthAlias;
 use Livewire\Component;
 
 class LessonsPage extends Component
@@ -12,13 +13,14 @@ class LessonsPage extends Component
     public $lessons;
     public $final_test;
     public $user;
+    public $final_test_flg_check;
 
     protected $listeners = ['refreshLessonsPage' => '$refresh'];
 
     public function render()
     {
         $this->lessons = Lesson::orderBy('sort')->get();
-        $this->user = \Illuminate\Support\Facades\Auth::user();
+        $this->user = AuthAlias::user();
 
 
         /* Логика доступа на основе тестов */
@@ -43,7 +45,9 @@ class LessonsPage extends Component
             }
 
         }
-
+        $this->final_test_flg_check = TestResult::where('user_id', $this->user['id'])
+            ->where('test_id', 9)
+            ->exists();
         $this->final_test = Test::where('lesson_id', null)->first() ?? null;
         return view('livewire.pages.account.lessons-page')->layout('layouts.account', ['page_title' => 'Уроки']);
     }

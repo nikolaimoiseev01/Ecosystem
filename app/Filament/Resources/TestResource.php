@@ -28,7 +28,6 @@ class TestResource extends Resource
             ->schema([
                 Forms\Components\Select::make('lesson_id')
                     ->relationship('lesson', 'name')
-                    ->default('Вне урока')
                     ->label('Урок'),
                 Forms\Components\Repeater::make('questions')
                     ->label('Вопросы теста')
