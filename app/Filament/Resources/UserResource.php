@@ -110,13 +110,6 @@ class UserResource extends Resource
                     ->counts('testResult')
                     ->sortable()
                     ->label('Пройдено тестов'),
-                Tables\Columns\TextColumn::make('has_tests')
-                    ->label('Дата рождения')
-                    ->formatStateUsing(function (User $record): float {
-                        $has_tests = $record->testResult->count();
-                        return $has_tests;
-                    })
-                    ->sortable(),
                 Tables\Columns\TextColumn::make('telegram')
                     ->toggleable(isToggledHiddenByDefault: true)
                     ->searchable(),
