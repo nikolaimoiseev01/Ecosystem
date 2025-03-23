@@ -64,7 +64,7 @@ class UserResource extends Resource
                         ->label('Набранно балов:')
                         ->content(function (User $record) {
                             $has_points = $record->testResult->sum('applicant_points');
-                            $total_points = $record->testResult->sum('questions_number');
+                            $total_points = $record->testResult->sum('test_points');
                             $text = "{$has_points}/$total_points";
                             return $text;
                         }),
@@ -101,6 +101,21 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('birth_dt')
                     ->label('Дата рождения')
                     ->date()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('test_result_sum_applicant_points')
+                    ->sum('testResult', 'applicant_points')
+                    ->sortable()
+                    ->label('Всего балов'),
+                Tables\Columns\TextColumn::make('test_result_count')
+                    ->counts('testResult')
+                    ->sortable()
+                    ->label('Пройдено тестов'),
+                Tables\Columns\TextColumn::make('has_tests')
+                    ->label('Дата рождения')
+                    ->formatStateUsing(function (User $record): float {
+                        $has_tests = $record->testResult->count();
+                        return $has_tests;
+                    })
                     ->sortable(),
                 Tables\Columns\TextColumn::make('telegram')
                     ->toggleable(isToggledHiddenByDefault: true)
