@@ -101,7 +101,7 @@ src="data:image/svg+xml; base64, {{ base64_encode(file_get_contents(public_path(
         </table>
 
         <!-- Год -->
-        <div style="text-align: center; margin-bottom: 63px;">
+        <div style="text-align: center; margin-bottom: 66px;">
             <p style="font-size: 13px; font-weight: bold;">2025 год</p>
         </div>
 
