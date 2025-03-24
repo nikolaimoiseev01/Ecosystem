@@ -21,7 +21,6 @@ class Controller extends BaseController
         } else {
             $type = 'участником';
         }
-        dd('test');
         return view('layouts.diploma', ['fio' => $user_fio, 'type' => $type]);
     }
 }
