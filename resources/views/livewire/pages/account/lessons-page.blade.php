@@ -4,8 +4,8 @@
     {{--        <p>Пройдено тестов: {{$user->testResult->count()}}; Всего--}}
     {{--            балов: {{$user->testResult->sum('applicant_points')}}--}}
     {{--            из {{$user->testResult->sum('questions_number')}}</p>--}}
-    {{--    </div>--}}
-    <x-button wire:click="downloadDiploma()" class="mb-8 text-lg">Скачать сертификат</x-button>
+{{--        </div>--}}
+{{--    <x-button wire:click="downloadDiploma()" class="mb-8 text-lg">Скачать сертификат</x-button>--}}
     <div class="flex flex-col gap-8 mb-32">
         @foreach($lessons as $lesson)
             <div class="flex flex-col p-8 bg-gray-300 rounded-xl">
