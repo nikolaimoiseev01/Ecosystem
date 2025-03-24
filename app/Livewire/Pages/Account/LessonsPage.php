@@ -82,8 +82,10 @@ class LessonsPage extends Component
 //        return $pdf->stream();
 
 
+        Pdf::setOption(['dpi' => 300, 'defaultFont' => 'sans-serif']);
         // Генерируем PDF
         Pdf::loadView('layouts.diploma', ['fio' => $user_fio, 'type' => $type])
+            ->setPaper('a4', 'portrait')->setWarnings(false)
             ->save($filePath);
 
         // Отдаём пользователю и удаляем файл после отправки

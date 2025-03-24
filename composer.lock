@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e22bc05bba13d8996ca6950d03e8b175",
+    "content-hash": "03086d9d05333b5ed313fe82f33cb6d1",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -4911,6 +4911,58 @@
                 "source": "https://github.com/pboivin/filament-peek/tree/v2.0.0"
             },
             "time": "2023-08-31T15:43:14+00:00"
+        },
+        {
+            "name": "pdfcrowd/pdfcrowd",
+            "version": "6.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pdfcrowd/pdfcrowd-php.git",
+                "reference": "03c5b8c4511b896cc79ee1f6c9d34d27669ad59c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pdfcrowd/pdfcrowd-php/zipball/03c5b8c4511b896cc79ee1f6c9d34d27669ad59c",
+                "reference": "03c5b8c4511b896cc79ee1f6c9d34d27669ad59c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.3.10"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "pdfcrowd.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pdfcrowd Team",
+                    "email": "support@pdfcrowd.com",
+                    "homepage": "https://pdfcrowd.com/api/"
+                }
+            ],
+            "description": "A client library for the Pdfcrowd API. It lets you convert between HTML, PDF and various image formats",
+            "homepage": "https://pdfcrowd.com/api/",
+            "keywords": [
+                "api",
+                "client",
+                "convert",
+                "html",
+                "pdf",
+                "web page",
+                "web service"
+            ],
+            "support": {
+                "issues": "https://github.com/pdfcrowd/pdfcrowd-php/issues",
+                "source": "https://github.com/pdfcrowd/pdfcrowd-php/tree/6.4.0"
+            },
+            "time": "2024-11-29T10:32:21+00:00"
         },
         {
             "name": "phpoption/phpoption",
