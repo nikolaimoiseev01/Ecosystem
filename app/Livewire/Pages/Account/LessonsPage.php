@@ -5,8 +5,13 @@ namespace App\Livewire\Pages\Account;
 use App\Models\Lesson;
 use App\Models\Test;
 use App\Models\TestResult;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Auth as AuthAlias;
+use Illuminate\Support\Str;
 use Livewire\Component;
+use Spatie\LaravelPdf\Enums\Format;
+use Spatie\LaravelPdf\Facades\Pdf;
 
 class LessonsPage extends Component
 {
@@ -50,5 +55,30 @@ class LessonsPage extends Component
             ->exists();
         $this->final_test = Test::where('lesson_id', null)->first() ?? null;
         return view('livewire.pages.account.lessons-page')->layout('layouts.account', ['page_title' => 'Уроки']);
+    }
+
+    public function downloadDiploma() {
+
+        $user = Auth::user();
+        $user_fio = "{$user['surname']} {$user['name']} {$user['thirdname']}";
+        $user_points =$user->testResult->sum('applicant_points');
+        if ($user_points > 90) {
+            $type = 'финалистом';
+        } else {
+            $type = 'участником';
+        }
+
+        // Генерируем случайное имя
+        $fileName = Str::random(16) . '.pdf';
+        $filePath = storage_path('app/' . $fileName); // используем временное хранилище
+
+        // Генерируем PDF
+        Pdf::view('layouts.diploma', ['fio' => $user_fio, 'type' => $type])
+            ->format(Format::A4)
+            ->save($filePath);
+
+        // Отдаём пользователю и удаляем файл после отправки
+        return response()->download($filePath, 'diploma.pdf')->deleteFileAfterSend(true);
+
     }
 }

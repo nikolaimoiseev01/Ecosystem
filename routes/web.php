@@ -38,6 +38,10 @@ Route::middleware(['auth'])->prefix('account')->group(callback: function () {
     Route::get('settings', SettingsPageAlias::class)->name('account.settings');
 });
 
+//Route::get('/diploma/{name}', \App\Livewire\Components\Diploma::class)->name('diploma');
+
+Route::get('/diploma/{user_id}', [\App\Http\Controllers\Controller::class, 'downloadDiploma'])->name('diploma');
+
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');

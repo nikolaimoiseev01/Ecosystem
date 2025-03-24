@@ -35,6 +35,10 @@
                             <li>
                                 <a href="/#faq" class="block px-4 py-2 text-gray-800 ">Популярные вопросы</a>
                             </li>
+                            <li class="hidden md:block">
+                                <a href="{{route('account.courses')}}" class="block px-4 py-2 text-gray-800 " wire:navigate>Личный кабинет ({{$user_name}})</a>
+                            </li>
+
                         </ul>
                     </div>
                 </div>
@@ -43,8 +47,8 @@
             </div>
             <div>
                 @auth
-                    <div class="flex">
-                        <a href="{{route('account.courses')}}" class="block px-4 py-2 text-gray-800 " wire:navigate>Личный кабинет</a>
+                    <div class="flex md:hidden">
+                        <a href="{{route('account.courses')}}" class="block px-4 py-2 text-gray-800 " wire:navigate>Личный кабинет ({{$user_name}})</a>
                         <x-heroicon-o-arrow-right-on-rectangle wire:click.prevent="logout" class="cursor-pointer w-6"/>
                     </div>
 
