@@ -6,12 +6,14 @@ use App\Models\Lesson;
 use App\Models\Test;
 use App\Models\TestResult;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Auth as AuthAlias;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Spatie\LaravelPdf\Enums\Format;
-use Spatie\LaravelPdf\Facades\Pdf;
+//use Spatie\LaravelPdf\Facades\Pdf;
 
 class LessonsPage extends Component
 {
@@ -72,9 +74,16 @@ class LessonsPage extends Component
         $fileName = Str::random(16) . '.pdf';
         $filePath = storage_path('app/' . $fileName); // используем временное хранилище
 
+//        $pdf = App::make('dompdf.wrapper');
+//        $html = '<h1>Test</h1>';
+//        $html = mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8');
+//        $pdf->loadHTML($html);
+//        dd($pdf);
+//        return $pdf->stream();
+
+
         // Генерируем PDF
-        Pdf::view('layouts.diploma', ['fio' => $user_fio, 'type' => $type])
-            ->format(Format::A4)
+        Pdf::loadView('layouts.diploma', ['fio' => $user_fio, 'type' => $type])
             ->save($filePath);
 
         // Отдаём пользователю и удаляем файл после отправки
