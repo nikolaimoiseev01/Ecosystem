@@ -82,7 +82,7 @@
 {{--        <div class="bg-green-500 h-10 w-full mt-auto"></div>--}}
 {{--    </div>--}}
 {{--</div>--}}
-<div style="width: 790px; height: 1120px; margin: 0 auto; position: relative; border: 1px red solid">
+<div style="width: 790px; height: 1120px; margin: 0 auto; position: relative;>
 
     {{--    <div style="position: absolute; width: 50px; top: 200px; left: 50px;">--}}
     {{--        {!! file_get_contents(public_path('/fixed/diploma/svg_1.svg')) !!}--}}
