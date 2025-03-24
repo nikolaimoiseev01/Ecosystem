@@ -1,0 +1,19 @@
+<?php
+
+namespace App\Livewire\Components;
+
+use Livewire\Component;
+
+class Diploma extends Component
+{
+    public $name;
+
+    public function render()
+    {
+        return view('livewire.components.diploma')->layout('');
+    }
+
+    public function mount($name) {
+        $this->name = $name;
+    }
+}
