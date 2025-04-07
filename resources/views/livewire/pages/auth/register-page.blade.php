@@ -1,18 +1,5 @@
 <main class="flex-1">
 
-    <style>
-        .form-saver {
-            display: none;
-            visibility: hidden;
-        }
-
-        .js-form-saver .form-saver {
-            display: block;
-            visibility: visible;
-        }
-    </style>
-    <script src="/fixed/form-saver.js"></script>
-
     <h1 class="mx-auto mb-8"><span class="text-green-500">РЕГИСТРАЦИЯ</span> УЧАСТНИКА</h1>
     <div class="content mb-32">
         <form id="form-id" wire:submit="register" class="max-w-3xl mx-auto flex flex-col gap-4">
