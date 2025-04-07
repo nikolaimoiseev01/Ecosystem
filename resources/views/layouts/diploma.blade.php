@@ -76,7 +76,7 @@ src="data:image/svg+xml; base64, {{ base64_encode(file_get_contents(public_path(
             <div style="font-size: 1.5rem; margin-bottom: 120px; line-height: 25px;">
                 <b>является {{$type}}</b><br>
                 просветительской программы<br>
-                МАСТЕРСКАЯ ЭКОЗНАНИЙ»<br>
+                «МАСТЕРСКАЯ ЭКОЗНАНИЙ»<br>
                 корпоративного университета<br>
                 «Экосистема»
             </div>
