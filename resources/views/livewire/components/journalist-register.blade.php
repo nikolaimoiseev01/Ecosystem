@@ -26,7 +26,7 @@
             <x-input-label for="telephone"/>
             <x-text-input wire:model="telephone" id="telephone"
                           class="block mt-1 w-full mobile_input"
-                          placeholder="Телефон (8 (123) 456 7890)"
+                          placeholder="Телефон (+7 (123) 456 7890)"
                           type="text"
                           name="telephone" autocomplete="telephone"/>
         </div>

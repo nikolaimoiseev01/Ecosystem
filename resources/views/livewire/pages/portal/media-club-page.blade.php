@@ -2,19 +2,30 @@
 
     <section
         class="text-center h-screen bg-[linear-gradient(90deg,rgba(70,159,18,1)_0%,rgba(148,217,65,1)_100%)] mb-8">
-        <img src="/fixed/media-welcome-svgs/welcome-media-svg-1.svg" class="absolute top-1/2 left-0 w-16 lg:hidden" alt="">
-        <img src="/fixed/media-welcome-svgs/welcome-media-svg-2.svg" class="absolute bottom-8 left-20 w-8 lg:hidden" alt="">
-        <img src="/fixed/media-welcome-svgs/welcome-media-svg-3.svg" class="absolute top-80 left-20 w-10 lg:hidden" alt="">
-        <img src="/fixed/media-welcome-svgs/welcome-media-svg-4.svg" class="absolute bottom-0 left-40 w-32 lg:hidden" alt="">
-        <img src="/fixed/media-welcome-svgs/welcome-media-svg-5.svg" class="absolute top-40 right-40 w-32 lg:hidden" alt="">
-        <img src="/fixed/media-welcome-svgs/welcome-media-svg-6.svg" class="absolute -bottom-8 right-40 w-20 lg:hidden" alt="">
-        <img src="/fixed/media-welcome-svgs/welcome-media-svg-7.svg" class="absolute top-80 right-28 w-16 lg:hidden" alt="">
-        <img src="/fixed/media-welcome-svgs/welcome-media-svg-8.svg" class="absolute top-0 right-4 w-32 lg:hidden" alt="">
-        <img src="/fixed/media-welcome-svgs/welcome-media-svg-9.svg" class="absolute top-1/2 right-28 w-10 lg:hidden" alt="">
-        <img src="/fixed/media-welcome-svgs/welcome-media-svg-10.svg" class="absolute bottom-4 right-0 w-32 lg:hidden" alt="">
-        <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col gap-4 lg:items-center lg:text-center">
+        <img src="/fixed/media-welcome-svgs/welcome-media-svg-1.svg" class="absolute top-1/2 left-0 w-16 lg:hidden"
+             alt="">
+        <img src="/fixed/media-welcome-svgs/welcome-media-svg-2.svg" class="absolute bottom-8 left-20 w-8 lg:hidden"
+             alt="">
+        <img src="/fixed/media-welcome-svgs/welcome-media-svg-3.svg" class="absolute top-80 left-20 w-10 lg:hidden"
+             alt="">
+        <img src="/fixed/media-welcome-svgs/welcome-media-svg-4.svg" class="absolute bottom-0 left-40 w-32 lg:hidden"
+             alt="">
+        <img src="/fixed/media-welcome-svgs/welcome-media-svg-5.svg" class="absolute top-40 right-40 w-32 lg:hidden"
+             alt="">
+        <img src="/fixed/media-welcome-svgs/welcome-media-svg-6.svg" class="absolute -bottom-8 right-40 w-20 lg:hidden"
+             alt="">
+        <img src="/fixed/media-welcome-svgs/welcome-media-svg-7.svg" class="absolute top-80 right-28 w-16 lg:hidden"
+             alt="">
+        <img src="/fixed/media-welcome-svgs/welcome-media-svg-8.svg" class="absolute top-0 right-4 w-32 lg:hidden"
+             alt="">
+        <img src="/fixed/media-welcome-svgs/welcome-media-svg-9.svg" class="absolute top-1/2 right-28 w-10 lg:hidden"
+             alt="">
+        <img src="/fixed/media-welcome-svgs/welcome-media-svg-10.svg" class="absolute bottom-4 right-0 w-32 lg:hidden"
+             alt="">
+        <div
+            class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col gap-4 lg:items-center lg:text-center">
             <h1 class="text-7xl md:text-3xl font-bold">ОТКРЫТИЕ</h1>
-            <h1 class="text-7xl md:text-3xl font-bold text-white pl-40 whitespace-nowrap lg:pl-0">МЕДИА КЛУБА</h1>
+            <h1 class="text-7xl md:text-3xl font-bold text-white pl-40 whitespace-nowrap lg:pl-0">МЕДИА—КЛУБА</h1>
             <h1 class="text-3xl md:text-lg font-bold">Всероссийского экологического движения<br>«Экосистема»</h1>
         </div>
         <div class="absolute left-0 top-20 py-4 px-16 bg-white rounded-r-xl">
@@ -28,7 +39,7 @@
             экологическое общественное движение «Экосистема»</p>
         <div class="w-full flex justify-between md:flex-col md:items-center md:text-center">
             <p><span class="text-green-600 ">Дата проведения:</span><br> 14 мая 2025 г.</p>
-            <p><span class="text-green-600 ">Сбор гостей:</span><br> в 14:00</p>
+            <p><span class="text-green-600 ">Сбор гостей:</span><br>14:00</p>
             <p><span class="text-green-600 ">Место проведения:</span><br> Itten Holl, 2-й Кожуховский проезд, 29к6</p>
         </div>
 
@@ -39,7 +50,8 @@
         <div
             class="flex font-bold text-lg border border-green-600 rounded-2xl py-8 px-4 gap-8 content items-center mb-4 md:flex-col">
             <div class="flex gap-4 max-w-[50%]">
-                <svg id="Слой_1" class="min-w-16 w-16 max-w-16 md:hidden" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg"
+                <svg id="Слой_1" class="min-w-16 w-16 max-w-16 md:hidden" data-name="Слой 1"
+                     xmlns="http://www.w3.org/2000/svg"
                      viewBox="0 0 41.04 41.04">
                     <g id="Слой_2" data-name="Слой 2">
                         <g id="Слой_1-2" data-name="Слой 1-2">
@@ -55,7 +67,8 @@
             </div>
 
             <div class="flex gap-4 max-w-[50%]">
-                <svg id="Слой_1" class="min-w-16 w-16 max-w-16 md:hidden" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg"
+                <svg id="Слой_1" class="min-w-16 w-16 max-w-16 md:hidden" data-name="Слой 1"
+                     xmlns="http://www.w3.org/2000/svg"
                      viewBox="0 0 41.04 41.04">
                     <g id="Слой_2" data-name="Слой 2">
                         <g id="Слой_1-2" data-name="Слой 1-2">
@@ -71,8 +84,10 @@
             </div>
         </div>
 
-        <div class="flex text-lg border border-green-600 rounded-2xl py-8 px-4 content items-center gap-4 mb-4 md:flex-col">
-            <svg id="Слой_1" class="min-w-16 w-16 max-w-16 md:hidden" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg"
+        <div
+            class="flex text-lg border border-green-600 rounded-2xl py-8 px-4 content items-center gap-4 mb-4 md:flex-col">
+            <svg id="Слой_1" class="min-w-16 w-16 max-w-16 md:hidden" data-name="Слой 1"
+                 xmlns="http://www.w3.org/2000/svg"
                  viewBox="0 0 41.04 41.04">
                 <g id="Слой_2" data-name="Слой 2">
                     <g id="Слой_1-2" data-name="Слой 1-2">
@@ -84,15 +99,24 @@
                     </g>
                 </g>
             </svg>
-            <p>На мероприятии журналисты смогут напрямую пообщаться с учеными,
-                экспертами и лидерами общественного мнения, которые помогут развенчать
-                популярные мифы, связанные с этими темами, расскажут, почему кликбейт
-                в научных вопросах вредит всем, разъяснят, как правильно интерпретировать
-                научные исследования в этих областях и на что обращать особое внимание.</p>
+            <div class="flex flex-col">
+                <p>На мероприятии журналисты смогут напрямую пообщаться с учеными,
+                    экспертами и лидерами общественного мнения, которые:
+                <ul class="!list-disc ml-5">
+                    <li>помогут развенчать популярные мифы, связанные с этими темами</li>
+                    <li>расскажут, почему кликбейт в научных вопросах вредит всем</li>
+                    <li>разъяснят, как правильно интерпретировать научные исследования в этих областях и на что обращать
+                        особое внимание.
+                    </li>
+                </ul>
+                </p>
+            </div>
+
         </div>
 
         <div class="flex text-lg border border-green-600 rounded-2xl py-8 px-4 content items-center gap-4">
-            <svg id="Слой_1" class="min-w-16 w-16 max-w-16 md:hidden" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg"
+            <svg id="Слой_1" class="min-w-16 w-16 max-w-16 md:hidden" data-name="Слой 1"
+                 xmlns="http://www.w3.org/2000/svg"
                  viewBox="0 0 41.04 41.04">
                 <g id="Слой_2" data-name="Слой 2">
                     <g id="Слой_1-2" data-name="Слой 1-2">
