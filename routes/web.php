@@ -4,6 +4,7 @@ use App\Livewire\Pages\Account\LessonsPage;
 use App\Livewire\Pages\Account\SettingsPage as SettingsPageAlias;
 use App\Livewire\Pages\Auth\RegisterPage as RegisterPageAlias;
 use App\Livewire\Pages\Portal\IndexPage as IndexPageAlias;
+use App\Livewire\Pages\Portal\MediaClubPage;
 use App\Livewire\Pages\Preview\TestPreviewPage as TestPreviewPageAlias;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', IndexPageAlias::class);
+Route::get('/media-club', MediaClubPage::class);
 
 require __DIR__.'/auth.php';
 

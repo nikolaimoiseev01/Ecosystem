@@ -18,6 +18,8 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/scss/portal.scss', 'resources/js/app.js'])
+    <script src="/plugins/sweetalert2/swal.min.js"></script>
+    <link rel="stylesheet" href="/plugins/sweetalert2/swal.min.css">
 </head>
 <body class="flex flex-col min-h-screen">
 <livewire:components.header/>

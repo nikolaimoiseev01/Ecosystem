@@ -33,7 +33,7 @@
 
         @if($final_test && $final_test_flg_check || 1==1)
 {{--                <p>Прохождение финального теста уже недоступно</p>--}}
-{{--            <livewire:components.account.lesson-test wire:key="" :test="$final_test"/>--}}
+            <livewire:components.account.lesson-test wire:key="" :test="$final_test"/>
         @endif
 {{--        @if(!$final_test_flg_check)--}}
 {{--            <p>Чтобы получить доступ к финальному тесту, необходимо пройти все тесты уроков. </p>--}}
