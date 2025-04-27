@@ -35,7 +35,7 @@
     </section>
 
     <section class="">
-        <h1 class="text-6xl font-bold mx-auto mb-4">Главные темы</h1>
+        <h1 class="text-6xl font-bold mx-auto mb-4 md:text-3xl text-center">Главные темы</h1>
         <div
             class="flex font-bold text-lg border border-green-600 rounded-2xl py-8 px-4 gap-8 content items-center mb-4 md:flex-col">
             <div class="flex gap-4 max-w-[50%]">
@@ -115,7 +115,7 @@
     @foreach($sessions as $key => $session)
         <section class="content mt-16 mb-8">
             <div class="flex justify-between items-center mb-4 md:flex-col">
-                <h1 class="text-6xl font-bold md:text-3xl">СЕССИЯ {{$key + 1}}</h1>
+                <h1 class="text-6xl font-bold md:text-3xl md:mb-2">СЕССИЯ {{$key + 1}}</h1>
                 <div class="flex items-center justify-center border border-green-600 rounded-2xl py-2 px-8">
                     <svg class="w-6" id="Слой_1" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg"
                          viewBox="0 0 13.3 16.99">
