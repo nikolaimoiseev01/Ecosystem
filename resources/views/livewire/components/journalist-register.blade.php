@@ -32,7 +32,7 @@
         </div>
         <div class="flex-1 flex flex-col">
             <x-textarea wire:model="comment"
-                        placeholder="Комментарий (необязательно"
+                        placeholder="Комментарий (необязательно)"
                         class="w-full h-full"/>
             <x-input-error :messages="$errors->get('comment')" class="mt-2"/>
         </div>
