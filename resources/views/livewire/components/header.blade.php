@@ -1,4 +1,7 @@
-<header class="w-full mb-8">
+<header x-data="{ isMedia: window.location.pathname === '/media-club' }"
+        :class="isMedia ?
+        'hidden'
+        :'w-full mb-8'" class="">
     <div class="content flex items-center justify-between py-2">
         <div class="flex gap-4 items-center">
             <x-logo-main-black/>
