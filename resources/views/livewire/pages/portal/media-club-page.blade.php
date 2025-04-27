@@ -133,10 +133,10 @@
             <h1 class="text-2xl md:text-lg font-bold">{!! $session['desc'] !!}</h1>
         </section>
         <section
-            class="flex flex-col text-lg border border-green-600 rounded-2xl py-8 px-4 content mb-8">
+            class="flex flex-col text-lg border border-green-600 rounded-2xl gap-2 py-8 px-4 content mb-8">
             @foreach($session['questions'] as $question)
                 <p class="flex gap-2">
-                    <svg class="w-4" id="Слой_1" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg"
+                    <svg class="min-w-4 max-w-4 w-4" id="Слой_1" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg"
                          viewBox="0 0 13.76 10.18">
                         <g id="Слой_2" data-name="Слой 2">
                             <g id="Слой_1-2" data-name="Слой 1-2">
@@ -167,7 +167,7 @@
                 @endforeach
             </div>
             @if($key == 1)
-                <div class="flex gap-4 ml-auto justify-end">
+                <div class="flex gap-4 ml-auto justify-end mt-10">
                     <div class="flex flex-col">
                         <p class="text-lg font-bold">МОДЕРАТОР:</p>
                         <p class="font-bold">ЖОРА КАВАНОСЯН,</p>
