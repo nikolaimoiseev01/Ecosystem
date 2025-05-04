@@ -7,6 +7,7 @@ use Livewire\Component;
 class MediaClubPage extends Component
 {
     public $sessions;
+    public $timing;
 
     public function render()
     {
@@ -86,6 +87,33 @@ class MediaClubPage extends Component
                 'time' => '15:00 - 16:30',
                 'desc' => "<span class='text-green-600'>БОРЬБА С МАЗУТОМ НА ПОБЕРЕЖЬЕ АНАПЫ:</span><br>УРОКИ, ВЫВОДЫ, ДЕЙСТВИЯ"
             ]
+        ];
+        $this->timing = [
+            [
+                'time' => '14:00-15:00',
+                'desc' => 'Сбор гостей, работа Кинобуса'
+            ],
+            [
+                'time' => '15:00-16:30',
+                'desc' => "СЕССИЯ 1. <span class='text-green-500'>Микропластик: все, что вы хотели узнать, но боялись спросить о самой обсуждаемой теме последних лет</span>"
+            ],
+            [
+                'time' => '16:30-17:00',
+                'desc' => "Пресс-подход, кофе-брейк, работа Кинобуса"
+            ],
+            [
+                'time' => '17:00-18:30',
+                'desc' => "<span class='text-green-500'> СЕССИЯ 2. Борьба с мазутом на побережье Анапы: уроки, выводы, действия</span>"
+            ],
+            [
+                'time' => '18:30-19:00',
+                'desc' => "Пресс-подход, работа Кинобуса "
+            ],
+            [
+                'time' => '19:00-22:00',
+                'desc' => "Фуршет, нетворкинг, работа Кинобуса"
+            ]
+
         ];
         return view('livewire.pages.portal.media-club-page');
     }

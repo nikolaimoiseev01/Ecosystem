@@ -34,16 +34,52 @@
     </section>
 
     <section
-        class="flex flex-col font-bold text-xl border border-green-600 rounded-2xl py-8 px-4 content items-center mb-8">
-        <p class="text-center mb-10"><span class="font-bold text-green-600 uppercase">Организатор:</span><br>Всероссийское
+        class="flex flex-col font-bold  border border-green-600 rounded-2xl py-8 px-4 content items-center mb-8">
+        <p class="text-center mb-10 text-2xl"><span class="font-bold text-green-600 uppercase">Организатор:</span><br>Всероссийское
             экологическое общественное движение «Экосистема»</p>
-        <div class="w-full flex justify-between md:flex-col md:items-center md:text-center">
+        <div class="w-full flex justify-evenly md:flex-col md:items-center md:text-center text-xl">
             <p><span class="text-green-600 ">Дата проведения:</span><br> 14 мая 2025 г.</p>
-            <p><span class="text-green-600 ">Сбор гостей:</span><br>14:00</p>
-            <p><span class="text-green-600 ">Место проведения:</span><br> Itten Holl, 2-й Кожуховский проезд, 29к6</p>
+            <p><span class="text-green-600 ">Место проведения:</span><br>Itten Holl, 2-й Кожуховский проезд, 29к6,<br>м.
+                ЗИЛ / Технопарк / Автозаводская</p>
         </div>
-
     </section>
+
+    <section class="">
+        <h1 class="text-6xl font-bold mx-auto mb-4 md:text-3xl text-center">Тайминг мероприятия</h1>
+        <div
+            class="flex flex-col font-bold text-lg py-8 px-4 content items-center mb-4 sm:gap-4 ">
+            @foreach($timing as $key=>$event)
+                <div class="flex w-full md:flex-col">
+                    <div class="flex gap-2 w-52 min-w-52 items-start border-green-500 border-b sm:border-none border-r @if ($loop->last) !border-b-0 @endif">
+                        <svg class="w-3 min-w-3 max-w-3 py-2" id="Слой_1" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 9.36 10.68">
+                            <g id="Слой_2" data-name="Слой 2">
+                                <g id="Слой_1-2" data-name="Слой 1-2">
+                                    <polygon points="0 0 0.22 10.68 9.36 5.15 0 0" style="fill:#d9dada"/>
+                                </g>
+                            </g>
+                        </svg>
+                        <p class="text-green-500 pb-2 pt-[2px] flex-1">{{$event['time']}}</p>
+                    </div>
+                    <div class="pl-5 border-green-500 py-2 border-b flex-1 @if ($loop->last) !border-b-0 @endif">
+                        <p>{!! $event['desc'] !!}</p>
+                    </div>
+                </div>
+            @endforeach
+
+        </div>
+    </section>
+
+    {{--    <section--}}
+    {{--        class="flex flex-col font-bold text-xl border border-green-600 rounded-2xl py-8 px-4 content items-center mb-8">--}}
+    {{--        <p class="text-center mb-10"><span class="font-bold text-green-600 uppercase">Организатор:</span><br>Всероссийское--}}
+    {{--            экологическое общественное движение «Экосистема»</p>--}}
+    {{--        <div class="w-full flex justify-between md:flex-col md:items-center md:text-center">--}}
+    {{--            <p><span class="text-green-600 ">Дата проведения:</span><br> 14 мая 2025 г.</p>--}}
+    {{--            <p><span class="text-green-600 ">Сбор гостей:</span><br>14:00</p>--}}
+    {{--            <p><span class="text-green-600 ">Место проведения:</span><br> Itten Holl, 2-й Кожуховский проезд, 29к6</p>--}}
+    {{--        </div>--}}
+    {{--    </section>--}}
 
     <section class="">
         <h1 class="text-6xl font-bold mx-auto mb-4 md:text-3xl text-center">Главные темы</h1>
