@@ -25,7 +25,7 @@
         <div
             class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col gap-4 lg:items-center lg:text-center">
             <h1 class="text-7xl md:text-3xl font-bold">ОТКРЫТИЕ</h1>
-            <h1 class="text-7xl md:text-3xl font-bold text-white pl-40 whitespace-nowrap lg:pl-0">МЕДИА—КЛУБА</h1>
+            <h1 class="text-7xl md:text-3xl font-bold text-white pl-40 whitespace-nowrap lg:pl-0">МЕДИА-КЛУБА</h1>
             <h1 class="text-3xl md:text-lg font-bold">Всероссийского экологического движения<br>«Экосистема»</h1>
         </div>
         <div class="absolute left-0 top-20 py-4 px-16 bg-white rounded-r-xl">
