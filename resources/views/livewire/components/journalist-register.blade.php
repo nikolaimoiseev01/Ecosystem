@@ -3,7 +3,7 @@
     <div class="flex flex-col gap-4">
 
         <div class="w-full">
-            <x-text-input placeholder="Название СМИ" wire:model="smi_name" id="smi_name" class="block mt-1 w-full"
+            <x-text-input placeholder="СМИ" wire:model="smi_name" id="smi_name" class="block mt-1 w-full"
                           type="text"
                           name="smi_name"
                           required autofocus autocomplete="smi_name"/>
@@ -26,7 +26,7 @@
             <x-input-label for="telephone"/>
             <x-text-input wire:model="telephone" id="telephone"
                           class="block mt-1 w-full mobile_input"
-                          placeholder="Телефон (+7 (123) 456 7890)"
+                          placeholder="Телефон (+7 (123) 456 78-90)"
                           type="text"
                           name="telephone" autocomplete="telephone"/>
         </div>

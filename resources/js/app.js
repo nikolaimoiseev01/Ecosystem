@@ -6,7 +6,7 @@ import $ from 'jquery'
 import 'jquery-mask-plugin'
 
 function mobileInputCreate() {
-    $('.mobile_input').mask('+0 (000) 000-00-00');
+    $('.mobile_input').mask('+0 (000) 000 00-00');
 }
 $(document).ready(function () {
     mobileInputCreate()
@@ -14,7 +14,7 @@ $(document).ready(function () {
 
 document.addEventListener('DOMContentLoaded', function () {
     window.mobileInputCreate = function () {
-        $('.mobile_input').mask('+0 (000) 000-00-00');
+        $('.mobile_input').mask('+0 (000) 000 00-00');
     }
 })
 

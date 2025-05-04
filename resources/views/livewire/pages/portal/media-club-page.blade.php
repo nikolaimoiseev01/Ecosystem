@@ -2,31 +2,31 @@
 
     <section
         class="text-center h-screen bg-[linear-gradient(90deg,rgba(70,159,18,1)_0%,rgba(148,217,65,1)_100%)] mb-8">
-        <img src="/fixed/media-welcome-svgs/welcome-media-svg-1.svg" class="absolute top-1/2 left-0 w-16 lg:hidden"
+        <img src="/fixed/media-welcome-svgs/welcome-media-svg-1.svg" class="absolute top-1/2 left-0 w-20"
              alt="">
-        <img src="/fixed/media-welcome-svgs/welcome-media-svg-2.svg" class="absolute bottom-8 left-20 w-8 lg:hidden"
+        <img src="/fixed/media-welcome-svgs/welcome-media-svg-2.svg" class="absolute bottom-8 left-20 w-12"
              alt="">
-        <img src="/fixed/media-welcome-svgs/welcome-media-svg-3.svg" class="absolute top-80 left-20 w-10 lg:hidden"
+        <img src="/fixed/media-welcome-svgs/welcome-media-svg-3.svg" class="absolute top-80 left-20 w-16 md:hidden"
              alt="">
-        <img src="/fixed/media-welcome-svgs/welcome-media-svg-4.svg" class="absolute bottom-0 left-40 w-32 lg:hidden"
+        <img src="/fixed/media-welcome-svgs/welcome-media-svg-4.svg" class="absolute bottom-0 left-40 w-36"
              alt="">
-        <img src="/fixed/media-welcome-svgs/welcome-media-svg-5.svg" class="absolute top-40 right-40 w-32 lg:hidden"
+        <img src="/fixed/media-welcome-svgs/welcome-media-svg-5.svg" class="absolute top-40 right-40 w-36"
              alt="">
-        <img src="/fixed/media-welcome-svgs/welcome-media-svg-6.svg" class="absolute -bottom-8 right-40 w-20 lg:hidden"
+        <img src="/fixed/media-welcome-svgs/welcome-media-svg-6.svg" class="absolute -bottom-8 right-40 w-24"
              alt="">
-        <img src="/fixed/media-welcome-svgs/welcome-media-svg-7.svg" class="absolute top-80 right-28 w-16 lg:hidden"
+        <img src="/fixed/media-welcome-svgs/welcome-media-svg-7.svg" class="absolute top-80 right-28 w-20 md:hidden"
              alt="">
-        <img src="/fixed/media-welcome-svgs/welcome-media-svg-8.svg" class="absolute top-0 right-4 w-32 lg:hidden"
+        <img src="/fixed/media-welcome-svgs/welcome-media-svg-8.svg" class="absolute top-0 right-4 w-36"
              alt="">
-        <img src="/fixed/media-welcome-svgs/welcome-media-svg-9.svg" class="absolute top-1/2 right-28 w-10 lg:hidden"
+        <img src="/fixed/media-welcome-svgs/welcome-media-svg-9.svg" class="absolute top-1/2 right-28 w-14 md:hidden"
              alt="">
-        <img src="/fixed/media-welcome-svgs/welcome-media-svg-10.svg" class="absolute bottom-4 right-0 w-32 lg:hidden"
+        <img src="/fixed/media-welcome-svgs/welcome-media-svg-10.svg" class="absolute bottom-4 right-0 w-36"
              alt="">
         <div
             class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col gap-4 lg:items-center lg:text-center">
-            <h1 class="text-7xl md:text-3xl font-bold">ОТКРЫТИЕ</h1>
-            <h1 class="text-7xl md:text-3xl font-bold text-white pl-40 whitespace-nowrap lg:pl-0">МЕДИА-КЛУБА</h1>
-            <h1 class="text-3xl md:text-lg font-bold">Всероссийского экологического движения<br>«Экосистема»</h1>
+            <h1 class="text-8xl md:text-5xl font-bold">ОТКРЫТИЕ</h1>
+            <h1 class="text-8xl md:text-5xl font-bold text-white pl-40 whitespace-nowrap lg:pl-0">МЕДИА-КЛУБА</h1>
+            <h1 class="text-4xl md:text-2xl font-bold">Всероссийского экологического движения<br>«Экосистема»</h1>
         </div>
         <div class="absolute left-0 top-20 py-4 px-16 bg-white rounded-r-xl">
             <x-logo-main-black/>
@@ -37,10 +37,10 @@
         class="flex flex-col font-bold  border border-green-600 rounded-2xl py-8 px-4 content items-center mb-8">
         <p class="text-center mb-10 text-2xl"><span class="font-bold text-green-600 uppercase">Организатор:</span><br>Всероссийское
             экологическое общественное движение «Экосистема»</p>
-        <div class="w-full flex justify-evenly md:flex-col md:items-center md:text-center text-xl">
-            <p><span class="text-green-600 ">Дата проведения:</span><br> 14 мая 2025 г.</p>
-            <p><span class="text-green-600 ">Место проведения:</span><br>Itten Holl, 2-й Кожуховский проезд, 29к6,<br>м.
-                ЗИЛ / Технопарк / Автозаводская</p>
+        <div class="w-full flex justify-between md:flex-col md:items-center md:text-center text-xl">
+            <p><span class="text-green-600 ">Дата проведения:</span><br> 15 мая 2025 г.</p>
+            <p><span class="text-green-600 ">Время:</span><br>14:00 – 20:30</p>
+            <p><span class="text-green-600 ">Место проведения:</span><br>инновационный кластер «Ломоносов»<br> (г. Москва, Раменский бульвар, д. 1, зал «Архангельск»)</p>
         </div>
     </section>
 
@@ -85,8 +85,8 @@
         <h1 class="text-6xl font-bold mx-auto mb-4 md:text-3xl text-center">Главные темы</h1>
         <div
             class="flex font-bold text-lg border border-green-600 rounded-2xl py-8 px-4 gap-8 content items-center mb-4 md:flex-col">
-            <div class="flex gap-4 max-w-[50%]">
-                <svg id="Слой_1" class="min-w-16 w-16 max-w-16 md:hidden" data-name="Слой 1"
+            <div class="flex gap-4 max-w-[50%] md:max-w-full">
+                <svg id="Слой_1" class="min-w-16 w-16 max-w-16 md:w-8 md:max-w-8 md:min-w-8" data-name="Слой 1"
                      xmlns="http://www.w3.org/2000/svg"
                      viewBox="0 0 41.04 41.04">
                     <g id="Слой_2" data-name="Слой 2">
@@ -102,8 +102,8 @@
                 <p>микропластик в окружающей среде и его влияние на экологию и здоровье человека</p>
             </div>
 
-            <div class="flex gap-4 max-w-[50%]">
-                <svg id="Слой_1" class="min-w-16 w-16 max-w-16 md:hidden" data-name="Слой 1"
+            <div class="flex gap-4 max-w-[50%] md:max-w-full">
+                <svg id="Слой_1" class="min-w-16 w-16 max-w-16 md:w-8 md:max-w-8 md:min-w-8" data-name="Слой 1"
                      xmlns="http://www.w3.org/2000/svg"
                      viewBox="0 0 41.04 41.04">
                     <g id="Слой_2" data-name="Слой 2">
@@ -218,33 +218,36 @@
             <div class="flex flex-col gap-8 items-start">
                 @foreach($session['speakers'] as $speaker)
                     <div class="flex gap-4 justify-center items-center">
-                        <img src="{{$speaker['img']}}" alt="">
+                        <img class="w-[85px] h-[85px] md:w-[45px] md:h-[45px] rounded-full" src="{{$speaker['img']}}" alt="">
                         <div class="flex flex-col">
-                            <h1 class="text-lg font-bold text-green-600">{{$speaker['name']}}</h1>
+                            <h1 class="text-lg font-bold text-green-600 uppercase">{{$speaker['name']}}</h1>
                             <p>{{$speaker['desc']}}</p>
                         </div>
                     </div>
                 @endforeach
             </div>
-            @if($key == 1)
                 <div class="flex gap-4 ml-auto justify-end mt-10">
                     <div class="flex flex-col">
                         <p class="text-lg font-bold">МОДЕРАТОР:</p>
-                        <p class="font-bold">ЖОРА КАВАНОСЯН,</p>
-                        <p>видеоблогер, гидрогеолог,<br>автор проекта «Сортировочная»</p>
+                        <p class="font-bold">{{$session['moderator']['name']}}</p>
+                        <p>{!! $session['moderator']['desc'] !!}</p>
                     </div>
-                    <img src="/fixed/speakers/moderator.png" alt="">
+                    <img src="{{$session['moderator']['img']}}" alt="">
                 </div>
-            @endif
         </section>
     @endforeach
     <section
         class="flex font-bold justify-between text-lg border border-green-600 rounded-2xl py-2 px-4 content mb-8 md:flex-col">
-        <p>ПО ВСЕМ ВОПРОСАМ</p>
-        <p>Алексей ДЕРУНОВ –<br>руководитель проекта</p>
-        <p class="text-xl text-green-600">+7 (919) 036-48-44</p>
+        <p>Также на нашем мероприятии будет работать мобильная студия проекта Кинобус «ПРОЭКО» (Лучший экопросветительский проект по версии «Эко. Позитив» и «Ecobest»), в которой ведущий Жора Каваносян вместе с участниками Шоу разоблачит и другие экологические мифы. После завершения мероприятия автодом проекта - Кинобусотправится в тур по Архангельской области, посвященный Форуму «ЗЕМЛЯНЕ».
+        </p>
     </section>
     <section class="content mb-16">
         <livewire:components.journalist-register/>
+    </section>
+    <section
+        class="flex font-bold justify-between text-lg border border-green-600 rounded-2xl py-2 px-4 content mb-8 md:flex-col">
+        <p>ПО ВСЕМ ВОПРОСАМ</p>
+        <p>Дмитрий Шолик –<br>руководитель проекта</p>
+        <p class="text-xl text-green-600">+7 (926) 165-00-70</p>
     </section>
 </main>
