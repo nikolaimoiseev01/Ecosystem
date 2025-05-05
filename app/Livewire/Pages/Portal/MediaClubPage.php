@@ -62,7 +62,7 @@ class MediaClubPage extends Component
                     [
                         'name' => 'ВАСИЛИЙ МАШУКОВ',
                         'desc' => 'директор по прикладным разработкам «СИБУР-ПолиЛаб»',
-                        'img' => '/fixed/speakers/media-speaker-6.png'
+                        'img' => '/fixed/speakers/media-speaker-mashukov.png'
                     ],
                     [
                         'name' => 'Александра Рябых',
