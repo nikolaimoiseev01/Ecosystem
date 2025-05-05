@@ -81,96 +81,96 @@
     {{--        </div>--}}
     {{--    </section>--}}
 
-    <section class="">
-        <h1 class="text-6xl font-bold mx-auto mb-4 md:text-3xl text-center">Главные темы</h1>
-        <div
-            class="flex font-bold text-lg border border-green-600 rounded-2xl py-8 px-4 gap-8 content items-center mb-4 md:flex-col">
-            <div class="flex gap-4 max-w-[50%] md:max-w-full">
-                <svg id="Слой_1" class="min-w-16 w-16 max-w-16 md:w-8 md:max-w-8 md:min-w-8" data-name="Слой 1"
-                     xmlns="http://www.w3.org/2000/svg"
-                     viewBox="0 0 41.04 41.04">
-                    <g id="Слой_2" data-name="Слой 2">
-                        <g id="Слой_1-2" data-name="Слой 1-2">
-                            <circle cx="20.52" cy="20.52" r="19.81"
-                                    style="fill:none;stroke:#55a52d;stroke-miterlimit:22.93000072719816;stroke-width:1.41999998321949px"/>
-                            <path
-                                d="M29.08,24.15l-.38-.59,5.59-3.63.77,1.19-5.59,3.63Zm6-3V19.93l.92.59Zm0,0L34.31,20v1.19l-5.59-3.63.77-1.19L35.08,20Zm-1.48.11H5.6V19.81h28Z"
-                                style="fill:#1a1a18"/>
-                        </g>
-                    </g>
-                </svg>
-                <p>микропластик в окружающей среде и его влияние на экологию и здоровье человека</p>
-            </div>
+{{--    <section class="">--}}
+{{--        <h1 class="text-6xl font-bold mx-auto mb-4 md:text-3xl text-center">Главные темы</h1>--}}
+{{--        <div--}}
+{{--            class="flex font-bold text-lg border border-green-600 rounded-2xl py-8 px-4 gap-8 content items-center mb-4 md:flex-col">--}}
+{{--            <div class="flex gap-4 max-w-[50%] md:max-w-full">--}}
+{{--                <svg id="Слой_1" class="min-w-16 w-16 max-w-16 md:w-8 md:max-w-8 md:min-w-8" data-name="Слой 1"--}}
+{{--                     xmlns="http://www.w3.org/2000/svg"--}}
+{{--                     viewBox="0 0 41.04 41.04">--}}
+{{--                    <g id="Слой_2" data-name="Слой 2">--}}
+{{--                        <g id="Слой_1-2" data-name="Слой 1-2">--}}
+{{--                            <circle cx="20.52" cy="20.52" r="19.81"--}}
+{{--                                    style="fill:none;stroke:#55a52d;stroke-miterlimit:22.93000072719816;stroke-width:1.41999998321949px"/>--}}
+{{--                            <path--}}
+{{--                                d="M29.08,24.15l-.38-.59,5.59-3.63.77,1.19-5.59,3.63Zm6-3V19.93l.92.59Zm0,0L34.31,20v1.19l-5.59-3.63.77-1.19L35.08,20Zm-1.48.11H5.6V19.81h28Z"--}}
+{{--                                style="fill:#1a1a18"/>--}}
+{{--                        </g>--}}
+{{--                    </g>--}}
+{{--                </svg>--}}
+{{--                <p>микропластик в окружающей среде и его влияние на экологию и здоровье человека</p>--}}
+{{--            </div>--}}
 
-            <div class="flex gap-4 max-w-[50%] md:max-w-full">
-                <svg id="Слой_1" class="min-w-16 w-16 max-w-16 md:w-8 md:max-w-8 md:min-w-8" data-name="Слой 1"
-                     xmlns="http://www.w3.org/2000/svg"
-                     viewBox="0 0 41.04 41.04">
-                    <g id="Слой_2" data-name="Слой 2">
-                        <g id="Слой_1-2" data-name="Слой 1-2">
-                            <circle cx="20.52" cy="20.52" r="19.81"
-                                    style="fill:none;stroke:#55a52d;stroke-miterlimit:22.93000072719816;stroke-width:1.41999998321949px"/>
-                            <path
-                                d="M29.08,24.15l-.38-.59,5.59-3.63.77,1.19-5.59,3.63Zm6-3V19.93l.92.59Zm0,0L34.31,20v1.19l-5.59-3.63.77-1.19L35.08,20Zm-1.48.11H5.6V19.81h28Z"
-                                style="fill:#1a1a18"/>
-                        </g>
-                    </g>
-                </svg>
-                <p>ситуация с уборкой мазута на побережье Черного моря</p>
-            </div>
-        </div>
+{{--            <div class="flex gap-4 max-w-[50%] md:max-w-full">--}}
+{{--                <svg id="Слой_1" class="min-w-16 w-16 max-w-16 md:w-8 md:max-w-8 md:min-w-8" data-name="Слой 1"--}}
+{{--                     xmlns="http://www.w3.org/2000/svg"--}}
+{{--                     viewBox="0 0 41.04 41.04">--}}
+{{--                    <g id="Слой_2" data-name="Слой 2">--}}
+{{--                        <g id="Слой_1-2" data-name="Слой 1-2">--}}
+{{--                            <circle cx="20.52" cy="20.52" r="19.81"--}}
+{{--                                    style="fill:none;stroke:#55a52d;stroke-miterlimit:22.93000072719816;stroke-width:1.41999998321949px"/>--}}
+{{--                            <path--}}
+{{--                                d="M29.08,24.15l-.38-.59,5.59-3.63.77,1.19-5.59,3.63Zm6-3V19.93l.92.59Zm0,0L34.31,20v1.19l-5.59-3.63.77-1.19L35.08,20Zm-1.48.11H5.6V19.81h28Z"--}}
+{{--                                style="fill:#1a1a18"/>--}}
+{{--                        </g>--}}
+{{--                    </g>--}}
+{{--                </svg>--}}
+{{--                <p>ситуация с уборкой мазута на побережье Черного моря</p>--}}
+{{--            </div>--}}
+{{--        </div>--}}
 
-        <div
-            class="flex text-lg border border-green-600 rounded-2xl py-8 px-4 content items-center gap-4 mb-4 md:flex-col">
-            <svg id="Слой_1" class="min-w-16 w-16 max-w-16 md:hidden" data-name="Слой 1"
-                 xmlns="http://www.w3.org/2000/svg"
-                 viewBox="0 0 41.04 41.04">
-                <g id="Слой_2" data-name="Слой 2">
-                    <g id="Слой_1-2" data-name="Слой 1-2">
-                        <circle cx="20.52" cy="20.52" r="19.81"
-                                style="fill:none;stroke:#55a52d;stroke-miterlimit:22.93000072719816;stroke-width:1.41999998321949px"/>
-                        <path
-                            d="M29.08,24.15l-.38-.59,5.59-3.63.77,1.19-5.59,3.63Zm6-3V19.93l.92.59Zm0,0L34.31,20v1.19l-5.59-3.63.77-1.19L35.08,20Zm-1.48.11H5.6V19.81h28Z"
-                            style="fill:#1a1a18"/>
-                    </g>
-                </g>
-            </svg>
-            <div class="flex flex-col">
-                <p>На мероприятии журналисты смогут напрямую пообщаться с учеными,
-                    экспертами и лидерами общественного мнения, которые:
-                <ul class="!list-disc ml-5">
-                    <li>помогут развенчать популярные мифы, связанные с этими темами</li>
-                    <li>расскажут, почему кликбейт в научных вопросах вредит всем</li>
-                    <li>разъяснят, как правильно интерпретировать научные исследования в этих областях и на что обращать
-                        особое внимание.
-                    </li>
-                </ul>
-                </p>
-            </div>
+{{--        <div--}}
+{{--            class="flex text-lg border border-green-600 rounded-2xl py-8 px-4 content items-center gap-4 mb-4 md:flex-col">--}}
+{{--            <svg id="Слой_1" class="min-w-16 w-16 max-w-16 md:hidden" data-name="Слой 1"--}}
+{{--                 xmlns="http://www.w3.org/2000/svg"--}}
+{{--                 viewBox="0 0 41.04 41.04">--}}
+{{--                <g id="Слой_2" data-name="Слой 2">--}}
+{{--                    <g id="Слой_1-2" data-name="Слой 1-2">--}}
+{{--                        <circle cx="20.52" cy="20.52" r="19.81"--}}
+{{--                                style="fill:none;stroke:#55a52d;stroke-miterlimit:22.93000072719816;stroke-width:1.41999998321949px"/>--}}
+{{--                        <path--}}
+{{--                            d="M29.08,24.15l-.38-.59,5.59-3.63.77,1.19-5.59,3.63Zm6-3V19.93l.92.59Zm0,0L34.31,20v1.19l-5.59-3.63.77-1.19L35.08,20Zm-1.48.11H5.6V19.81h28Z"--}}
+{{--                            style="fill:#1a1a18"/>--}}
+{{--                    </g>--}}
+{{--                </g>--}}
+{{--            </svg>--}}
+{{--            <div class="flex flex-col">--}}
+{{--                <p>На мероприятии журналисты смогут напрямую пообщаться с учеными,--}}
+{{--                    экспертами и лидерами общественного мнения, которые:--}}
+{{--                <ul class="!list-disc ml-5">--}}
+{{--                    <li>помогут развенчать популярные мифы, связанные с этими темами</li>--}}
+{{--                    <li>расскажут, почему кликбейт в научных вопросах вредит всем</li>--}}
+{{--                    <li>разъяснят, как правильно интерпретировать научные исследования в этих областях и на что обращать--}}
+{{--                        особое внимание.--}}
+{{--                    </li>--}}
+{{--                </ul>--}}
+{{--                </p>--}}
+{{--            </div>--}}
 
-        </div>
+{{--        </div>--}}
 
-        <div class="flex text-lg border border-green-600 rounded-2xl py-8 px-4 content items-center gap-4">
-            <svg id="Слой_1" class="min-w-16 w-16 max-w-16 md:hidden" data-name="Слой 1"
-                 xmlns="http://www.w3.org/2000/svg"
-                 viewBox="0 0 41.04 41.04">
-                <g id="Слой_2" data-name="Слой 2">
-                    <g id="Слой_1-2" data-name="Слой 1-2">
-                        <circle cx="20.52" cy="20.52" r="19.81"
-                                style="fill:none;stroke:#55a52d;stroke-miterlimit:22.93000072719816;stroke-width:1.41999998321949px"/>
-                        <path
-                            d="M29.08,24.15l-.38-.59,5.59-3.63.77,1.19-5.59,3.63Zm6-3V19.93l.92.59Zm0,0L34.31,20v1.19l-5.59-3.63.77-1.19L35.08,20Zm-1.48.11H5.6V19.81h28Z"
-                            style="fill:#1a1a18"/>
-                    </g>
-                </g>
-            </svg>
-            <p>В рамках открытия медиаклуба состоятся две экспертные сессии,
-                а завершится мероприятие презентацией корпоративного университета
-                «Экосистемы», подведением первых итогов его работы,
-                а также награждением первых отличников онлайн-курса
-                «Мастерская экознаний».</p>
-        </div>
-    </section>
+{{--        <div class="flex text-lg border border-green-600 rounded-2xl py-8 px-4 content items-center gap-4">--}}
+{{--            <svg id="Слой_1" class="min-w-16 w-16 max-w-16 md:hidden" data-name="Слой 1"--}}
+{{--                 xmlns="http://www.w3.org/2000/svg"--}}
+{{--                 viewBox="0 0 41.04 41.04">--}}
+{{--                <g id="Слой_2" data-name="Слой 2">--}}
+{{--                    <g id="Слой_1-2" data-name="Слой 1-2">--}}
+{{--                        <circle cx="20.52" cy="20.52" r="19.81"--}}
+{{--                                style="fill:none;stroke:#55a52d;stroke-miterlimit:22.93000072719816;stroke-width:1.41999998321949px"/>--}}
+{{--                        <path--}}
+{{--                            d="M29.08,24.15l-.38-.59,5.59-3.63.77,1.19-5.59,3.63Zm6-3V19.93l.92.59Zm0,0L34.31,20v1.19l-5.59-3.63.77-1.19L35.08,20Zm-1.48.11H5.6V19.81h28Z"--}}
+{{--                            style="fill:#1a1a18"/>--}}
+{{--                    </g>--}}
+{{--                </g>--}}
+{{--            </svg>--}}
+{{--            <p>В рамках открытия медиаклуба состоятся две экспертные сессии,--}}
+{{--                а завершится мероприятие презентацией корпоративного университета--}}
+{{--                «Экосистемы», подведением первых итогов его работы,--}}
+{{--                а также награждением первых отличников онлайн-курса--}}
+{{--                «Мастерская экознаний».</p>--}}
+{{--        </div>--}}
+{{--    </section>--}}
 
     @foreach($sessions as $key => $session)
         <section class="content mt-16 mb-8">
