@@ -32,6 +32,7 @@
         </div>
         <div class="flex-1 flex flex-col">
             <x-textarea wire:model="devices"
+                        required
                         placeholder="Перечень ввозимого оборудования"
                         class="w-full h-full"/>
             <x-input-error :messages="$errors->get('devices')" class="mt-2"/>
