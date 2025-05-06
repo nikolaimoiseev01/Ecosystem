@@ -31,6 +31,12 @@
                           name="telephone" autocomplete="telephone"/>
         </div>
         <div class="flex-1 flex flex-col">
+            <x-textarea wire:model="devices"
+                        placeholder="Перечень ввозимого оборудования"
+                        class="w-full h-full"/>
+            <x-input-error :messages="$errors->get('devices')" class="mt-2"/>
+        </div>
+        <div class="flex-1 flex flex-col">
             <x-textarea wire:model="comment"
                         placeholder="Комментарий (необязательно)"
                         class="w-full h-full"/>

@@ -15,6 +15,7 @@ class JournalistRegister extends Component
     public $position;
     public $telephone;
     public $comment;
+    public $devices;
 
     public function render()
     {
@@ -37,7 +38,8 @@ class JournalistRegister extends Component
             'fio' => $this->fio,
             'telephone' => $this->telephone,
             'position' => $this->position,
-            'comment' => $this->comment
+            'comment' => $this->comment,
+            'devices' => $this->devices
         ]);
 
         $this->dispatch('swal:modal',

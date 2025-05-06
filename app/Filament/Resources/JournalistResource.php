@@ -38,6 +38,9 @@ class JournalistResource extends Resource
                     ->tel()
                     ->required()
                     ->maxLength(255),
+                Forms\Components\Textarea::make('devices')
+                    ->label('Перечень ввозимого оборудования')
+                    ->required(),
                 Forms\Components\TextInput::make('position')
                     ->label('Должность')
                     ->required()
