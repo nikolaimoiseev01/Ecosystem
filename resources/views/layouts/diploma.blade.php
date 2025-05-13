@@ -33,55 +33,57 @@
 <div style="width: 790px; height: 1120px; margin: 0 auto; position: relative;>
 
 
-    <img style="position: absolute; width: 50px; top: 200px; left: 70px;"
+    <img style=" position: absolute; width: 50px; top: 200px; left: 70px;
+"
 src="data:image/svg+xml; base64, {{ base64_encode(file_get_contents(public_path('/fixed/diploma/svg_1.svg'))) }}">
-    <img style="position: absolute; width: 50px; top: 200px; left: 70px;"
-         src="data:image/svg+xml; base64, {{ base64_encode(file_get_contents(public_path('/fixed/diploma/svg_1.svg'))) }}">
-    <img style="position: absolute; width: 90px; top: 180px; right: 50px;"
-         src="data:image/svg+xml; base64, {{ base64_encode(file_get_contents(public_path('/fixed/diploma/svg_2.svg'))) }}">
-    <img style="position: absolute; width: 90px; bottom: 580px; left: 0;"
-         src="data:image/svg+xml; base64, {{ base64_encode(file_get_contents(public_path('/fixed/diploma/svg_3.svg'))) }}">
-    <img style="position: absolute; width: 80px; bottom: 300px; right: 0;"
-         src="data:image/svg+xml; base64, {{ base64_encode(file_get_contents(public_path('/fixed/diploma/svg_4.svg'))) }}">
-    <img style="position: absolute; width: 80px; bottom: 300px; left: 50px;"
-         src="data:image/svg+xml; base64, {{ base64_encode(file_get_contents(public_path('/fixed/diploma/svg_5.svg'))) }}">
+<img style="position: absolute; width: 50px; top: 200px; left: 70px;"
+     src="data:image/svg+xml; base64, {{ base64_encode(file_get_contents(public_path('/fixed/diploma/svg_1.svg'))) }}">
+<img style="position: absolute; width: 90px; top: 180px; right: 50px;"
+     src="data:image/svg+xml; base64, {{ base64_encode(file_get_contents(public_path('/fixed/diploma/svg_2.svg'))) }}">
+<img style="position: absolute; width: 90px; bottom: 470px; left: 0; z-index: 0;"
+     src="data:image/svg+xml; base64, {{ base64_encode(file_get_contents(public_path('/fixed/diploma/svg_3.svg'))) }}">
+<img style="position: absolute; width: 80px; bottom: 300px; right: 0;"
+     src="data:image/svg+xml; base64, {{ base64_encode(file_get_contents(public_path('/fixed/diploma/svg_4.svg'))) }}">
+<img style="position: absolute; width: 80px; bottom: 300px; left: 50px;"
+     src="data:image/svg+xml; base64, {{ base64_encode(file_get_contents(public_path('/fixed/diploma/svg_5.svg'))) }}">
 
 
-    <div style="width: 600px; margin: 0 auto;">
+<div style="width: 600px; margin: 0 auto;">
 
-        <!-- Верхняя полоса -->
-        <div style="background-color: #78be0a; height: 40px; width: 100%; margin-bottom: 80px;"></div>
+    <!-- Верхняя полоса -->
+    <div style="background-color: #78be0a; height: 40px; width: 100%; margin-bottom: 80px;"></div>
 
-        <!-- Логотип -->
-        <div style="text-align: center; margin-bottom: 50px;">
-            <img style="width: 450px;"
-                 src="data:image/png; base64, {{ base64_encode(file_get_contents(public_path('/fixed/diploma/logo.png'))) }}">
+    <!-- Логотип -->
+    <div style="text-align: center; margin-bottom: 50px;">
+        <img style="width: 450px;"
+             src="data:image/png; base64, {{ base64_encode(file_get_contents(public_path('/fixed/diploma/logo.png'))) }}">
+    </div>
+
+    <!-- Основной блок -->
+    <div style="text-align: center; position: relative;">
+
+        <h1 style="font-size: 60px; font-weight: bold; text-transform: uppercase; margin-bottom: 5px;">
+            СЕРТИФИКАТ
+        </h1>
+
+        <p style="font-size: 24px; border: 1px solid black; border-radius: 1rem; padding: 10px 40px 12px 40px; display: inline-block; margin-bottom: 20px;">
+            подтверждает, что
+        </p>
+
+        <p style="font-size: 2.25rem; font-weight: bold; margin-top: 32px; border-bottom: 1px solid black; margin-bottom: 50px; white-space: nowrap;  position: relative;">
+            {{$fio}}
+        </p>
+
+        <div style="font-size: 1.5rem; margin-bottom: 120px; line-height: 25px;">
+            <b>является {{$type}}</b><br>
+            просветительской программы<br>
+            «МАСТЕРСКАЯ ЭКОЗНАНИЙ»<br>
+            корпоративного университета<br>
+            «Экосистема»
         </div>
+    </div>
 
-        <!-- Основной блок -->
-        <div style="text-align: center;">
-
-            <h1 style="font-size: 60px; font-weight: bold; text-transform: uppercase; margin-bottom: 5px;">
-                СЕРТИФИКАТ
-            </h1>
-
-            <p style="font-size: 24px; border: 1px solid black; border-radius: 1rem; padding: 10px 40px 12px 40px; display: inline-block; margin-bottom: 20px;">
-                подтверждает, что
-            </p>
-
-            <p style="font-size: 2.25rem; font-weight: bold; margin-top: 32px; border-bottom: 1px solid black; margin-bottom: 50px;">
-                {{$fio}}
-            </p>
-
-            <div style="font-size: 1.5rem; margin-bottom: 120px; line-height: 25px;">
-                <b>является {{$type}}</b><br>
-                просветительской программы<br>
-                «МАСТЕРСКАЯ ЭКОЗНАНИЙ»<br>
-                корпоративного университета<br>
-                «Экосистема»
-            </div>
-        </div>
-
+    <div style="margin-top: auto">
         <!-- Подписи -->
         <table style="width: 100%; font-size: 13px; line-height: 20px; margin-bottom: 40px;">
             <tr>
@@ -91,8 +93,9 @@ src="data:image/svg+xml; base64, {{ base64_encode(file_get_contents(public_path(
                     «ЭКОСИСТЕМА»
                 </td>
                 <td style=" text-align: center; vertical-align: bottom;">
-                    <img src="data:image/png; base64, {{ base64_encode(file_get_contents(public_path('/fixed/diploma/sign.png'))) }}"
-                         style="width: 130px;" alt="">
+                    <img
+                        src="data:image/png; base64, {{ base64_encode(file_get_contents(public_path('/fixed/diploma/sign.png'))) }}"
+                        style="width: 130px;" alt="">
                 </td>
                 <td style="text-align: right; vertical-align: bottom;">
                     <p style="font-size: 13px; font-weight: bold;">Камилов М.А.</p>
@@ -108,6 +111,7 @@ src="data:image/svg+xml; base64, {{ base64_encode(file_get_contents(public_path(
         <!-- Нижняя полоса -->
         <div style="background-color: #78be0a; height: 40px; width: 100%;"></div>
     </div>
+</div>
 
 </div>
 
