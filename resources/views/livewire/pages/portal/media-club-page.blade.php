@@ -22,6 +22,7 @@
              alt="">
         <img src="/fixed/media-welcome-svgs/welcome-media-svg-10.svg" class="absolute bottom-4 right-0 w-36"
              alt="">
+        <a href="" class="border rounded-xl border-black px-16 py-1 text-2xl absolute right-16 bottom-8 hover:bg-white hover:text-black transition">Сайт</a>
         <div
             class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col gap-4 lg:items-center lg:text-center">
             <h1 class="text-8xl md:text-5xl font-bold">ОТКРЫТИЕ</h1>
@@ -39,8 +40,9 @@
             экологическое общественное движение «Экосистема»</p>
         <div class="w-full flex justify-between md:flex-col md:items-center md:text-center text-xl">
             <p><span class="text-green-600 ">Дата проведения:</span><br> 15 мая 2025 г.</p>
-            <p><span class="text-green-600 ">Время:</span><br>14:00 – 20:30</p>
-            <p><span class="text-green-600 ">Место проведения:</span><br>инновационный кластер «Ломоносов»<br> (г. Москва, Раменский бульвар, д. 1, зал «Архангельск»)</p>
+            <p><span class="text-green-600 ">Время:</span><br>13:30-20:30</p>
+            <p><span class="text-green-600 ">Место проведения:</span><br>инновационный кластер «Ломоносов»<br> (г.
+                Москва, Раменский бульвар, д. 1, зал «Архангельск»)</p>
         </div>
     </section>
 
@@ -50,8 +52,10 @@
             class="flex flex-col font-bold text-lg py-8 px-4 content items-center mb-4 sm:gap-4 ">
             @foreach($timing as $key=>$event)
                 <div class="flex w-full md:flex-col">
-                    <div class="flex gap-2 w-52 min-w-52 items-start border-green-500 border-b sm:border-none border-r @if ($loop->last) !border-b-0 @endif">
-                        <svg class="w-3 min-w-3 max-w-3 py-2" id="Слой_1" data-name="Слой 1" xmlns="http://www.w3.org/2000/svg"
+                    <div
+                        class="flex gap-2 w-52 min-w-52 items-start border-green-500 border-b sm:border-none border-r @if ($loop->last) !border-b-0 @endif">
+                        <svg class="w-3 min-w-3 max-w-3 py-2" id="Слой_1" data-name="Слой 1"
+                             xmlns="http://www.w3.org/2000/svg"
                              viewBox="0 0 9.36 10.68">
                             <g id="Слой_2" data-name="Слой 2">
                                 <g id="Слой_1-2" data-name="Слой 1-2">
@@ -63,6 +67,16 @@
                     </div>
                     <div class="pl-5 border-green-500 py-2 border-b flex-1 @if ($loop->last) !border-b-0 @endif">
                         <p>{!! $event['desc'] !!}</p>
+                        @if(isset($event['part']))
+                                 <div class="border border-green-600 rounded-2xl relative bold px-4 py-1 w-full flex gap-4 items-center mt-4">
+                                    <img src="{{$event['part']['img']}}" class="w-20 h-20 rounded-full" alt="">
+                                     <div class="flex flex-col">
+                                         <p class="">При участии</p>
+                                         <p class="uppercase text-green-500">{{$event['part']['name']}}</p>
+                                         <p>{{$event['part']['position']}}</p>
+                                     </div>
+                                </div>
+                        @endif
                     </div>
                 </div>
             @endforeach
@@ -81,96 +95,96 @@
     {{--        </div>--}}
     {{--    </section>--}}
 
-{{--    <section class="">--}}
-{{--        <h1 class="text-6xl font-bold mx-auto mb-4 md:text-3xl text-center">Главные темы</h1>--}}
-{{--        <div--}}
-{{--            class="flex font-bold text-lg border border-green-600 rounded-2xl py-8 px-4 gap-8 content items-center mb-4 md:flex-col">--}}
-{{--            <div class="flex gap-4 max-w-[50%] md:max-w-full">--}}
-{{--                <svg id="Слой_1" class="min-w-16 w-16 max-w-16 md:w-8 md:max-w-8 md:min-w-8" data-name="Слой 1"--}}
-{{--                     xmlns="http://www.w3.org/2000/svg"--}}
-{{--                     viewBox="0 0 41.04 41.04">--}}
-{{--                    <g id="Слой_2" data-name="Слой 2">--}}
-{{--                        <g id="Слой_1-2" data-name="Слой 1-2">--}}
-{{--                            <circle cx="20.52" cy="20.52" r="19.81"--}}
-{{--                                    style="fill:none;stroke:#55a52d;stroke-miterlimit:22.93000072719816;stroke-width:1.41999998321949px"/>--}}
-{{--                            <path--}}
-{{--                                d="M29.08,24.15l-.38-.59,5.59-3.63.77,1.19-5.59,3.63Zm6-3V19.93l.92.59Zm0,0L34.31,20v1.19l-5.59-3.63.77-1.19L35.08,20Zm-1.48.11H5.6V19.81h28Z"--}}
-{{--                                style="fill:#1a1a18"/>--}}
-{{--                        </g>--}}
-{{--                    </g>--}}
-{{--                </svg>--}}
-{{--                <p>микропластик в окружающей среде и его влияние на экологию и здоровье человека</p>--}}
-{{--            </div>--}}
+    {{--    <section class="">--}}
+    {{--        <h1 class="text-6xl font-bold mx-auto mb-4 md:text-3xl text-center">Главные темы</h1>--}}
+    {{--        <div--}}
+    {{--            class="flex font-bold text-lg border border-green-600 rounded-2xl py-8 px-4 gap-8 content items-center mb-4 md:flex-col">--}}
+    {{--            <div class="flex gap-4 max-w-[50%] md:max-w-full">--}}
+    {{--                <svg id="Слой_1" class="min-w-16 w-16 max-w-16 md:w-8 md:max-w-8 md:min-w-8" data-name="Слой 1"--}}
+    {{--                     xmlns="http://www.w3.org/2000/svg"--}}
+    {{--                     viewBox="0 0 41.04 41.04">--}}
+    {{--                    <g id="Слой_2" data-name="Слой 2">--}}
+    {{--                        <g id="Слой_1-2" data-name="Слой 1-2">--}}
+    {{--                            <circle cx="20.52" cy="20.52" r="19.81"--}}
+    {{--                                    style="fill:none;stroke:#55a52d;stroke-miterlimit:22.93000072719816;stroke-width:1.41999998321949px"/>--}}
+    {{--                            <path--}}
+    {{--                                d="M29.08,24.15l-.38-.59,5.59-3.63.77,1.19-5.59,3.63Zm6-3V19.93l.92.59Zm0,0L34.31,20v1.19l-5.59-3.63.77-1.19L35.08,20Zm-1.48.11H5.6V19.81h28Z"--}}
+    {{--                                style="fill:#1a1a18"/>--}}
+    {{--                        </g>--}}
+    {{--                    </g>--}}
+    {{--                </svg>--}}
+    {{--                <p>микропластик в окружающей среде и его влияние на экологию и здоровье человека</p>--}}
+    {{--            </div>--}}
 
-{{--            <div class="flex gap-4 max-w-[50%] md:max-w-full">--}}
-{{--                <svg id="Слой_1" class="min-w-16 w-16 max-w-16 md:w-8 md:max-w-8 md:min-w-8" data-name="Слой 1"--}}
-{{--                     xmlns="http://www.w3.org/2000/svg"--}}
-{{--                     viewBox="0 0 41.04 41.04">--}}
-{{--                    <g id="Слой_2" data-name="Слой 2">--}}
-{{--                        <g id="Слой_1-2" data-name="Слой 1-2">--}}
-{{--                            <circle cx="20.52" cy="20.52" r="19.81"--}}
-{{--                                    style="fill:none;stroke:#55a52d;stroke-miterlimit:22.93000072719816;stroke-width:1.41999998321949px"/>--}}
-{{--                            <path--}}
-{{--                                d="M29.08,24.15l-.38-.59,5.59-3.63.77,1.19-5.59,3.63Zm6-3V19.93l.92.59Zm0,0L34.31,20v1.19l-5.59-3.63.77-1.19L35.08,20Zm-1.48.11H5.6V19.81h28Z"--}}
-{{--                                style="fill:#1a1a18"/>--}}
-{{--                        </g>--}}
-{{--                    </g>--}}
-{{--                </svg>--}}
-{{--                <p>ситуация с уборкой мазута на побережье Черного моря</p>--}}
-{{--            </div>--}}
-{{--        </div>--}}
+    {{--            <div class="flex gap-4 max-w-[50%] md:max-w-full">--}}
+    {{--                <svg id="Слой_1" class="min-w-16 w-16 max-w-16 md:w-8 md:max-w-8 md:min-w-8" data-name="Слой 1"--}}
+    {{--                     xmlns="http://www.w3.org/2000/svg"--}}
+    {{--                     viewBox="0 0 41.04 41.04">--}}
+    {{--                    <g id="Слой_2" data-name="Слой 2">--}}
+    {{--                        <g id="Слой_1-2" data-name="Слой 1-2">--}}
+    {{--                            <circle cx="20.52" cy="20.52" r="19.81"--}}
+    {{--                                    style="fill:none;stroke:#55a52d;stroke-miterlimit:22.93000072719816;stroke-width:1.41999998321949px"/>--}}
+    {{--                            <path--}}
+    {{--                                d="M29.08,24.15l-.38-.59,5.59-3.63.77,1.19-5.59,3.63Zm6-3V19.93l.92.59Zm0,0L34.31,20v1.19l-5.59-3.63.77-1.19L35.08,20Zm-1.48.11H5.6V19.81h28Z"--}}
+    {{--                                style="fill:#1a1a18"/>--}}
+    {{--                        </g>--}}
+    {{--                    </g>--}}
+    {{--                </svg>--}}
+    {{--                <p>ситуация с уборкой мазута на побережье Черного моря</p>--}}
+    {{--            </div>--}}
+    {{--        </div>--}}
 
-{{--        <div--}}
-{{--            class="flex text-lg border border-green-600 rounded-2xl py-8 px-4 content items-center gap-4 mb-4 md:flex-col">--}}
-{{--            <svg id="Слой_1" class="min-w-16 w-16 max-w-16 md:hidden" data-name="Слой 1"--}}
-{{--                 xmlns="http://www.w3.org/2000/svg"--}}
-{{--                 viewBox="0 0 41.04 41.04">--}}
-{{--                <g id="Слой_2" data-name="Слой 2">--}}
-{{--                    <g id="Слой_1-2" data-name="Слой 1-2">--}}
-{{--                        <circle cx="20.52" cy="20.52" r="19.81"--}}
-{{--                                style="fill:none;stroke:#55a52d;stroke-miterlimit:22.93000072719816;stroke-width:1.41999998321949px"/>--}}
-{{--                        <path--}}
-{{--                            d="M29.08,24.15l-.38-.59,5.59-3.63.77,1.19-5.59,3.63Zm6-3V19.93l.92.59Zm0,0L34.31,20v1.19l-5.59-3.63.77-1.19L35.08,20Zm-1.48.11H5.6V19.81h28Z"--}}
-{{--                            style="fill:#1a1a18"/>--}}
-{{--                    </g>--}}
-{{--                </g>--}}
-{{--            </svg>--}}
-{{--            <div class="flex flex-col">--}}
-{{--                <p>На мероприятии журналисты смогут напрямую пообщаться с учеными,--}}
-{{--                    экспертами и лидерами общественного мнения, которые:--}}
-{{--                <ul class="!list-disc ml-5">--}}
-{{--                    <li>помогут развенчать популярные мифы, связанные с этими темами</li>--}}
-{{--                    <li>расскажут, почему кликбейт в научных вопросах вредит всем</li>--}}
-{{--                    <li>разъяснят, как правильно интерпретировать научные исследования в этих областях и на что обращать--}}
-{{--                        особое внимание.--}}
-{{--                    </li>--}}
-{{--                </ul>--}}
-{{--                </p>--}}
-{{--            </div>--}}
+    {{--        <div--}}
+    {{--            class="flex text-lg border border-green-600 rounded-2xl py-8 px-4 content items-center gap-4 mb-4 md:flex-col">--}}
+    {{--            <svg id="Слой_1" class="min-w-16 w-16 max-w-16 md:hidden" data-name="Слой 1"--}}
+    {{--                 xmlns="http://www.w3.org/2000/svg"--}}
+    {{--                 viewBox="0 0 41.04 41.04">--}}
+    {{--                <g id="Слой_2" data-name="Слой 2">--}}
+    {{--                    <g id="Слой_1-2" data-name="Слой 1-2">--}}
+    {{--                        <circle cx="20.52" cy="20.52" r="19.81"--}}
+    {{--                                style="fill:none;stroke:#55a52d;stroke-miterlimit:22.93000072719816;stroke-width:1.41999998321949px"/>--}}
+    {{--                        <path--}}
+    {{--                            d="M29.08,24.15l-.38-.59,5.59-3.63.77,1.19-5.59,3.63Zm6-3V19.93l.92.59Zm0,0L34.31,20v1.19l-5.59-3.63.77-1.19L35.08,20Zm-1.48.11H5.6V19.81h28Z"--}}
+    {{--                            style="fill:#1a1a18"/>--}}
+    {{--                    </g>--}}
+    {{--                </g>--}}
+    {{--            </svg>--}}
+    {{--            <div class="flex flex-col">--}}
+    {{--                <p>На мероприятии журналисты смогут напрямую пообщаться с учеными,--}}
+    {{--                    экспертами и лидерами общественного мнения, которые:--}}
+    {{--                <ul class="!list-disc ml-5">--}}
+    {{--                    <li>помогут развенчать популярные мифы, связанные с этими темами</li>--}}
+    {{--                    <li>расскажут, почему кликбейт в научных вопросах вредит всем</li>--}}
+    {{--                    <li>разъяснят, как правильно интерпретировать научные исследования в этих областях и на что обращать--}}
+    {{--                        особое внимание.--}}
+    {{--                    </li>--}}
+    {{--                </ul>--}}
+    {{--                </p>--}}
+    {{--            </div>--}}
 
-{{--        </div>--}}
+    {{--        </div>--}}
 
-{{--        <div class="flex text-lg border border-green-600 rounded-2xl py-8 px-4 content items-center gap-4">--}}
-{{--            <svg id="Слой_1" class="min-w-16 w-16 max-w-16 md:hidden" data-name="Слой 1"--}}
-{{--                 xmlns="http://www.w3.org/2000/svg"--}}
-{{--                 viewBox="0 0 41.04 41.04">--}}
-{{--                <g id="Слой_2" data-name="Слой 2">--}}
-{{--                    <g id="Слой_1-2" data-name="Слой 1-2">--}}
-{{--                        <circle cx="20.52" cy="20.52" r="19.81"--}}
-{{--                                style="fill:none;stroke:#55a52d;stroke-miterlimit:22.93000072719816;stroke-width:1.41999998321949px"/>--}}
-{{--                        <path--}}
-{{--                            d="M29.08,24.15l-.38-.59,5.59-3.63.77,1.19-5.59,3.63Zm6-3V19.93l.92.59Zm0,0L34.31,20v1.19l-5.59-3.63.77-1.19L35.08,20Zm-1.48.11H5.6V19.81h28Z"--}}
-{{--                            style="fill:#1a1a18"/>--}}
-{{--                    </g>--}}
-{{--                </g>--}}
-{{--            </svg>--}}
-{{--            <p>В рамках открытия медиаклуба состоятся две экспертные сессии,--}}
-{{--                а завершится мероприятие презентацией корпоративного университета--}}
-{{--                «Экосистемы», подведением первых итогов его работы,--}}
-{{--                а также награждением первых отличников онлайн-курса--}}
-{{--                «Мастерская экознаний».</p>--}}
-{{--        </div>--}}
-{{--    </section>--}}
+    {{--        <div class="flex text-lg border border-green-600 rounded-2xl py-8 px-4 content items-center gap-4">--}}
+    {{--            <svg id="Слой_1" class="min-w-16 w-16 max-w-16 md:hidden" data-name="Слой 1"--}}
+    {{--                 xmlns="http://www.w3.org/2000/svg"--}}
+    {{--                 viewBox="0 0 41.04 41.04">--}}
+    {{--                <g id="Слой_2" data-name="Слой 2">--}}
+    {{--                    <g id="Слой_1-2" data-name="Слой 1-2">--}}
+    {{--                        <circle cx="20.52" cy="20.52" r="19.81"--}}
+    {{--                                style="fill:none;stroke:#55a52d;stroke-miterlimit:22.93000072719816;stroke-width:1.41999998321949px"/>--}}
+    {{--                        <path--}}
+    {{--                            d="M29.08,24.15l-.38-.59,5.59-3.63.77,1.19-5.59,3.63Zm6-3V19.93l.92.59Zm0,0L34.31,20v1.19l-5.59-3.63.77-1.19L35.08,20Zm-1.48.11H5.6V19.81h28Z"--}}
+    {{--                            style="fill:#1a1a18"/>--}}
+    {{--                    </g>--}}
+    {{--                </g>--}}
+    {{--            </svg>--}}
+    {{--            <p>В рамках открытия медиаклуба состоятся две экспертные сессии,--}}
+    {{--                а завершится мероприятие презентацией корпоративного университета--}}
+    {{--                «Экосистемы», подведением первых итогов его работы,--}}
+    {{--                а также награждением первых отличников онлайн-курса--}}
+    {{--                «Мастерская экознаний».</p>--}}
+    {{--        </div>--}}
+    {{--    </section>--}}
 
     @foreach($sessions as $key => $session)
         <section class="content mt-16 mb-8">
@@ -218,7 +232,8 @@
             <div class="flex flex-col gap-8 items-start">
                 @foreach($session['speakers'] as $speaker)
                     <div class="flex gap-4 justify-center items-center">
-                        <img class="w-[85px] h-[85px] md:w-[45px] md:h-[45px] rounded-full" src="{{$speaker['img']}}" alt="">
+                        <img class="w-[85px] h-[85px] md:w-[45px] md:h-[45px] rounded-full" src="{{$speaker['img']}}"
+                             alt="">
                         <div class="flex flex-col">
                             <h1 class="text-lg font-bold text-green-600 uppercase">{{$speaker['name']}}</h1>
                             <p>{{$speaker['desc']}}</p>
@@ -226,20 +241,23 @@
                     </div>
                 @endforeach
             </div>
-                <div class="flex gap-4 ml-auto justify-end mt-10">
-                    <div class="flex flex-col">
-                        <p class="text-lg font-bold">МОДЕРАТОР:</p>
-                        <p class="font-bold">{{$session['moderator']['name']}}</p>
-                        <p>{!! $session['moderator']['desc'] !!}</p>
-                    </div>
-                    <img src="{{$session['moderator']['img']}}" alt="">
+            <div class="flex gap-4 ml-auto justify-end mt-10">
+                <div class="flex flex-col">
+                    <p class="text-lg font-bold">МОДЕРАТОР:</p>
+                    <p class="font-bold">{{$session['moderator']['name']}}</p>
+                    <p>{!! $session['moderator']['desc'] !!}</p>
                 </div>
+                <img src="{{$session['moderator']['img']}}" alt="">
+            </div>
         </section>
     @endforeach
     <section
         class="flex font-bold justify-between text-lg border border-green-600 rounded-2xl py-2 px-4 content mb-8 md:flex-col">
-        <p>Также на нашем мероприятии будет работать мобильная студия проекта «Кинобус ПРОЭКО», получивший две экологические премии: Eco Best Award 2024 за лучший образовательный проект и «Экопозитив» 2024 за вклад в экопросвещение.
-            Ведущий Жора Каваносян вместе с участниками Шоу разоблачит и другие экологические мифы. После завершения мероприятия автодом проекта -
+        <p>Также на нашем мероприятии будет работать мобильная студия проекта «Кинобус ПРОЭКО», получивший две
+            экологические премии: Eco Best Award 2024 за лучший образовательный проект и «Экопозитив» 2024 за вклад в
+            экопросвещение.
+            Ведущий Жора Каваносян вместе с участниками Шоу разоблачит и другие экологические мифы. После завершения
+            мероприятия автодом проекта -
             Кинобус — отправится в тур по Архангельской области, посвященный Форуму «ЗЕМЛЯНЕ».
         </p>
     </section>
