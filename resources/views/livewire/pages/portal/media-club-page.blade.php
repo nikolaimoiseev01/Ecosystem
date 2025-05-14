@@ -22,7 +22,7 @@
              alt="">
         <img src="/fixed/media-welcome-svgs/welcome-media-svg-10.svg" class="absolute bottom-4 right-0 w-36"
              alt="">
-        <a href="" class="border rounded-xl border-black px-16 py-1 text-2xl absolute right-16 bottom-8 hover:bg-white hover:text-black transition">Сайт</a>
+        <a href="https://vk.com/ecodvizhenie" class="border rounded-xl border-black px-16 py-1 text-2xl absolute right-16 bottom-8 hover:bg-white hover:text-black transition">Сайт</a>
         <div
             class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col gap-4 lg:items-center lg:text-center">
             <h1 class="text-8xl md:text-5xl font-bold">ОТКРЫТИЕ</h1>
