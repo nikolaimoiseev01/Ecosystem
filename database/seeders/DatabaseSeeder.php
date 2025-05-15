@@ -158,11 +158,12 @@ class DatabaseSeeder extends Seeder
         Role::create(['name' => 'admin']);
         Role::create(['name' => 'user']);
 
+        $password = ENV('APP_ENV') == ('local') ?'12345678' : ENV('ADMIN_PASSWORD');
         $user = User::create([
             'name' => 'admin',
             'email' => 'admin@mail.ru',
             'email_verified_at' => now(),
-            'password' => Hash::make('12345678'),
+            'password' => Hash::make($password),
             'remember_token' => Str::random(10),
         ]);
         $user->assignRole('admin');
