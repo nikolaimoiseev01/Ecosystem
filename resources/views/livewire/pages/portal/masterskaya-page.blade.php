@@ -1,8 +1,8 @@
 <main>
     <section class="content uppercase text-center flex flex-col items-center mb-16">
         <h1 class="text-green-500">Корпоративный университет «Экосистема»</h1>
-        <h1>УЧЕБНАЯ ПРОГРАММА</h1>
-        <h1 class="text-green-500">КУРС «ОБЩЕСТВЕННЫЙ ЭКОЛОГИЧЕСКИЙ ИНСПЕКТОР ЭКОСИСТЕМЫ»</h1>
+        <h1>Просветительская программа</h1>
+        <h1 class="text-green-500">«мастерская экознаний»</h1>
     </section>
 
     <section class="w-full bg-green-500 mb-16">
@@ -18,38 +18,31 @@
         @else
             <x-link href="#login" class="w-full px-8 py-4 max-w-md mt-4 mb-20">Подать заявку</x-link>
         @endauth
-        <h1 class="text-green-500">ПЛАН УЧЕБНОЙ ПРОГРАММЫ</h1>
-        <h1 class="">КУРСА <br>«ОБЩЕСТВЕННЫЙ ЭКОЛОГИЧЕСКИЙ ИНСПЕКТОР ЭКОСИСТЕМЫ»</h1>
+        <h1 class="text-green-500">ПЛАН ПРОСВЕТИТЕЛЬСКОЙ ПРОГРАММЫ</h1>
+        <h1 class="">«МАСТЕРСКАЯ ЭКОЗНАНИЙ»</h1>
     </section>
 
     <section id="lessons" class="bg-green-500 rounded-tr-[240px] rounded-bl-[240px] md:rounded-none py-24 mb-24">
         <div class="flex flex-col gap-4 content [&>*:nth-child(even)]:ml-auto">
-            @foreach($modules as $module)
+            @foreach($lessons as $lesson)
                 <div x-data="{ open: false }" class="flex bg-white py-10 pr-10 rounded w-1/2 md:w-full relative">
                     <div class="px-8 min-w-max flex items-center justify-center">
-                        @if($module->getFirstMediaUrl('icon'))
-                            <img src="{{$module->getFirstMediaUrl('icon') ?? '/fixed/default_lesson_icon.png'}}"
-                                 alt="{{$module['name']}}"
+                        @if($lesson->getFirstMediaUrl('icon'))
+                            <img src="{{$lesson->getFirstMediaUrl('icon') ?? '/fixed/default_lesson_icon.png'}}"
+                                 alt="{{$lesson['name']}}"
                                  class="w-24 object-cover">
                         @else
                             <img src="/fixed/default_lesson_icon.png"
-                                 alt="{{$module['name']}}"
+                                 alt="{{$lesson['name']}}"
                                  class="w-24">
                         @endif
 
                     </div>
                     <div class="flex flex-col">
-                        <p class="uppercase">{{$module['name']}}</p>
-                        <p class="font-bold mb-6">{{$module['title']}}</p>
-                        <p>{{$module['title']}}</p>
-                        <div x-show="open" class="mt-2">
-                            <p class="font-bold mb-4">Уроки модуля:</p>
-                            <ul>
-                                @foreach($module->lessons as $lesson)
-                                    <p class="mb-2">{{$lesson->title}}</p>
-                                @endforeach
-                            </ul>
-                        </div>
+                        <p class="uppercase">{{$lesson->module['name']}}. {{$lesson['name']}}</p>
+                        <p class="font-bold mb-6">{{$lesson->module['title']}}</p>
+                        <p>{{$lesson['title']}}</p>
+                        <p x-show="open" class="mt-2">{{$lesson['desc']}}</p>
                     </div>
                     <!-- Треугольник -->
                     <div
@@ -63,8 +56,8 @@
     </section>
 
     <section id="speakers" class="content relative mx-auto mb-24">
-        <h1 class="mx-auto mb-16"><span class="text-green-500 uppercase">Партнеры</span> КУРСА</h1>
-        <x-ui.partners-slider/>
+        <h1 class="mx-auto mb-16"><span class="text-green-500">СПИКЕРЫ</span> КУРСА</h1>
+        <x-ui.speakers-slider/>
     </section>
 
     <section id="faq" class="mb-32">

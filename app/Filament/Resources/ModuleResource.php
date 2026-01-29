@@ -2,12 +2,14 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\ActualityEnums;
 use App\Filament\Resources\ModuleResource\Pages;
 use App\Models\Module;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -33,6 +35,11 @@ class ModuleResource extends Resource
                 Forms\Components\TextInput::make('title')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\Select::make('actuality')
+                    ->options([
+                        ActualityEnums::OLD->value => ActualityEnums::OLD->value,
+                        ActualityEnums::NEW->value => ActualityEnums::NEW->value
+                    ])
             ]);
     }
 
@@ -43,6 +50,9 @@ class ModuleResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('title')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('actuality')
+                    ->label('Актуальность')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('lessons')
                     ->label('Уроков в модуле')
@@ -59,7 +69,12 @@ class ModuleResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                SelectFilter::make('actuality')
+                    ->label('Актуальность')
+                    ->options([
+                        ActualityEnums::OLD->value => ActualityEnums::OLD->value,
+                        ActualityEnums::NEW->value => ActualityEnums::NEW->value
+                    ])->default(ActualityEnums::NEW->value)
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

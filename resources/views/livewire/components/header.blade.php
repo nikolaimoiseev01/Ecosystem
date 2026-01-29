@@ -1,14 +1,15 @@
-<header x-data="{ isMedia: window.location.pathname === '/media-club' }"
+<header x-data="{ isMedia: window.location.pathname === '/media-club',
+ isMasterskaya: window.location.pathname === '/masterskaya'}"
         :class="isMedia ?
         'hidden'
         :'w-full mb-8'" class="">
     <div class="content flex items-center justify-between py-2">
-        <div class="flex gap-4 items-center">
-            <x-logo-main-black/>
-            <x-logo-rosatom class="pt-3"/>
-        </div>
+{{--        <div class="flex gap-4 items-center" :class="isMasterskaya ? 'hidden' : ''">--}}
+{{--            <x-logo-main-black/>--}}
+{{--            <x-logo-rosatom class="pt-3"/>--}}
+{{--        </div>--}}
 
-        <div class="flex justify-center">
+        <div class="flex justify-center ml-auto">
             <div class="flex justify-center">
                 <div x-data="{ open: false }" class="relative flex flex-col justify-center">
                     <div @click="open = !open"

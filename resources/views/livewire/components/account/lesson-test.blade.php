@@ -1,9 +1,9 @@
-<div wire:key="{{$test['id']}}">
-    @if($test['lesson_id'])
-        <h2 class="mb-2">Тест</h2>
-    @else
-        <h2 class="mb-2">Финальный тест</h2>
-    @endif
+<div wire:key="test-{{ $test['id'] }}">
+{{--    @if($test['lesson_id'])--}}
+{{--        <h2 class="mb-2">Тест</h2>--}}
+{{--    @else--}}
+{{--        <h2 class="mb-2">Финальный тест</h2>--}}
+{{--    @endif--}}
 
     @if($testResults && !$debug)
         <p>Вы успешно прошли тест! Набрали балов: {{$testResults['applicant_points']}}
@@ -50,12 +50,6 @@
             @this.call('saveAnswers', this.answers);
         }
     }">
-            @if($test['lesson_id'])
-            @else
-                <p class="italic mb-2">Если несколько вариантов ответа => 2.5 балла за каждый верный. Если один вариант
-                    ответа, то 5 баллов
-                    за верный.</p>
-            @endif
             @foreach($questions as $index => $question)
                 <div x-show="currentQuestionIndex === {{ $index }}" class="question" x-cloak>
                     <h3 class="text-lg">{{ $question['question'] }}</h3>

@@ -2,7 +2,9 @@
 
 namespace App\Livewire\Pages\Account;
 
+use App\Enums\ActualityEnums;
 use App\Models\Lesson;
+use App\Models\Module;
 use App\Models\Test;
 use App\Models\TestResult;
 use App\Models\User;
@@ -17,7 +19,7 @@ use Spatie\LaravelPdf\Enums\Format;
 
 class LessonsPage extends Component
 {
-    public $lessons;
+    public $modules;
     public $final_test;
     public $user;
     public $final_test_flg_check;
@@ -26,36 +28,36 @@ class LessonsPage extends Component
 
     public function render()
     {
-        $this->lessons = Lesson::orderBy('sort')->get();
+        $this->modules = Module::query()->where('modules.actuality', ActualityEnums::NEW)->with(['lessons', 'test'])->get();
         $this->user = AuthAlias::user();
 
 
         /* Логика доступа на основе тестов */
 
-        $this->lessons = $this->lessons->map(function ($lesson) { // Сначала все недоступны
-            $lesson->setAttribute('is_available', false);
-            return $lesson;
-        });
-
-        foreach ($this->lessons as $index => $lesson) { /* Понимаем, проходили ли тест прошлоко урока */
-            if ($index === 0) {
-                $lesson->setAttribute('is_available', True);
-            } else {
-                $prevLessonTest = Test::where('lesson_id', $this->lessons[$index - 1]['id'])->first() ?? null;
-                $prevLessonTestResult = TestResult::where('user_id', $this->user['id'])
-                    ->where('lesson_id', $this->lessons[$index - 1]['id'])->first() ?? null;
-                if ($prevLessonTest && !$prevLessonTestResult) {
-                    break;
-                } else {
-                    $lesson->setAttribute('is_available', True);
-                }
-            }
-
-        }
-        $this->final_test_flg_check = TestResult::where('user_id', $this->user['id'])
-            ->where('test_id', 9)
-            ->exists();
-        $this->final_test = Test::where('lesson_id', null)->first() ?? null;
+//        $this->lessons = $this->lessons->map(function ($lesson) { // Сначала все недоступны
+//            $lesson->setAttribute('is_available', false);
+//            return $lesson;
+//        });
+//
+//        foreach ($this->lessons as $index => $lesson) { /* Понимаем, проходили ли тест прошлоко урока */
+//            if ($index === 0) {
+//                $lesson->setAttribute('is_available', True);
+//            } else {
+//                $prevLessonTest = Test::where('lesson_id', $this->lessons[$index - 1]['id'])->first() ?? null;
+//                $prevLessonTestResult = TestResult::where('user_id', $this->user['id'])
+//                    ->where('lesson_id', $this->lessons[$index - 1]['id'])->first() ?? null;
+//                if ($prevLessonTest && !$prevLessonTestResult) {
+//                    break;
+//                } else {
+//                    $lesson->setAttribute('is_available', True);
+//                }
+//            }
+//
+//        }
+//        $this->final_test_flg_check = TestResult::where('user_id', $this->user['id'])
+//            ->where('test_id', 9)
+//            ->exists();
+//        $this->final_test = Test::where('lesson_id', null)->first() ?? null;
         return view('livewire.pages.account.lessons-page')->layout('layouts.account', ['page_title' => 'Уроки']);
     }
 

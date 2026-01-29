@@ -18,9 +18,33 @@
     </head>
     <body class="flex flex-col min-h-screen">
     <livewire:components.header/>
-    <div class="flex gap-8 content mb-16">
-        <a href="{{route('account.courses')}}" wire:navigate>Уроки</a>
-        <a href="{{route('account.settings')}}" wire:navigate>Настройки</a>
+    <div
+        x-data="{
+        isActive(href) {
+            return window.location.pathname.startsWith(href);
+        }
+    }"
+        class="flex gap-8 content mb-16"
+    >
+        <a
+            href="{{ route('account.courses') }}"
+            wire:navigate
+            :class="isActive('{{ parse_url(route('account.courses'), PHP_URL_PATH) }}')
+            ? 'text-green-500 font-semibold border-b-2 border-green-500 pb-1'
+            : 'text-gray-500 hover:text-green-500 transition'"
+        >
+            Уроки
+        </a>
+
+        <a
+            href="{{ route('account.settings') }}"
+            wire:navigate
+            :class="isActive('{{ parse_url(route('account.settings'), PHP_URL_PATH) }}')
+            ? 'text-green-500 font-semibold border-b-2 border-green-500 pb-1'
+            : 'text-gray-500 hover:text-green-500 transition'"
+        >
+            Настройки
+        </a>
     </div>
     <main class="content">
         <h1 class="text-green-500 mb-16 font-bold">{{$page_title}}</h1>

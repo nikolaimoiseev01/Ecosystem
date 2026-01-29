@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\ActualityEnums;
 use App\Filament\Resources\TestResource\Pages;
 use App\Filament\Resources\TestResource\RelationManagers;
 use App\Models\Test;
@@ -9,6 +10,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -29,6 +31,14 @@ class TestResource extends Resource
                 Forms\Components\Select::make('lesson_id')
                     ->relationship('lesson', 'name')
                     ->label('Урок'),
+                Forms\Components\Select::make('module_id')
+                    ->relationship('module', 'name')
+                    ->label('Модуль'),
+                Forms\Components\Select::make('actuality')
+                    ->options([
+                        ActualityEnums::OLD->value => ActualityEnums::OLD->value,
+                        ActualityEnums::NEW->value => ActualityEnums::NEW->value
+                    ]),
                 Forms\Components\Repeater::make('questions')
                     ->label('Вопросы теста')
                     ->addActionLabel('Добавить вопрос')
@@ -66,11 +76,17 @@ class TestResource extends Resource
                     ->label('Для урока')
                     ->numeric()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('module.name')
+                    ->label('Для модуля')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('questions')
                     ->label('Вопросов в тесте')
                     ->getStateUsing(function (Model $record) {
                         return collect($record['questions'])->count();
                     }),
+                Tables\Columns\TextColumn::make('actuality')
+                    ->label('Актуальность')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->label('Создан')
@@ -81,7 +97,12 @@ class TestResource extends Resource
                     ->sortable(),
             ])
             ->filters([
-                //
+                SelectFilter::make('actuality')
+                    ->label('Актуальность')
+                    ->options([
+                        ActualityEnums::OLD->value => ActualityEnums::OLD->value,
+                        ActualityEnums::NEW->value => ActualityEnums::NEW->value
+                    ])->default(ActualityEnums::NEW->value)
             ])
             ->paginated(['all'])
             ->actions([
