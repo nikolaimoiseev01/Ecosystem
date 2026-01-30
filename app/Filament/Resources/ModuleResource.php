@@ -57,7 +57,7 @@ class ModuleResource extends Resource
                 Tables\Columns\TextColumn::make('lessons')
                     ->label('Уроков в модуле')
                     ->getStateUsing(function (Model $record) {
-                        return $record->lesson->count();
+                        return $record->lessons->count();
                     }),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
