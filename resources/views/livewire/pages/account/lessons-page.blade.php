@@ -1,5 +1,5 @@
 <div>
-    <h1 class="text-green-500 mb-16 font-bold">Уроки</h1>
+    <h1 class="text-green-500 mb-8 font-bold">Уроки</h1>
     <div class="space-y-4 mb-16">
         @foreach ($modules as $module)
             @php

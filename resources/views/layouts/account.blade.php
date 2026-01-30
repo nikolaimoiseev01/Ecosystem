@@ -24,7 +24,7 @@
             return window.location.pathname.startsWith(href);
         }
     }"
-        class="flex gap-8 content mb-16"
+        class="flex gap-8 content mb-12"
     >
         <a
             href="{{ route('account.courses') }}"

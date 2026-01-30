@@ -1,6 +1,6 @@
 <div>
-    <div class="flex justify-between mb-16">
-        <h1 class="text-green-500  font-bold">{{$lesson->name}}</h1>
+    <div class="flex justify-between mb-8">
+        <h1 class="text-green-500 font-bold">{{$lesson->name}}</h1>
         <div class="flex gap-8">
             <x-ui.link-simple href="{{route('account.courses')}}">К оглавлению</x-ui.link-simple>
             <x-ui.link-simple href="{{route('account.course', $lesson->id + 1)}}">Следующий урок</x-ui.link-simple>
