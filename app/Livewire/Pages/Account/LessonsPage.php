@@ -4,6 +4,7 @@ namespace App\Livewire\Pages\Account;
 
 use App\Enums\ActualityEnums;
 use App\Models\Lesson;
+use App\Models\LessonSeen;
 use App\Models\Module;
 use App\Models\Test;
 use App\Models\TestResult;
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\Auth as AuthAlias;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Spatie\LaravelPdf\Enums\Format;
+
 //use Spatie\LaravelPdf\Facades\Pdf;
 
 class LessonsPage extends Component
@@ -28,9 +30,6 @@ class LessonsPage extends Component
 
     public function render()
     {
-        $this->modules = Module::query()->where('modules.actuality', ActualityEnums::NEW)->with(['lessons', 'test'])->get();
-        $this->user = AuthAlias::user();
-
 
         /* Логика доступа на основе тестов */
 
@@ -61,11 +60,13 @@ class LessonsPage extends Component
         return view('livewire.pages.account.lessons-page')->layout('layouts.account', ['page_title' => 'Уроки']);
     }
 
-    public function downloadDiploma() {
+
+    public function downloadDiploma()
+    {
 
         $user = Auth::user();
         $user_fio = "{$user['surname']} {$user['name']} {$user['thirdname']}";
-        $user_points =$user->testResult->sum('applicant_points');
+        $user_points = $user->testResult->sum('applicant_points');
         if ($user_points > 90) {
             $type = 'финалистом';
         } else {
@@ -93,5 +94,53 @@ class LessonsPage extends Component
         // Отдаём пользователю и удаляем файл после отправки
         return response()->download($filePath, 'diploma.pdf')->deleteFileAfterSend(true);
 
+    }
+
+    private function generateModules()
+    {
+        $this->modules = Module::query()->where('modules.actuality', ActualityEnums::NEW)->with(['lessons', 'test'])->get();
+        $seenLessonIds = LessonSeen::where('user_id', auth()->id())
+            ->pluck('lesson_id')
+            ->flip();
+
+        foreach ($this->modules as $module) {
+            foreach ($module->lessons as $lesson) {
+                $lesson->is_seen = isset($seenLessonIds[$lesson->id]);
+            }
+        }
+    }
+
+    public function mount()
+    {
+        $this->generateModules();
+
+        $this->user = AuthAlias::user();
+    }
+
+
+    public function markLesson($lessonId, $seen)
+    {
+        if ($seen == 1) {
+            LessonSeen::create([
+                'lesson_id' => $lessonId,
+                'user_id' => auth()->id(),
+            ]);
+            $text = 'Урок отмечен просмотренным';
+        } else {
+            LessonSeen::query()
+                ->where('lesson_id', $lessonId)
+                ->where('user_id', auth()->id())
+                ->delete();
+            $text = 'Урок отменен, как просмотренный';
+        }
+
+        $this->dispatch('swal:modal',
+            title: 'Успешно',
+            type: 'success',
+            text: $text
+        );
+
+
+        $this->generateModules();
     }
 }

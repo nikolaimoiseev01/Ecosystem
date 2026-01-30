@@ -42,4 +42,17 @@ class Lesson extends Model implements HasMedia
     {
         return $this->hasOne(Test::class);
     }
+
+    public function seenByUsers()
+    {
+        return $this->belongsToMany(
+            User::class,
+            'lesson_seens'
+        )->withTimestamps();
+    }
+
+    public function seens()
+    {
+        return $this->hasMany(LessonSeen::class);
+    }
 }

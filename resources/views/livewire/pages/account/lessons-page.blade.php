@@ -1,5 +1,5 @@
 <div>
-
+    <h1 class="text-green-500 mb-16 font-bold">Уроки</h1>
     <div class="space-y-4 mb-16">
         @foreach ($modules as $module)
             @php
@@ -7,7 +7,11 @@
             @endphp
             <div
                 x-data="{ open: {{ $loop->first ? 'true' : 'false' }} }"
-                class="border rounded-xl bg-white"
+                class="border rounded-xl bg-white
+                            {{ $testResult
+                ? 'bg-green-100 border-green-500'
+                : ''}}
+                "
             >
                 {{-- Header --}}
                 <button
@@ -19,6 +23,11 @@
                     </div>
 
                     <div class="flex items-center gap-4">
+                        @if($testResult)
+                            <span class="text-sm font-bold text-green-500">
+                            {{$testResult['applicant_points']}} / {{$testResult['test_points']}} баллов
+                        </span>
+                        @endif
                         <svg
                             class="w-5 h-5 transition-transform"
                             :class="open ? 'rotate-180' : ''"
@@ -41,22 +50,23 @@
                 >
                     {{-- Lessons --}}
                     @foreach ($module->lessons as $lesson)
-                        <a wire:navigate href="{{route('account.course', $lesson->id)}}"
-                           class="flex items-center gap-3 text-sm">
-                            @if ($lesson['completed'])
-                                <span
-                                    class="w-4 h-4 rounded-full border-2 border-green-500 flex items-center justify-center">
+                        <div
+                            class="flex items-center gap-3 text-sm">
+                            @if ($lesson['is_seen'])
+                                <span wire:click="markLesson({{$lesson->id}}, 0)"
+                                      class="cursor-pointer w-4 h-4 rounded-full border-2 border-green-500 flex items-center justify-center">
                                 <span class="w-2 h-2 bg-green-500 rounded-full"></span>
                             </span>
                             @else
-                                <span class="w-4 h-4 rounded-full border border-gray-300"></span>
+                                <span wire:click="markLesson({{$lesson->id}}, 1)"
+                                      class="cursor-pointer w-4 h-4 rounded-full border border-gray-500"></span>
                             @endif
 
-                            <span
-                                class="{{ $lesson['completed'] ? 'text-gray-900' : 'text-gray-500' }}">
-                            Урок {{ $loop->iteration }}. {{ $lesson['title'] }}
-                        </span>
-                        </a>
+                            <a wire:navigate href="{{route('account.course', $lesson->id)}}"
+                               class="{{ $lesson['completed'] ? 'text-gray-900' : 'text-gray-500' }}">
+                                Урок {{ $loop->iteration }}. {{ $lesson['title'] }}
+                            </a>
+                        </div>
                     @endforeach
 
                     {{-- Test --}}
@@ -125,10 +135,12 @@
                                     x-collapse
                                     class="px-4 pb-4 pt-2"
                                 >
-                                    <livewire:components.account.lesson-test
-                                        :test="$module->test"
-                                        wire:key="test-{{ $module->test['id'] }}"
-                                    />
+                                    <div wire:ignore>
+                                        <livewire:components.account.lesson-test
+                                            :test="$module->test"
+                                            wire:key="lesson-test-{{ $module->id }}-{{ $module->test->id }}"
+                                        />
+                                    </div>
                                 </div>
                             @endif
                         </div>

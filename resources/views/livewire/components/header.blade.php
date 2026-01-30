@@ -8,6 +8,9 @@
 {{--            <x-logo-main-black/>--}}
 {{--            <x-logo-rosatom class="pt-3"/>--}}
 {{--        </div>--}}
+        <a href="/" wire:navigate>
+            <h2>Главная</h2>
+        </a>
 
         <div class="flex justify-center ml-auto">
             <div class="flex justify-center">

@@ -68,4 +68,12 @@ class User extends Authenticatable implements FilamentUser
     {
         return $this->hasMany(TestResult::class);
     }
+
+    public function seenLessons()
+    {
+        return $this->belongsToMany(
+            Lesson::class,
+            'lesson_seens'
+        )->withTimestamps();
+    }
 }

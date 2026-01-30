@@ -86,8 +86,6 @@ class LessonTest extends Component
                     'result' => json_encode($this->questions),
                 ]);
             });
-
-            $this->dispatch('refreshLessonsPage');
         }
 
         $this->dispatch('swal:modal',
@@ -95,6 +93,8 @@ class LessonTest extends Component
             type: 'success',
             text: "Тест завершен. Вы набрали {$applicant_points} из {$test_points} баллов"
         );
+
+
     }
 
 }

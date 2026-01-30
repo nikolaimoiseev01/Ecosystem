@@ -1,4 +1,5 @@
 <div class=" max-w-md">
+    <h1 class="text-green-500 mb-16 font-bold">Настройки</h1>
     <div class="mb-16">
         <livewire:pages.profile.update-profile-information-form/>
     </div>

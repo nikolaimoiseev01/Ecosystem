@@ -47,7 +47,6 @@
         </a>
     </div>
     <main class="content">
-        <h1 class="text-green-500 mb-16 font-bold">{{$page_title}}</h1>
         {{ $slot }}
     </main>
     <livewire:components.footer/>
