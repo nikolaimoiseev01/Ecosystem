@@ -81,6 +81,7 @@ class LessonTest extends Component
                     'user_id' => Auth::id(),
                     'test_id' => $this->test['id'],
                     'lesson_id' => $this->test->lesson?->id,
+                    'module_id' => $this->test->module?->id,
                     'test_points' => $test_points,
                     'applicant_points' => $applicant_points,
                     'result' => json_encode($this->questions),

@@ -42,6 +42,10 @@ class TestResultResource extends Resource
                     ->default('Вне уроков')
                     ->label('Тест для урока')
                     ->numeric(),
+                TextEntry::make('module.name')
+                    ->default('Вне модуля')
+                    ->label('Тест для модуля')
+                    ->numeric(),
                 TextEntry::make('applicant_points')
                     ->label('Пользователь набрал баллов')
                     ->numeric(),
@@ -91,6 +95,12 @@ class TestResultResource extends Resource
                 Tables\Columns\TextColumn::make('lesson.name')
                     ->label('Тест для урока')
                     ->default('Вне уроков')
+                    ->searchable()
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('module.name')
+                    ->label('Тест для модуля')
+                    ->default('Вне модулей')
                     ->searchable()
                     ->numeric()
                     ->sortable(),

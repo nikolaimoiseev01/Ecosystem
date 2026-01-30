@@ -13,6 +13,9 @@ class EditLesson extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
+            Actions\Action::make('lesson_page')
+                ->label('Страница урока')
+                ->url(fn() => route('account.course', $this->record->id)),
             Actions\DeleteAction::make(),
         ];
     }
