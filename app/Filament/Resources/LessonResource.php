@@ -38,7 +38,6 @@ class LessonResource extends Resource
                                     SpatieMediaLibraryFileUpload::make('icon')
                                         ->collection('icon')
                                         ->label('Иконка')
-                                        ->required()
                                         ->columnSpan(1),
                                     Forms\Components\Grid::make()->schema([
                                         Forms\Components\Select::make('module_id')
