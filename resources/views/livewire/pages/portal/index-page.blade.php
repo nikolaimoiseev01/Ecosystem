@@ -62,10 +62,10 @@
         </div>
     </section>
 
-    <section id="speakers" class="content relative mx-auto mb-24">
-        <h1 class="mx-auto mb-16"><span class="text-green-500 uppercase">Партнеры</span> КУРСА</h1>
-        <x-ui.partners-slider/>
-    </section>
+{{--    <section id="speakers" class="content relative mx-auto mb-24">--}}
+{{--        <h1 class="mx-auto mb-16"><span class="text-green-500 uppercase">Партнеры</span> КУРСА</h1>--}}
+{{--        <x-ui.partners-slider/>--}}
+{{--    </section>--}}
 
     <section id="faq" class="mb-32">
         <h1 class="mx-auto mb-16"><span class="text-green-500">ПОПУЛЯРНЫЕ</span> ВОПРОСЫ</h1>
