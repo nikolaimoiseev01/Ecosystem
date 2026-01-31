@@ -1,4 +1,9 @@
 <div>
+    <style>
+        .attachment__caption {
+            display: none;
+        }
+    </style>
     <div class="flex justify-between mb-8">
         <h1 class="text-green-500 font-bold">{{$lesson->name}}</h1>
         <div class="flex gap-8">
