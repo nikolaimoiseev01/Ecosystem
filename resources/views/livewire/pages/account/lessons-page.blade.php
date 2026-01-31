@@ -3,7 +3,7 @@
     <div class="space-y-4 mb-16">
         @foreach ($modules as $module)
             @php
-                $testResult = $module->test->testResultForUser(Auth::id());
+                $testResult = $module->test?->testResultForUser(Auth::id());
             @endphp
             <div
                 x-data="{ open: {{ $loop->first ? 'true' : 'false' }} }"
