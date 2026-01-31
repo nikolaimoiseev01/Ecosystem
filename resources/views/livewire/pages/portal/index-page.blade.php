@@ -5,11 +5,11 @@
         <h1 class="text-green-500">КУРС «ОБЩЕСТВЕННЫЙ ЭКОЛОГИЧЕСКИЙ ИНСПЕКТОР ЭКОСИСТЕМЫ»</h1>
     </section>
 
-    <section class="w-full bg-green-500 mb-16">
-        <video autoplay="" muted="" width="100%" loop="loop">
-            <source src="/fixed/fn.mp4" type="video/mp4">
-        </video>
-    </section>
+{{--    <section class="w-full bg-green-500 mb-16">--}}
+{{--        <video autoplay="" muted="" width="100%" loop="loop">--}}
+{{--            <source src="/fixed/fn.mp4" type="video/mp4">--}}
+{{--        </video>--}}
+{{--    </section>--}}
 
     <section class="content text-center text-xl mb-16 flex flex-col items-center">
         @auth()
