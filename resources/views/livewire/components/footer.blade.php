@@ -3,6 +3,6 @@
     <h1 class="">КОНТАКТЫ</h1>
     <h2 class="text-white">cu_ecosistema@mail.ru</h2>
     <a href="{{route('portal.masterskaya')}}">Прошлые курсы</a>
-    <p class="text-sm text-center">Организовано Всероссийским общественным экологическим движением «Экосистема»<br>
-        при поддержке Госкорпорации «Росатом»</p>
+    <p class="text-sm text-center">Организовано Всероссийским общественным экологическим движением «Экосистема»
+        </p>
 </footer>
