@@ -183,14 +183,14 @@ class RegisterPage extends Component
     public function getSms()
     {
 
-        if (ENV('APP_DEBUG')) {
+        if (config('app.debug')) {
             $this->sms_code_correct = strval(9999);
         } else {
             $digits = 4;
             $this->sms_code_correct = str_pad(rand(0, pow(10, $digits) - 1), $digits, '0', STR_PAD_LEFT);
 
             // Create SmsAero instance.
-            $oSMSAero = new SmsAero(ENV('SMSAERO_LOGIN'), ENV('SMSAERO_API_KEY'));
+            $oSMSAero = new SmsAero(config('app.sms_aero.login'), config('app.sms_aero.api_key'));
 
             // Set receiver's phone number.
             $phone_number = $this->telephone;
@@ -204,6 +204,7 @@ class RegisterPage extends Component
 
             // Send message.
             $response = $oSMSAero->send($phone_number, $message, $type);
+            dd($response);
         }
 
         // Default response data -> json. However we can get response in XML format.

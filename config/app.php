@@ -188,4 +188,9 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
+    'sms_aero' => [
+        'login' => ENV('SMSAERO_LOGIN'),
+        'api_key' => ENV('SMSAERO_API_KEY')
+    ]
+
 ];
