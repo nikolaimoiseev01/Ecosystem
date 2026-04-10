@@ -2,14 +2,27 @@
 
 namespace App\Filament\Resources;
 
+use Filament\Schemas\Schema;
+use Filament\Schemas\Components\Tabs;
+use Filament\Schemas\Components\Tabs\Tab;
+use Filament\Schemas\Components\Grid;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\RichEditor;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Actions\EditAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use App\Filament\Resources\LessonResource\Pages\ListLessons;
+use App\Filament\Resources\LessonResource\Pages\CreateLesson;
+use App\Filament\Resources\LessonResource\Pages\EditLesson;
 use App\Enums\ActualityEnums;
 use App\Filament\Resources\LessonResource\Pages;
 use App\Filament\Resources\LessonResource\RelationManagers;
 use App\Models\Lesson;
 use Filament\Forms;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
-use Filament\Forms\Components\Tabs;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Filters\SelectFilter;
@@ -21,34 +34,34 @@ class LessonResource extends Resource
 {
     protected static ?string $model = Lesson::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationGroup = 'Учебный процесс';
+    protected static string | \UnitEnum | null $navigationGroup = 'Учебный процесс';
     protected static ?string $navigationLabel = 'Уроки';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 Tabs::make('Tabs')
                     ->tabs([
-                        Tabs\Tab::make('Общее')
+                        Tab::make('Общее')
                             ->schema([
-                                Forms\Components\Grid::make()->schema([
+                                Grid::make()->schema([
                                     SpatieMediaLibraryFileUpload::make('icon')
                                         ->collection('icon')
                                         ->label('Иконка')
                                         ->columnSpan(1),
-                                    Forms\Components\Grid::make()->schema([
-                                        Forms\Components\Select::make('module_id')
+                                    Grid::make()->schema([
+                                        Select::make('module_id')
                                             ->relationship('module', 'name')
                                             ->label('Модуль')
                                             ->required(),
-                                        Forms\Components\TextInput::make('name')
+                                        TextInput::make('name')
                                             ->required()
                                             ->label('Название')
                                             ->maxLength(255),
-                                        Forms\Components\Select::make('actuality')
+                                        Select::make('actuality')
                                             ->options([
                                                 ActualityEnums::OLD->value => ActualityEnums::OLD->value,
                                                 ActualityEnums::NEW->value => ActualityEnums::NEW->value
@@ -60,11 +73,11 @@ class LessonResource extends Resource
                                             ->hintIconTooltip('Выберите, является ли запись актуальной или устаревшей')
                                     ])->columns(1)->columnSpan(1)
                                 ])->columns(2),
-                                Forms\Components\TextInput::make('title')
+                                TextInput::make('title')
                                     ->required()
                                     ->label('Заголовок')
                                     ->maxLength(255),
-                                Forms\Components\Textarea::make('desc')
+                                Textarea::make('desc')
                                     ->required()
                                     ->autosize()
                                     ->label('Описание')
@@ -76,9 +89,9 @@ class LessonResource extends Resource
                                     ->label('Видео')
                                     ->previewable(false)
                             ]),
-                        Tabs\Tab::make('Контент урока')
+                        Tab::make('Контент урока')
                             ->schema([
-                                Forms\Components\RichEditor::make('content')
+                                RichEditor::make('content')
                             ]),
                     ])->columnSpanFull()
 
@@ -89,26 +102,26 @@ class LessonResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('module.name')
+                TextColumn::make('module.name')
                     ->numeric()
                     ->label('Модуль')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('name')
+                TextColumn::make('name')
                     ->label('Название')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('title')
+                TextColumn::make('title')
                     ->label('Заголовок')
                     ->limit(100)
                     ->searchable(),
-                Tables\Columns\TextColumn::make('actuality')
+                TextColumn::make('actuality')
                     ->label('Актуальность')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
+                TextColumn::make('created_at')
                     ->dateTime()
                     ->label('Создан')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
+                TextColumn::make('updated_at')
                     ->dateTime()
                     ->label('Обновлен')
                     ->sortable()
@@ -122,14 +135,14 @@ class LessonResource extends Resource
                         ActualityEnums::NEW->value => ActualityEnums::NEW->value
                     ])->default(ActualityEnums::NEW->value)
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
+            ->recordActions([
+                EditAction::make(),
             ])
             ->defaultSort('sort')
             ->reorderable('sort')
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -144,9 +157,9 @@ class LessonResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListLessons::route('/'),
-            'create' => Pages\CreateLesson::route('/create'),
-            'edit' => Pages\EditLesson::route('/{record}/edit'),
+            'index' => ListLessons::route('/'),
+            'create' => CreateLesson::route('/create'),
+            'edit' => EditLesson::route('/{record}/edit'),
         ];
     }
 }

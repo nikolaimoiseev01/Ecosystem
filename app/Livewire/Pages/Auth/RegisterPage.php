@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Pages\Auth;
 
+use Illuminate\Validation\Rules\Password;
+use Illuminate\Validation\ValidationException;
 use App\Models\User;
 use CooperAV\SmsAero\SmsAero;
 use DateTime;
@@ -132,7 +134,7 @@ class RegisterPage extends Component
 
         $validated = $this->validate([
             'login' => ['required', 'string', 'lowercase', 'max:255', 'unique:' . User::class],
-            'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', 'string', 'confirmed', Password::defaults()],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'country' => ['required', 'string', 'max:455'],
             'region' => ['max:255'],
@@ -155,18 +157,18 @@ class RegisterPage extends Component
 
         if (!$isAdult) {
             $validator->errors()->add('birth_dt', 'Вы должны быть старше 18-ти лет.'); // Добавляем ошибку
-            throw new \Illuminate\Validation\ValidationException($validator); // Бросаем исключение
+            throw new ValidationException($validator); // Бросаем исключение
         }
 
         /* Если правильного еще нет, или правильный есть, но не подходит */
         if (!($this->sms_code_correct ?? null) || (($this->sms_code_correct ?? null) && strval($this->sms_code_input) !== $this->sms_code_correct)) {
             $validator->errors()->add('telephone', 'Код неверный'); // Добавляем ошибку
-            throw new \Illuminate\Validation\ValidationException($validator); // Бросаем исключение
+            throw new ValidationException($validator); // Бросаем исключение
         }
 
         if (!($this->sms_code_sent)) {
             $validator->errors()->add('telephone', 'Пройдите верификацию по смс.'); // Добавляем ошибку
-            throw new \Illuminate\Validation\ValidationException($validator); // Бросаем исключение
+            throw new ValidationException($validator); // Бросаем исключение
         }
 
         $validated['password'] = Hash::make($validated['password']);

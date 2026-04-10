@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\JournalistResource\Pages;
 
+use Filament\Actions\CreateAction;
 use App\Filament\Resources\JournalistResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ManageRecords;
@@ -15,7 +16,7 @@ class ManageJournalists extends ManageRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            CreateAction::make(),
         ];
     }
 }

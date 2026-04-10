@@ -2,11 +2,20 @@
 
 namespace App\Filament\Resources;
 
+use Filament\Schemas\Schema;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Select;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Actions\EditAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use App\Filament\Resources\ModuleResource\Pages\ListModules;
+use App\Filament\Resources\ModuleResource\Pages\CreateModule;
+use App\Filament\Resources\ModuleResource\Pages\EditModule;
 use App\Enums\ActualityEnums;
 use App\Filament\Resources\ModuleResource\Pages;
 use App\Models\Module;
 use Filament\Forms;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Filters\SelectFilter;
@@ -19,23 +28,23 @@ class ModuleResource extends Resource
 {
     protected static ?string $model = Module::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-group';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-rectangle-group';
 
-    protected static ?string $navigationGroup = 'Учебный процесс';
+    protected static string | \UnitEnum | null $navigationGroup = 'Учебный процесс';
 
     protected static ?string $navigationLabel = 'Модули';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
-                Forms\Components\TextInput::make('name')
+        return $schema
+            ->components([
+                TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('title')
+                TextInput::make('title')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\Select::make('actuality')
+                Select::make('actuality')
                     ->options([
                         ActualityEnums::OLD->value => ActualityEnums::OLD->value,
                         ActualityEnums::NEW->value => ActualityEnums::NEW->value
@@ -47,23 +56,23 @@ class ModuleResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
+                TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('title')
+                TextColumn::make('title')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('actuality')
+                TextColumn::make('actuality')
                     ->label('Актуальность')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('lessons')
+                TextColumn::make('lessons')
                     ->label('Уроков в модуле')
                     ->getStateUsing(function (Model $record) {
                         return $record->lessons->count();
                     }),
-                Tables\Columns\TextColumn::make('created_at')
+                TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
+                TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -76,12 +85,12 @@ class ModuleResource extends Resource
                         ActualityEnums::NEW->value => ActualityEnums::NEW->value
                     ])->default(ActualityEnums::NEW->value)
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
+            ->recordActions([
+                EditAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -96,9 +105,9 @@ class ModuleResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListModules::route('/'),
-            'create' => Pages\CreateModule::route('/create'),
-            'edit' => Pages\EditModule::route('/{record}/edit'),
+            'index' => ListModules::route('/'),
+            'create' => CreateModule::route('/create'),
+            'edit' => EditModule::route('/{record}/edit'),
         ];
     }
 }

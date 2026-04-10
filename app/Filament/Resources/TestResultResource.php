@@ -2,15 +2,21 @@
 
 namespace App\Filament\Resources;
 
+use Filament\Schemas\Schema;
+use Filament\Schemas\Components\Section;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Actions\ViewAction;
+use Filament\Actions\BulkActionGroup;
+use App\Filament\Resources\TestResultResource\Pages\ListTestResults;
+use App\Filament\Resources\TestResultResource\Pages\CreateTestResult;
+use App\Filament\Resources\TestResultResource\Pages\EditTestResult;
 use App\Filament\Resources\TestResultResource\Pages;
 use App\Filament\Resources\TestResultResource\RelationManagers;
 use App\Models\TestResult;
 use Filament\Actions\DeleteAction;
 use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Infolists\Components\Section;
 use Filament\Infolists\Components\TextEntry;
-use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Filters\Filter;
@@ -25,14 +31,14 @@ class TestResultResource extends Resource
 {
     protected static ?string $model = TestResult::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-check';
-    protected static ?string $navigationGroup = "Тестирование";
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-clipboard-document-check';
+    protected static string | \UnitEnum | null $navigationGroup = "Тестирование";
     protected static ?string $navigationLabel = 'Результаты';
 
-    public static function infolist(Infolist $infolist): infolist
+    public static function infolist(Schema $schema): Schema
     {
-        return $infolist
-            ->schema([
+        return $schema
+            ->components([
                 TextEntry::make('result')
                     ->getStateUsing(function (TestResult $testResult): string {
                         return getUserFullName($testResult->user);
@@ -80,39 +86,39 @@ class TestResultResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user.id')
+                TextColumn::make('user.id')
                     ->label('ID пользователя')
                     ->toggleable()
                     ->toggledHiddenByDefault()
                     ->numeric()
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('user.name')
+                TextColumn::make('user.name')
                     ->label('Имя пользователя')
                     ->numeric()
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('lesson.name')
+                TextColumn::make('lesson.name')
                     ->label('Тест для урока')
                     ->default('Вне уроков')
                     ->searchable()
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('module.name')
+                TextColumn::make('module.name')
                     ->label('Тест для модуля')
                     ->default('Вне модулей')
                     ->searchable()
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('test_points')
+                TextColumn::make('test_points')
                     ->label('Баллов в тесте')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('applicant_points')
+                TextColumn::make('applicant_points')
                     ->label('Правильных ответов')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
+                TextColumn::make('created_at')
                     ->dateTime()
                     ->label('Создан')
                     ->sortable(),
@@ -124,13 +130,13 @@ class TestResultResource extends Resource
             ->recordUrl(
                 fn (Model $record): string => '',
             )
-            ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\DeleteAction::make(),
+            ->recordActions([
+                ViewAction::make(),
+                DeleteAction::make(),
             ])
             ->defaultSort('created_at', 'desc')
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
+            ->toolbarActions([
+                BulkActionGroup::make([
 //                    Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
@@ -146,10 +152,10 @@ class TestResultResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListTestResults::route('/'),
-            'create' => Pages\CreateTestResult::route('/create'),
+            'index' => ListTestResults::route('/'),
+            'create' => CreateTestResult::route('/create'),
 //            'view' => Pages\ViewTestResult::route('/{record}'),
-            'edit' => Pages\EditTestResult::route('/{record}/edit'),
+            'edit' => EditTestResult::route('/{record}/edit'),
         ];
     }
 }

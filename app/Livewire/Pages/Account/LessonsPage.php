@@ -64,7 +64,7 @@ class LessonsPage extends Component
     public function downloadDiploma()
     {
 
-        $user = Auth::user();
+        $user = AuthAlias::user();
         $user_fio = "{$user['surname']} {$user['name']} {$user['thirdname']}";
         $user_points = $user->testResult->sum('applicant_points');
         if ($user_points > 90) {

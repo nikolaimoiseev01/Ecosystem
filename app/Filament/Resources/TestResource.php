@@ -2,12 +2,24 @@
 
 namespace App\Filament\Resources;
 
+use Filament\Schemas\Schema;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Repeater;
+use Filament\Schemas\Components\Grid;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Checkbox;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Actions\EditAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use App\Filament\Resources\TestResource\Pages\ListTests;
+use App\Filament\Resources\TestResource\Pages\CreateTest;
+use App\Filament\Resources\TestResource\Pages\EditTest;
 use App\Enums\ActualityEnums;
 use App\Filament\Resources\TestResource\Pages;
 use App\Filament\Resources\TestResource\RelationManagers;
 use App\Models\Test;
 use Filament\Forms;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Filters\SelectFilter;
@@ -20,46 +32,46 @@ class TestResource extends Resource
 {
     protected static ?string $model = Test::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-clipboard-document-list';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-clipboard-document-list';
     protected static ?string $navigationLabel = 'Тесты';
-    protected static ?string $navigationGroup = "Тестирование";
+    protected static string | \UnitEnum | null $navigationGroup = "Тестирование";
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
-                Forms\Components\Select::make('lesson_id')
+        return $schema
+            ->components([
+                Select::make('lesson_id')
                     ->relationship('lesson', 'name')
                     ->label('Урок'),
-                Forms\Components\Select::make('module_id')
+                Select::make('module_id')
                     ->relationship('module', 'name')
                     ->label('Модуль'),
-                Forms\Components\Select::make('actuality')
+                Select::make('actuality')
                     ->options([
                         ActualityEnums::OLD->value => ActualityEnums::OLD->value,
                         ActualityEnums::NEW->value => ActualityEnums::NEW->value
                     ]),
-                Forms\Components\Repeater::make('questions')
+                Repeater::make('questions')
                     ->label('Вопросы теста')
                     ->addActionLabel('Добавить вопрос')
                     ->schema([
-                        Forms\Components\Grid::make()->schema([
-                            Forms\Components\TextInput::make('question')
+                        Grid::make()->schema([
+                            TextInput::make('question')
                                 ->label('Вопрос')
                                 ->columnSpan(5)
                                 ->required()
                         ])->columns(6),
 
-                        Forms\Components\Repeater::make('answers')
+                        Repeater::make('answers')
                             ->label('Ответы')
                             ->addActionLabel('Добавить ответ')
                             ->schema([
-                                Forms\Components\Grid::make()->schema([
-                                    Forms\Components\TextInput::make('text')
+                                Grid::make()->schema([
+                                    TextInput::make('text')
                                         ->label('Вариант ответа')
                                         ->columnSpan(3)
                                         ->required(),
-                                    Forms\Components\Checkbox::make('correct_flg')
+                                    Checkbox::make('correct_flg')
                                         ->label('Верный')
                                         ->columnSpan(1)
                                 ])->columns(4)
@@ -72,26 +84,26 @@ class TestResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('lesson.name')
+                TextColumn::make('lesson.name')
                     ->label('Для урока')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('module.name')
+                TextColumn::make('module.name')
                     ->label('Для модуля')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('questions')
+                TextColumn::make('questions')
                     ->label('Вопросов в тесте')
                     ->getStateUsing(function (Model $record) {
                         return collect($record['questions'])->count();
                     }),
-                Tables\Columns\TextColumn::make('actuality')
+                TextColumn::make('actuality')
                     ->label('Актуальность')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
+                TextColumn::make('created_at')
                     ->dateTime()
                     ->label('Создан')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('updated_at')
+                TextColumn::make('updated_at')
                     ->dateTime()
                     ->label('Обновлен')
                     ->sortable(),
@@ -105,12 +117,12 @@ class TestResource extends Resource
                     ])->default(ActualityEnums::NEW->value)
             ])
             ->paginated(['all'])
-            ->actions([
-                Tables\Actions\EditAction::make(),
+            ->recordActions([
+                EditAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -125,9 +137,9 @@ class TestResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListTests::route('/'),
-            'create' => Pages\CreateTest::route('/create'),
-            'edit' => Pages\EditTest::route('/{record}/edit'),
+            'index' => ListTests::route('/'),
+            'create' => CreateTest::route('/create'),
+            'edit' => EditTest::route('/{record}/edit'),
         ];
     }
 }

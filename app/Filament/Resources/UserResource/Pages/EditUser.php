@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\UserResource\Pages;
 
+use Filament\Actions\DeleteAction;
 use App\Filament\Resources\UserResource;
 use App\Models\User;
 use Filament\Actions;
@@ -25,7 +26,7 @@ class EditUser extends EditRecord
                     return redirect()->route('account.courses');
                 })
                 ->label('Войти в его аккаунт'),
-            Actions\DeleteAction::make()
+            DeleteAction::make()
                 ->label('Удалить пользователя'),
         ];
     }

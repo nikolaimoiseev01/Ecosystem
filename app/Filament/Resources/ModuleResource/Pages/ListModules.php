@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\ModuleResource\Pages;
 
+use Filament\Actions\CreateAction;
 use App\Filament\Resources\ModuleResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
@@ -15,7 +16,7 @@ class ListModules extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            CreateAction::make(),
         ];
     }
 }

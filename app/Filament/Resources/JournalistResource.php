@@ -2,11 +2,19 @@
 
 namespace App\Filament\Resources;
 
+use Filament\Schemas\Schema;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Textarea;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Actions\EditAction;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use App\Filament\Resources\JournalistResource\Pages\ManageJournalists;
 use App\Filament\Resources\JournalistResource\Pages;
 use App\Filament\Resources\JournalistResource\RelationManagers;
 use App\Models\Journalist;
 use Filament\Forms;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -17,35 +25,35 @@ class JournalistResource extends Resource
 {
     protected static ?string $model = Journalist::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static ?string $navigationLabel = 'Журналисты';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
-                Forms\Components\TextInput::make('smi_name')
+        return $schema
+            ->components([
+                TextInput::make('smi_name')
                     ->required()
                     ->label('Название СМИ')
                     ->maxLength(255),
-                Forms\Components\TextInput::make('fio')
+                TextInput::make('fio')
                     ->label('ФИО')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('telephone')
+                TextInput::make('telephone')
                     ->label('Телефон')
                     ->tel()
                     ->required()
                     ->maxLength(255),
-                Forms\Components\Textarea::make('devices')
+                Textarea::make('devices')
                     ->label('Перечень ввозимого оборудования')
                     ->required(),
-                Forms\Components\TextInput::make('position')
+                TextInput::make('position')
                     ->label('Должность')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\Textarea::make('comment')
+                Textarea::make('comment')
                     ->label('Комментарии')
                     ->required()
                     ->maxLength(255),
@@ -56,23 +64,23 @@ class JournalistResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('smi_name')
+                TextColumn::make('smi_name')
                     ->label('Название СМИ')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('fio')
+                TextColumn::make('fio')
                     ->label('ФИО')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('telephone')
+                TextColumn::make('telephone')
                     ->label('Телефон')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('position')
+                TextColumn::make('position')
                     ->label('Должность')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('comment')
+                TextColumn::make('comment')
                     ->label('Комментарии')
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('created_at')
+                TextColumn::make('created_at')
                     ->label('Дата регистрации')
                     ->dateTime()
                     ->sortable(),
@@ -80,13 +88,13 @@ class JournalistResource extends Resource
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+            ->recordActions([
+                EditAction::make(),
+                DeleteAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -94,7 +102,7 @@ class JournalistResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageJournalists::route('/'),
+            'index' => ManageJournalists::route('/'),
         ];
     }
 }
