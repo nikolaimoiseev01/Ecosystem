@@ -206,6 +206,7 @@ class RegisterPage extends Component
 
             // Send message.
             $response = $oSMSAero->send($phone_number, $message, $type);
+            dd(config('app.debug'), $response);
         }
 
         // Default response data -> json. However we can get response in XML format.
