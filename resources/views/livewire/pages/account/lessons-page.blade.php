@@ -64,7 +64,7 @@
 
                             <a wire:navigate href="{{route('account.course', $lesson->id)}}"
                                class="{{ $lesson['completed'] ? 'text-gray-900' : 'text-gray-500' }}">
-                                Урок {{ $loop->iteration }}. {{ $lesson['title'] }}
+                                {{ $lesson->name }}. {{ $lesson['title'] }}
                             </a>
                         </div>
                     @endforeach
